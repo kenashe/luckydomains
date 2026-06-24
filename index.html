@@ -34,30 +34,38 @@
 
 <link rel="stylesheet" href="css/styles.css">
 
-<!-- Structured data -->
+<!-- Structured data: entity-triangulation graph (Lucky Domains Organization + Ken Ashe Person) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Lucky Domains",
-  "url": "https://luckydomains.io/",
-  "image": "https://luckydomains.io/assets/og-image.png",
-  "logo": "https://luckydomains.io/assets/logo-icon.png",
-  "description": "Domain acquisition, brokerage, and SEO services that help businesses secure the right name and rank higher on Google.",
-  "email": "info@luckydomains.io",
-  "founder": {"@type":"Person","name":"Ken Ashe"},
-  "priceRange": "$$",
-  "areaServed": "Worldwide",
-  "knowsAbout": ["Domain acquisition", "Domain brokerage", "Search engine optimization", "Technical SEO", "Local SEO"],
-  "sameAs": []
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Lucky Domains",
-  "url": "https://luckydomains.io/"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://luckydomains.io/#organization",
+      "name": "Lucky Domains",
+      "legalName": "Lucky Domains LLC",
+      "alternateName": "LuckyDomains.io",
+      "url": "https://luckydomains.io/",
+      "logo": "https://luckydomains.io/assets/logo-wordmark.png",
+      "email": "info@luckydomains.io",
+      "description": "Domain acquisition, brokerage, and SEO services company helping businesses secure stronger digital assets and build search visibility over time.",
+      "founder": { "@id": "https://kenashe.ai/#ken-ashe" },
+      "sameAs": ["https://www.linkedin.com/company/luckydomains"],
+      "knowsAbout": ["Premium domain acquisition", "Domain brokerage", "Domain negotiation", "SEO strategy", "Technical SEO", "Local SEO", "Content strategy"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://kenashe.ai/#ken-ashe",
+      "name": "Ken Ashe",
+      "url": "https://kenashe.ai/",
+      "image": "https://kenashe.ai/images/ken-ashe.jpeg",
+      "jobTitle": ["Digital Marketer", "AI Operator", "Founder"],
+      "description": "Digital marketer, CPA, PMP, and AI operator building with AI in public.",
+      "sameAs": ["https://www.linkedin.com/in/kenashe/", "https://substack.com/@kenashe", "https://x.com/kenashe", "https://github.com/kenashe"],
+      "affiliation": { "@id": "https://luckydomains.io/#organization" },
+      "knowsAbout": ["AI workflows", "AI agents", "Marketing automation", "SEO", "AI-assisted development", "Domain acquisition"]
+    }
+  ]
 }
 </script>
 </head>
@@ -153,6 +161,7 @@
           <span class="eyebrow">Why Lucky Domains</span>
           <h2>You don't need luck. You need the right people in your corner.</h2>
           <p class="section-lead">We named ourselves Lucky Domains because the best outcomes online look like luck from the outside. Inside, they're the product of preparation, relationships, and disciplined execution, which is exactly what we bring.</p>
+          <p class="section-lead">Lucky Domains was founded by Ken Ashe to help businesses secure stronger domain names and build durable search visibility through domain acquisition, brokerage, and white-hat SEO.</p>
           <div class="grid" style="gap:22px;margin-top:8px">
             <div class="value reveal">
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
