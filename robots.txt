@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+# Repository tooling and documentation. These are not part of the website.
+Disallow: /scripts/
+Disallow: /tests/
+Disallow: /docs/
+Disallow: /assets/source/
+Disallow: /*.md$
+
+# Deliberately NOT blocked: duplicate URL forms such as /index.html and the
+# extensionless /services. A blocked URL cannot be crawled, so Google would
+# never read its rel=canonical tag and could never consolidate it. Duplicates
+# are handled with canonical tags instead. See DECISIONS.md D4.
+
 Sitemap: https://luckydomains.io/sitemap.xml

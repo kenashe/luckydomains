@@ -1,0 +1,71 @@
+name: CI
+
+# Runs the site test suite on every push and pull request to main.
+#
+# This workflow does NOT deploy. GitHub Pages serves the main branch directly,
+# so merging to main is the deployment. CI exists to stop a broken commit from
+# reaching main in the first place.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Site checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # The suite is standard library only, so there is nothing to install.
+      - name: Run site tests
+        run: python3 tests/test_site.py
+
+      # Fails the build if the deploy critical files are missing or wrong.
+      # These are the files that silently take the site offline when lost.
+      - name: Check deployment critical files
+        run: |
+          set -e
+          test -f CNAME || { echo "CNAME is missing, the custom domain would be dropped"; exit 1; }
+          grep -qx 'luckydomains.io' CNAME || { echo "CNAME does not contain luckydomains.io"; exit 1; }
+          test -f .nojekyll || { echo ".nojekyll is missing, Jekyll would process the site"; exit 1; }
+          test -f robots.txt || { echo "robots.txt is missing"; exit 1; }
+          test -f sitemap.xml || { echo "sitemap.xml is missing"; exit 1; }
+          echo "Deployment critical files are present and correct."
+
+      # Confirms the documentation that makes this project portable still exists.
+      - name: Check project documentation
+        run: |
+          set -e
+          for f in README.md AGENTS.md ARCHITECTURE.md PRODUCT.md DECISIONS.md DATA_SOURCES.md .env.example docs/RUNBOOK.md; do
+            test -f "$f" || { echo "Missing required documentation: $f"; exit 1; }
+          done
+          echo "All required documentation is present."
+
+      - name: Verify no secrets were committed
+        run: |
+          set -e
+          # A real GitHub PAT must never be committed. .env.example carries a
+          # placeholder, so it is excluded from the scan.
+          if grep -rIn --exclude-dir=.git --exclude='.env.example' \
+               -E 'github_pat_[A-Za-z0-9_]{20,}' . ; then
+            echo "A GitHub token appears to be committed. Remove it and rotate the token."
+            exit 1
+          fi
+          if [ -f .env ]; then
+            echo ".env must never be committed."
+            exit 1
+          fi
+          echo "No secrets detected."

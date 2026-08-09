@@ -1,0 +1,20 @@
+# Secrets. Never commit real credentials. See .env.example for the template.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local working directories used by scripts/deploy.py pull
+site-checkout/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
