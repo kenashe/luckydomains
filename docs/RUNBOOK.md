@@ -52,6 +52,10 @@ the deploy replaces the branch contents wholesale. Override with
 
 ## 2. Rotate the GitHub deploy token
 
+> **Current token issued 9 August 2026 with a 90 day expiry, so it lapses around
+> 7 November 2026.** Put a reminder in the calendar a week before. The symptom of
+> a lapsed token is `401 Bad credentials` from any script.
+
 Symptom: any script prints `401 Bad credentials`. Fine grained tokens expire
 after 30 days by default. This is routine, not a fault.
 
@@ -59,8 +63,22 @@ after 30 days by default. This is routine, not a fault.
    Fine-grained tokens > **Generate new token**
 2. Resource owner: your account. Repository access: **Only select
    repositories** > `luckydomains`
-3. Repository permissions: **Contents: Read and write**, and optionally
-   **Pages: Read and write**
+3. Repository permissions: **Contents: Read and write**, **Workflows: Read and
+   write**, and optionally **Pages: Read and write**
+
+   Workflows write is easy to miss and is **required**: GitHub rejects any API
+   push that creates or edits a file under `.github/workflows/`, which this repo
+   has. Without it the deploy fails partway with an unhelpful message.
+
+   A pre-filled link that sets the name, expiry and all three permissions, so
+   you only have to pick the repository:
+
+   ```
+   https://github.com/settings/personal-access-tokens/new?name=Lucky+Domains+deploy&target_name=kenashe&expires_in=90&contents=write&pages=write&workflows=write
+   ```
+
+   Repository selection cannot be pre-filled. On the form choose **Only select
+   repositories** and pick `luckydomains`
 4. Generate, copy the `github_pat_...` value, and store it wherever your tooling
    reads secrets from. Never commit it.
 5. Confirm: `python3 scripts/deploy.py verify`
