@@ -66,11 +66,11 @@
       status.textContent = msg;
       status.className = "form-status show " + kind;
     }
-    // Prefill the "I need help with" select from ?need=buying|selling|seo (links on Services and the process page).
+    // Prefill the "I need help with" select from ?need=buying|selling|website|seo (links on Services and the process page).
     var needSel = form.querySelector("#need");
     var needParam = (new URLSearchParams(window.location.search).get("need") || "").toLowerCase();
     if (needSel && needParam) {
-      var map = { buying: "Buying a domain", selling: "Selling a domain", seo: "SEO" };
+      var map = { buying: "Buying a domain", selling: "Selling a domain", website: "Website consult or build", seo: "SEO" };
       if (map[needParam]) needSel.value = map[needParam];
     }
     form.addEventListener("submit", function (e) {

@@ -7,18 +7,30 @@ website.
 
 ## 1. The business
 
-**Lucky Domains** helps businesses secure the domain name they actually want,
-including names that are already registered by someone else, and then earn
-search rankings so that name gets found.
+**Lucky Domains** gets a business the domain name it actually wants, including
+names already registered by someone else, puts a site on it that can rank, and
+then earns the search visibility so that name gets found.
 
-Two service lines:
+Three service lines, framed as one job (the name, the site, the rankings):
 
 1. **Domain acquisition and brokerage.** Valuation, anonymous owner outreach,
    negotiation, escrow backed transfer, expiring and backorder hunting, and
    representation for sellers who want a discreet sale.
-2. **SEO services.** Technical SEO, on page optimisation, content strategy,
+2. **Website consultation, build, and development**, when the site is part of
+   getting found. Consult on an existing site (what blocks search and
+   conversion, fix or rebuild), or build/rebuild a site that can rank, launched
+   on a real host and domain with the technical SEO foundation in place. The
+   default home for this work is the Full Launch engagement; it can also be
+   scoped on its own. luckydomains.io and kenashe.ai are the shipped examples.
+3. **SEO services.** Technical SEO, on page optimisation, content strategy,
    local SEO, authority and link building, and reporting tied to business
    outcomes rather than vanity metrics.
+
+Lucky Domains is **not** a general marketing agency and **not** an open-ended web
+shop: no ads, no social, no branding retainers, no e-commerce platform
+maintenance, no visual-only redesigns without a search job, no feature work on
+retainer. Do not describe the practice as "two things" as if websites were out
+of scope.
 
 **Founder:** Ken Ashe. CPA, PMP, and an experienced product and project leader.
 That background is a genuine differentiator against typical SEO agencies and the
