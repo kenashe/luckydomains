@@ -66,8 +66,27 @@
       status.textContent = msg;
       status.className = "form-status show " + kind;
     }
+    // Prefill the "I need help with" select from ?need=buying|selling|seo (links on Services and the process page).
+    var needSel = form.querySelector("#need");
+    var needParam = (new URLSearchParams(window.location.search).get("need") || "").toLowerCase();
+    if (needSel && needParam) {
+      var map = { buying: "Buying a domain", selling: "Selling a domain", seo: "SEO" };
+      if (map[needParam]) needSel.value = map[needParam];
+    }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      // Qualifying fields: the form uses novalidate, so check required fields here.
+      var missing = [];
+      form.querySelectorAll("[required]").forEach(function (el) {
+        if (!String(el.value || "").trim()) {
+          missing.push(el);
+        }
+      });
+      if (missing.length) {
+        setStatus("Please fill in the highlighted fields so Ken can prepare for the call.", "err");
+        missing[0].focus();
+        return;
+      }
       // If the access key hasn't been configured yet, guide instead of failing silently.
       if (!ACCESS_KEY || ACCESS_KEY.indexOf("YOUR_") === 0) {
         setStatus("Form not yet connected. Add your free Web3Forms access key to enable submissions, or email us directly at info@luckydomains.io.", "err");
@@ -78,6 +97,10 @@
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
       var data = new FormData(form);
       data.append("access_key", ACCESS_KEY);
+      // Put the need and target in the email subject so inquiries are triaged at a glance.
+      var need = data.get("need") || "Inquiry";
+      var target = data.get("target") || "";
+      data.set("subject", "luckydomains.io: " + need + (target ? " / " + target : ""));
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: data,
@@ -87,7 +110,7 @@
         .then(function (json) {
           if (json.success) {
             form.reset();
-            setStatus("Thanks! Your message is on its way. We'll reply within one business day.", "ok");
+            setStatus("Thanks! Your message is on its way. Ken will reply within one business day.", "ok");
           } else {
             setStatus("Something went wrong. Please email info@luckydomains.io and we'll jump on it.", "err");
           }

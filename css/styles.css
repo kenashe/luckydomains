@@ -177,6 +177,10 @@ ul{margin:0 0 1.1rem;padding-left:0}
 ul.check{list-style:none;padding:0;display:grid;gap:11px}
 ul.check li{position:relative;padding-left:30px;color:var(--slate)}
 ul.check li::before{content:"";position:absolute;left:0;top:3px;width:19px;height:19px;border-radius:50%;background:var(--mint);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b8f57' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:13px;background-repeat:no-repeat;background-position:center}
+/* Not-a-fit list: same shape as ul.check with a red x, used on the Fit sections */
+ul.nope{list-style:none;padding:0;display:grid;gap:11px}
+ul.nope li{position:relative;padding-left:30px;color:var(--slate)}
+ul.nope li::before{content:"";position:absolute;left:0;top:3px;width:19px;height:19px;border-radius:50%;background:#fdecec;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b42318' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6L6 18M6 6l12 12'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
 .svc .svc-foot{margin-top:auto}
 .link-arrow{display:inline-flex;align-items:center;gap:7px;font-family:"Plus Jakarta Sans",sans-serif;font-weight:700}
 .link-arrow svg{width:17px;height:17px;transition:transform .18s var(--ease)}

@@ -59,7 +59,7 @@ optimisation. That is why the URL canonicalisation work and the test suite exist
 ## 3. Scope
 
 ### In scope
-- Four core pages: Home, Services, About, Contact.
+- Core pages: Home, Services, About, Contact, the founder profile, and one process page (how a private domain buy works).
 - A news/press area, currently one post at `/news/website-relaunch.html`.
 - A working contact form that delivers to the owner's inbox.
 - Strong technical SEO: canonical URLs, metadata, Open Graph, structured data,
@@ -165,19 +165,16 @@ what is real and what is not.
 | Founder bio and photo | Real, supplied by the owner | None |
 | Contact email | Real and working | None |
 | News post | Real, published | None |
-| **Homepage testimonials** | **Fabricated placeholders** | **Replace with real quotes or remove** |
-| Pricing tiers | Structure only, no figures | Owner to confirm pricing |
+| Homepage testimonials | Removed 2026-09-11 (were fabricated placeholders) | None. Do not reinstate without real, owner-authorized quotes |
+| Pricing tiers | Fee shape stated (success fee, monthly, scoped), no figures | Owner to confirm pricing if figures are ever published |
 | Statistics band | Removed at the owner's request | None, do not reinstate invented numbers |
 
 ### The testimonials, in plain terms
 The three homepage quotes attributed to "Rachel M.", "David K." and "Alicia T."
-were generated as placeholders during the original build and were never
-replaced. They are currently live on a commercial website. That is a credibility
-risk and it runs against FTC endorsement rules, which require testimonials to
-reflect genuine experiences.
-
-They should be replaced with real client quotes or removed. Any agent working on
-this site should raise it rather than continuing to ship them silently.
+were generated as placeholders during the original build. They were removed on
+2026-09-11 and replaced with nothing: the homepage now carries one factual trust
+line ("Founded and run by Ken Ashe, CPA, PMP") and a Fit section instead of
+social proof. Any future proof must be real and owner-authorized.
 
 ---
 
@@ -185,7 +182,7 @@ this site should raise it rather than continuing to ship them silently.
 
 Not committed, listed so context is not lost:
 
-- Replace or remove the placeholder testimonials. **Highest priority.**
+- Real case studies with permission and numbers, in the owner snapshot format.
 - Add pricing figures, or an explicit "pricing after consultation" position.
 - Complete email authentication: DKIM and DMARC. See `DATA_SOURCES.md`.
 - Google Search Console verification and sitemap submission.
@@ -193,4 +190,3 @@ Not committed, listed so context is not lost:
   "how to buy a domain that is already taken". The firm sells SEO, so publishing
   useful content is both a lead source and a proof point.
 - A decision on privacy respecting analytics.
-- Real case studies with permission and numbers.

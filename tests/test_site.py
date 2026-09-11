@@ -37,6 +37,7 @@ PAGES = {
     "contact.html": DOMAIN + "/contact.html",
     "news/website-relaunch.html": DOMAIN + "/news/website-relaunch.html",
     "founder/ken-ashe/index.html": DOMAIN + "/founder/ken-ashe/",
+    "how-we-buy-domains.html": DOMAIN + "/how-we-buy-domains.html",
 }
 # In the sitemap and crawlable, but intentionally noindex and not canonical checked.
 UNLISTED = ["404.html"]
@@ -49,6 +50,7 @@ FORBIDDEN_LINKS = [
     'href="services.html"', 'href="about.html"', 'href="contact.html"',
     'href="/services"', 'href="/about"', 'href="/contact"',
     'href="/founder/ken-ashe"', 'href="/founder/ken-ashe.html"',
+    'href="how-we-buy-domains.html"', 'href="/how-we-buy-domains"',
     'href="/founder/ken-ashe/index.html"',
 ]
 

@@ -62,6 +62,7 @@ Every internal link must be **root absolute** and must exactly match that page's
 | Contact        | `href="/contact.html"`         | `contact.html`, `/contact`               |
 | News post      | `href="/news/website-relaunch.html"` | `news/website-relaunch.html`       |
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
+| Buying process | `href="/how-we-buy-domains.html"` | `how-we-buy-domains.html`, `/how-we-buy-domains` |
 
 Why this matters is explained in section 4.
 
@@ -169,12 +170,11 @@ one pass. Run it after every deployment.
 
 Do not treat the current site copy as final or verified.
 
-- **The three homepage testimonials are fabricated.** "Rachel M.", "David K."
-  and "Alicia T." were placeholders generated during the original build and were
-  never replaced. They are live on a commercial site, which is a credibility
-  problem and runs against FTC endorsement rules. They should be replaced with
-  real client quotes or removed. Flag this to the owner; do not quietly keep
-  shipping them.
+- **Testimonials were removed on 2026-09-11.** The three homepage quotes
+  ("Rachel M.", "David K.", "Alicia T.") were fabricated placeholders from the
+  original build. Do not reinstate them or add any quote, initials, logo row,
+  star rating, or "trusted by" line that is not owner-authorized and real.
+  Real snapshots, if added later, must be owner-supplied.
 - **Pricing tiers have no figures.** The Services page shows tier structure with
   "Project", "Monthly" and "Custom" instead of prices, pending the owner's input.
 - **Email authentication is incomplete.** SPF is correct, but DKIM and DMARC are
