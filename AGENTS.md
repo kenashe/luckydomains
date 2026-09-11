@@ -61,6 +61,7 @@ Every internal link must be **root absolute** and must exactly match that page's
 | About          | `href="/about.html"`           | `about.html`, `/about`                   |
 | Contact        | `href="/contact.html"`         | `contact.html`, `/contact`               |
 | News post      | `href="/news/website-relaunch.html"` | `news/website-relaunch.html`       |
+| Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
 
 Why this matters is explained in section 4.
 
@@ -186,7 +187,16 @@ Do not treat the current site copy as final or verified.
 - **Voice:** confident, plain spoken, no jargon, no hype. Short sentences.
 - **Punctuation:** no em dashes (rule 2.3).
 - **Contact details:** `info@luckydomains.io` only. No phone number, no business
-  hours, no social media links. This is deliberate; do not add them back.
+  hours, no company social media links. This is deliberate; do not add them back.
+  One exception, approved by the owner 2026-09-10: the Connect section on
+  `/founder/ken-ashe/` links to Ken Ashe's personal profiles (kenashe.ai,
+  LinkedIn, X, GitHub). Those are founder entity links for SEO, not company
+  social accounts. Keep them there and nowhere else.
+- **Shared Person schema node:** the Ken Ashe `Person` JSON-LD node (`@id`
+  `https://kenashe.ai/#ken-ashe`) appears in `index.html`,
+  `news/website-relaunch.html` and `founder/ken-ashe/index.html`. It must stay
+  byte-identical to `src/data/schema.ts` in the kenashe.ai repo. Edit it there
+  first, then mirror to all three files here in the same pass (DECISIONS D9).
 - **Brand colours:** green `#16C784`, darker green `#0FA968` for text contrast,
   deep navy `#0C2340`, mint `#ECFBF4`.
 - **Fonts:** Plus Jakarta Sans for headings, Inter for body, loaded from Google

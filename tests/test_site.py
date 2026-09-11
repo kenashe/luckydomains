@@ -36,6 +36,7 @@ PAGES = {
     "about.html": DOMAIN + "/about.html",
     "contact.html": DOMAIN + "/contact.html",
     "news/website-relaunch.html": DOMAIN + "/news/website-relaunch.html",
+    "founder/ken-ashe/index.html": DOMAIN + "/founder/ken-ashe/",
 }
 # In the sitemap and crawlable, but intentionally noindex and not canonical checked.
 UNLISTED = ["404.html"]
@@ -47,6 +48,8 @@ FORBIDDEN_LINKS = [
     'href="./index.html"', 'href="../index.html"',
     'href="services.html"', 'href="about.html"', 'href="contact.html"',
     'href="/services"', 'href="/about"', 'href="/contact"',
+    'href="/founder/ken-ashe"', 'href="/founder/ken-ashe.html"',
+    'href="/founder/ken-ashe/index.html"',
 ]
 
 PLACEHOLDERS = [
@@ -126,6 +129,9 @@ for page in ALL_HTML:
                 continue
             rel = path.lstrip("/") if path.startswith("/") else \
                 os.path.normpath(os.path.join(os.path.dirname(page), path)).replace(os.sep, "/")
+            # A trailing slash is a directory index, for example /founder/ken-ashe/
+            if rel.endswith("/"):
+                rel = rel + "index.html"
             check(exists(rel), "broken link in %s" % page, "%s -> %s" % (target, rel))
 
 # ---------------------------------------------------------------------------

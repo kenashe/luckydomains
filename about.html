@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Lucky Domains | Domain &amp; SEO Specialists</title>
-<meta name="description" content="Lucky Domains is led by founder Ken Ashe, helping businesses secure the right domain and earn durable search rankings through premium acquisition and SEO strategy.">
+<title>About Lucky Domains | Domain Acquisition &amp; SEO Specialists</title>
+<meta name="description" content="Lucky Domains is a specialized domain acquisition, brokerage, and SEO company. Learn how we work, what we believe, and why businesses trust us to secure the right name and earn durable rankings.">
 <link rel="canonical" href="https://luckydomains.io/about.html">
 <meta name="theme-color" content="#0C2340">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lucky Domains">
 <meta property="og:title" content="About Lucky Domains">
-<meta property="og:description" content="Led by founder Ken Ashe. Premium domain acquisition and SEO strategy that helps businesses build search visibility that compounds.">
+<meta property="og:description" content="A specialized domain acquisition, brokerage, and SEO company. Two things, done at a senior level, measured by your results.">
 <meta property="og:url" content="https://luckydomains.io/about.html">
 <meta property="og:image" content="https://luckydomains.io/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,26 +29,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 
+<!-- Structured data: AboutPage about the Organization. The founder is referenced by @id only;
+     the full Person node lives on the homepage and on /founder/ken-ashe/ (DECISIONS D9). -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
+  "@id": "https://luckydomains.io/about.html#aboutpage",
   "name": "About Lucky Domains",
   "url": "https://luckydomains.io/about.html",
+  "mainEntity": { "@id": "https://luckydomains.io/#organization" },
   "about": {
-    "@type":"ProfessionalService",
-    "name":"Lucky Domains",
-    "url":"https://luckydomains.io/",
+    "@type": "Organization",
+    "@id": "https://luckydomains.io/#organization",
+    "name": "Lucky Domains",
+    "url": "https://luckydomains.io/",
+    "logo": "https://luckydomains.io/assets/logo-wordmark.png",
+    "email": "info@luckydomains.io",
+    "description": "Domain acquisition, brokerage, and SEO services company helping businesses secure stronger digital assets and build search visibility over time.",
     "founder": {
-                 "@type": "Person",
-                 "@id": "https://kenashe.ai/#ken-ashe",
-                 "name": "Ken Ashe",
-                 "url": "https://kenashe.ai/",
-                 "jobTitle": "AI application builder",
-                 "description": "Founder of Lucky Domains, focused on premium domain acquisition and SEO strategy. CPA, PMP, and experienced product and project leader.",
-                 "image": "https://luckydomains.io/assets/about-ken.jpg"
-               }
-  }
+      "@type": "Person",
+      "@id": "https://kenashe.ai/#ken-ashe",
+      "name": "Ken Ashe",
+      "url": "https://kenashe.ai/",
+      "subjectOf": { "@id": "https://luckydomains.io/founder/ken-ashe/#profilepage" }
+    }
+  },
+  "relatedLink": ["https://luckydomains.io/founder/ken-ashe/"]
 }
 </script>
 </head>
@@ -135,22 +142,31 @@
     </div>
   </section>
 
-  <!-- FOUNDER -->
+  <!-- HOW WE WORK: company process, kept on the About page so the page stays about the business -->
   <section class="section">
     <div class="container">
-      <div class="split alt">
-        <div class="split-media">
-          <figure class="founder-card">
-            <img src="assets/about-ken.jpg" alt="Ken Ashe, founder of Lucky Domains" width="460" height="460" loading="lazy" decoding="async">
-          </figure>
-        </div>
-        <div class="split-body">
-          <span class="eyebrow">The founder</span>
-          <h2>Meet Ken Ashe</h2>
-          <p class="section-lead">Ken Ashe is the founder of Lucky Domains, a company focused on premium domain acquisition and SEO strategy.</p>
-          <p>Drawing on his background as a CPA, PMP, and experienced product and project leader, Ken helps businesses secure stronger digital assets and build search visibility that compounds over time.</p>
-          <div class="btn-row" style="margin-top:8px"><a href="/contact.html" class="btn btn-accent">Work with Ken</a></div>
-        </div>
+      <div class="sec-head center reveal">
+        <span class="eyebrow">How we work</span>
+        <h2>Discipline you can see in the deliverables</h2>
+        <p class="section-lead">Every engagement runs on the same operating rhythm: a written scope, a valuation or roadmap you can challenge, execution you can follow, and reporting tied to business outcomes rather than vanity metrics.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="n"></div><h3>Discover</h3><p>We learn your goals, audience, and the names or keywords that matter most to your growth.</p></div>
+        <div class="step reveal"><div class="n"></div><h3>Strategize</h3><p>You get a clear plan: target domains and valuations, or an SEO roadmap with priorities and timelines.</p></div>
+        <div class="step reveal"><div class="n"></div><h3>Execute</h3><p>We negotiate and transfer the domain, or roll out technical, on-page, and content improvements.</p></div>
+        <div class="step reveal"><div class="n"></div><h3>Grow</h3><p>We track results against revenue and keep optimizing so momentum builds month over month.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER TEASER: short by design. The full profile lives at /founder/ken-ashe/ -->
+  <section class="section section-soft" id="founder">
+    <div class="container">
+      <div class="cta-band reveal" style="text-align:left">
+        <span class="eyebrow" style="background:rgba(12,35,64,.12);color:#0C2340">Leadership</span>
+        <h2>Founded and run by Ken Ashe</h2>
+        <p style="margin-left:0;max-width:640px">Ken Ashe is the founder and operator of Lucky Domains. He is a CPA and PMP with two decades of project, product, and program leadership, and he builds practical AI applications and automated workflows in public at kenashe.ai. That operating discipline is what every client engagement runs on.</p>
+        <a href="/founder/ken-ashe/" class="btn btn-lg">Meet the Founder</a>
       </div>
     </div>
   </section>
@@ -187,6 +203,7 @@
         <h4>Company</h4>
         <ul>
           <li><a href="/about.html">About</a></li>
+          <li><a href="/founder/ken-ashe/">Founder</a></li>
           <li><a href="/services.html">Services</a></li>
           <li><a href="/contact.html">Contact</a></li>
           <li><a href="/news/website-relaunch.html">News</a></li>
