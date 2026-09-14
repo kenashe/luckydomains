@@ -64,9 +64,12 @@ Every internal link must be **root absolute** and must exactly match that page's
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
 | Buying process | `href="/how-we-buy-domains/"`  | `/how-we-buy-domains`, `/how-we-buy-domains.html` |
 
-Every page lives at `<slug>/index.html` so GitHub Pages serves the trailing-slash
-URL and 301s the slash-less form to it. The old `<slug>.html` files are kept only
-as noindex redirect stubs (DECISIONS D11); never link to them.
+Every page lives at `<slug>/index.html` and the trailing-slash URL is canonical.
+The old `<slug>.html` files are kept only as noindex redirect stubs (DECISIONS
+D11); never link to them. While those stubs exist, GitHub Pages resolves the
+slash-less `/services` to `services.html` (the stub) rather than 301ing to
+`/services/`; the stub then redirects. Deleting the stubs later restores the
+native 301.
 
 Why this matters is explained in section 4.
 
@@ -125,10 +128,12 @@ has three consequences:
    another, because they are literally the same file. The fix is `rel=canonical`
    plus never linking internally to `/index.html`. This is Google's documented
    approach for static hosts.
-3. **Directory URLs get a real redirect.** Because every page is
-   `<slug>/index.html`, GitHub Pages serves `/services/` and issues a 301 from
-   `/services`. The legacy `/services.html` files are noindex stubs with a
-   canonical and an instant meta refresh to the directory URL (D11).
+3. **Directory URLs, with a caveat.** Every page is `<slug>/index.html` and
+   `/services/` is canonical. GitHub Pages only 301s `/services` to `/services/`
+   when no `services.html` file exists; while the legacy stubs are present it
+   serves the stub instead, which redirects with a canonical and an instant
+   meta refresh (D11). Both legacy forms therefore consolidate; the native 301
+   arrives when the stubs are removed.
 
 ### The site was migrated off Wix in June 2026
 Wix had connected the domain through GoDaddy's Domain Connect, which **locked**

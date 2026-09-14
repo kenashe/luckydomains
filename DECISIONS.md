@@ -237,8 +237,9 @@ a canonical tag and an instant meta refresh to the new URL.
 cannot redirect. Both facts still hold, but the site is only seven URLs and a
 few months old, so the re-indexing cost is the smallest it will ever be, and the
 founder page had already been shipped in directory form. Directory URLs are the
-one shape GitHub Pages genuinely redirects (`/services` 301s to `/services/`),
-so the site ends with a single consistent URL grammar.
+one shape GitHub Pages genuinely redirects (`/services` 301s to `/services/`
+once no `services.html` file exists), so the site ends with a single consistent
+URL grammar.
 
 **How legacy URLs are handled.** GitHub Pages cannot 301 `/services.html`, so
 the stub approach is the strongest available signal: `noindex, follow`, a
@@ -247,6 +248,14 @@ JavaScript `location.replace` that preserves query strings and hashes. Google
 treats an instant meta refresh plus a matching canonical as a permanent
 redirect. The stubs must stay crawlable (never block them in `robots.txt`) or
 Google cannot read the signal.
+
+**Observed on deploy (2026-09-14).** While a stub file exists, GitHub Pages
+resolves the slash-less `/services` to `services.html` (the stub) instead of
+301ing to `/services/`. So during the transition both legacy forms are served
+by the stub and consolidate through it. Once Search Console shows the `.html`
+URLs dropped, delete the stubs; the native 301 from `/services` to `/services/`
+appears immediately (the founder page, which never had a stub, already behaves
+this way).
 
 **Consequences.** Internal links, canonicals, `og:url`, sitemap, breadcrumbs and
 JSON-LD `@id`s all use the trailing-slash form. The test suite forbids every
