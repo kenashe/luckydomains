@@ -105,7 +105,7 @@ read and consolidation never happens.
 ---
 
 ## D5. Keep `.html` URLs rather than switching to extensionless
-**Date:** July 2026 · **Status:** done
+**Date:** July 2026 · **Status:** superseded by D11 (September 2026)
 
 **Decision.** Canonical URLs keep the `.html` suffix, for example
 `/services.html`.
@@ -222,3 +222,37 @@ product that needs no cookie banner, or Google Analytics 4 if the owner wants
 tighter integration with Search Console and Ads. Search Console itself is
 verification only and carries no tracking script, so it is worth doing
 regardless.
+
+---
+
+## D11. Directory-style extensionless URLs, with legacy `.html` stubs
+**Date:** September 2026 · **Status:** done
+
+**Decision.** Every page now lives at `<slug>/index.html` and its canonical URL
+is the trailing-slash form, for example `https://luckydomains.io/services/`.
+The old `<slug>.html` files remain in the repo as tiny noindex stubs that carry
+a canonical tag and an instant meta refresh to the new URL.
+
+**Why.** D5 kept `.html` because Google had indexed those URLs and GitHub Pages
+cannot redirect. Both facts still hold, but the site is only seven URLs and a
+few months old, so the re-indexing cost is the smallest it will ever be, and the
+founder page had already been shipped in directory form. Directory URLs are the
+one shape GitHub Pages genuinely redirects (`/services` 301s to `/services/`),
+so the site ends with a single consistent URL grammar.
+
+**How legacy URLs are handled.** GitHub Pages cannot 301 `/services.html`, so
+the stub approach is the strongest available signal: `noindex, follow`, a
+`rel=canonical` to the new URL, `http-equiv=refresh` with a zero delay, and a
+JavaScript `location.replace` that preserves query strings and hashes. Google
+treats an instant meta refresh plus a matching canonical as a permanent
+redirect. The stubs must stay crawlable (never block them in `robots.txt`) or
+Google cannot read the signal.
+
+**Consequences.** Internal links, canonicals, `og:url`, sitemap, breadcrumbs and
+JSON-LD `@id`s all use the trailing-slash form. The test suite forbids every
+`.html` and slash-less form. If true 301s are ever wanted, put a proxy such as
+Cloudflare in front (proxy only the A records, never MX or TXT) or move hosts;
+the directory layout works unchanged on either.
+
+**Revisit if.** Search Console shows the legacy URLs still indexed after a
+couple of months, in which case a proxy-level 301 is the next step.

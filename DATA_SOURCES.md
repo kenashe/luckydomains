@@ -140,7 +140,7 @@ the data flow.
 
 - **Endpoint:** `POST https://api.web3forms.com/submit`
 - **Auth:** an `access_key` field in the request body
-- **Where the key lives:** in `contact.html`, as `data-access-key` on the form
+- **Where the key lives:** in `contact/index.html`, as `data-access-key` on the form
 - **Is the key a secret?** No. Web3Forms access keys are public identifiers
   designed to sit in client side code. They are safe in a public repository.
   A leaked key can only cause spam to the registered inbox, and it can be
@@ -161,7 +161,7 @@ present on the contact page and in every footer, so the site still converts with
 JavaScript disabled or Web3Forms down.
 
 **Rotation.** Generate a new key at web3forms.com, replace the `data-access-key`
-value in `contact.html`, run the tests, and push.
+value in `contact/index.html`, run the tests, and push.
 
 ---
 

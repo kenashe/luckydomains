@@ -50,7 +50,7 @@ storefront, an app, or a content platform.
 Success means a qualified visitor understands the two services, believes this
 firm is competent and trustworthy, and starts a conversation.
 
-**Primary conversion:** the contact form on `/contact.html`.
+**Primary conversion:** the contact form on `/contact/`.
 **Secondary conversion:** a direct email to `info@luckydomains.io`.
 
 Every page ends in a call to action pointing at one of those two.
@@ -72,7 +72,7 @@ optimisation. That is why the URL canonicalisation work and the test suite exist
 
 ### In scope
 - Core pages: Home, Services, About, Contact, the founder profile, and one process page (how a private domain buy works).
-- A news/press area, currently one post at `/news/website-relaunch.html`.
+- A news/press area, currently one post at `/news/website-relaunch/`.
 - A working contact form that delivers to the owner's inbox.
 - Strong technical SEO: canonical URLs, metadata, Open Graph, structured data,
   a sitemap, and fast static delivery.

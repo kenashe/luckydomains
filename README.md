@@ -38,7 +38,7 @@ Open http://localhost:8000. That is the entire toolchain: no install, no
 compile, no bundler. Python 3 is used only to serve static files; any static
 file server works equally well.
 
-One difference from production: the local server serves `/services.html` but not
+One difference from production: the local server serves `/services/` but not
 the extensionless `/services`, whereas GitHub Pages serves both. Always link to
 the `.html` form.
 
@@ -49,12 +49,16 @@ the `.html` form.
 ```
 .
 ├── index.html               Home
-├── services.html            Services and engagement tiers
-├── about.html               About and founder
-├── contact.html             Contact form
+├── services/index.html      Services and engagement tiers
+├── about/index.html         About and founder teaser
+├── contact/index.html       Contact form
+├── how-we-buy-domains/      How a private domain buy works
+├── founder/ken-ashe/        Founder profile page
+├── *.html (services, about, contact, how-we-buy-domains)
+│                            Legacy noindex redirect stubs, see DECISIONS D11
 ├── 404.html                 Not found page (served by GitHub Pages)
 ├── news/
-│   └── website-relaunch.html    Press release / news post
+│   └── website-relaunch/    Press release / news post (legacy .html stub alongside)
 ├── css/styles.css           All styles, single stylesheet
 ├── js/main.js               Nav, FAQ accordion, scroll reveal, contact form
 ├── assets/                  Images, favicons, social share image

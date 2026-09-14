@@ -98,7 +98,7 @@ GitHub Pages serves **three URL forms for the same page**:
 
 | Form | Example | Status |
 |---|---|---|
-| Canonical | `/services.html` | 200, this is the one we use |
+| Canonical | `/services/` | 200, this is the one we use |
 | Extensionless | `/services` | 200, served automatically by Pages |
 | Index variant | `/` and `/index.html` | both 200, literally the same file |
 
@@ -123,11 +123,11 @@ Since Pages cannot issue redirects, duplicates are consolidated with:
 | File | URL | Notes |
 |---|---|---|
 | `index.html` | `/` | Hero, services overview, why us, process, testimonials, FAQ, CTA |
-| `services.html` | `/services.html` | Domain acquisition, SEO services, engagement tiers |
-| `about.html` | `/about.html` | Story, values, founder |
-| `contact.html` | `/contact.html` | Contact form, quick answers |
+| `services/index.html` | `/services/` | Domain acquisition, SEO services, engagement tiers |
+| `about/index.html` | `/about/` | Story, values, founder |
+| `contact/index.html` | `/contact/` | Contact form, quick answers |
 | `404.html` | any missing path | Served by Pages, `noindex` |
-| `news/website-relaunch.html` | `/news/website-relaunch.html` | Press release, `NewsArticle` schema |
+| `news/website-relaunch/index.html` | `/news/website-relaunch/` | Press release, `NewsArticle` schema |
 
 ### CSS
 A single stylesheet, `css/styles.css`. Design tokens are CSS custom properties
@@ -164,7 +164,7 @@ for the founder, `ContactPage` on contact, and `NewsArticle` on the news post.
 The only dynamic behaviour on the site.
 
 ```
-Visitor fills form on /contact.html
+Visitor fills form on /contact/
         │
         │  js/main.js intercepts submit, builds FormData,
         │  appends the Web3Forms access key

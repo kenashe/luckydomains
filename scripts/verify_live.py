@@ -29,17 +29,17 @@ import urllib.request
 
 SITE = "https://luckydomains.io"
 APEX = "luckydomains.io"
-PAGES = ["/", "/services.html", "/about.html", "/contact.html",
-         "/news/website-relaunch.html", "/404.html"]
+PAGES = ["/", "/services/", "/about/", "/contact/",
+         "/news/website-relaunch/", "/404.html"]
 GITHUB_IPS = {"185.199.108.153", "185.199.109.153",
               "185.199.110.153", "185.199.111.153"}
 PAGES_HOST = "kenashe.github.io"
 CONTENT_MARKERS = {
     "/": "Secure the perfect domain",
-    "/services.html": "Own the name your brand deserves",
-    "/about.html": "Ken Ashe",
-    "/contact.html": "info@luckydomains.io",
-    "/news/website-relaunch.html": "Lucky Domains",
+    "/services/": "Own the name your brand deserves",
+    "/about/": "Ken Ashe",
+    "/contact/": "info@luckydomains.io",
+    "/news/website-relaunch/": "Lucky Domains",
 }
 
 CTX = ssl.create_default_context()

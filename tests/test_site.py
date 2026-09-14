@@ -32,12 +32,20 @@ DOMAIN = "https://luckydomains.io"
 # Page file -> canonical URL. The single source of truth for URL shape.
 PAGES = {
     "index.html": DOMAIN + "/",
-    "services.html": DOMAIN + "/services.html",
-    "about.html": DOMAIN + "/about.html",
-    "contact.html": DOMAIN + "/contact.html",
-    "news/website-relaunch.html": DOMAIN + "/news/website-relaunch.html",
+    "services/index.html": DOMAIN + "/services/",
+    "about/index.html": DOMAIN + "/about/",
+    "contact/index.html": DOMAIN + "/contact/",
+    "how-we-buy-domains/index.html": DOMAIN + "/how-we-buy-domains/",
+    "news/website-relaunch/index.html": DOMAIN + "/news/website-relaunch/",
     "founder/ken-ashe/index.html": DOMAIN + "/founder/ken-ashe/",
-    "how-we-buy-domains.html": DOMAIN + "/how-we-buy-domains.html",
+}
+# Legacy .html URLs kept as noindex stubs that point at the directory canonical (DECISIONS D11).
+STUBS = {
+    "services.html": "/services/",
+    "about.html": "/about/",
+    "contact.html": "/contact/",
+    "how-we-buy-domains.html": "/how-we-buy-domains/",
+    "news/website-relaunch.html": "/news/website-relaunch/",
 }
 # In the sitemap and crawlable, but intentionally noindex and not canonical checked.
 UNLISTED = ["404.html"]
@@ -47,11 +55,16 @@ FORBIDDEN_LINKS = [
     'href="index.html"', "href='index.html'",
     'href="/index.html"', "href='/index.html'",
     'href="./index.html"', 'href="../index.html"',
+    # Legacy .html forms and slash-less extensionless forms. Canonical is the
+    # trailing-slash directory URL, for example /services/ (DECISIONS D11).
     'href="services.html"', 'href="about.html"', 'href="contact.html"',
+    'href="/services.html"', 'href="/about.html"', 'href="/contact.html"',
+    'href="/how-we-buy-domains.html"', 'href="/news/website-relaunch.html"',
     'href="/services"', 'href="/about"', 'href="/contact"',
+    'href="/how-we-buy-domains"', 'href="/news/website-relaunch"',
     'href="/founder/ken-ashe"', 'href="/founder/ken-ashe.html"',
-    'href="how-we-buy-domains.html"', 'href="/how-we-buy-domains"',
-    'href="/founder/ken-ashe/index.html"',
+    'href="/founder/ken-ashe/index.html"', 'href="/services/index.html"',
+    'href="/about/index.html"', 'href="/contact/index.html"',
 ]
 
 PLACEHOLDERS = [
@@ -98,8 +111,9 @@ ALL_HTML = html_files()
 
 # ---------------------------------------------------------------------------
 print("1. Required files exist")
-for f in ["index.html", "services.html", "about.html", "contact.html", "404.html",
-          "news/website-relaunch.html", "css/styles.css", "js/main.js",
+for f in ["index.html", "services/index.html", "about/index.html", "contact/index.html",
+          "404.html", "how-we-buy-domains/index.html", "founder/ken-ashe/index.html",
+          "news/website-relaunch/index.html", "css/styles.css", "js/main.js",
           "CNAME", ".nojekyll", "robots.txt", "sitemap.xml", "site.webmanifest",
           "README.md", "AGENTS.md", "ARCHITECTURE.md", "PRODUCT.md",
           "DECISIONS.md", "DATA_SOURCES.md", ".env.example", "docs/RUNBOOK.md"]:
@@ -198,8 +212,8 @@ check(read("CNAME").strip() == "luckydomains.io", "CNAME is wrong",
 robots = read("robots.txt")
 check("Sitemap:" in robots, "robots.txt does not declare the sitemap")
 check(DOMAIN + "/sitemap.xml" in robots, "robots.txt sitemap URL is wrong")
-for dup in ["Disallow: /index.html", "Disallow: /services.html",
-            "Disallow: /about.html", "Disallow: /contact.html", "Disallow: /\n"]:
+for dup in ["Disallow: /index.html", "Disallow: /services", "Disallow: /about",
+            "Disallow: /contact", "Disallow: /news", "Disallow: /\n"]:
     check(dup not in robots, "robots.txt blocks a real page", dup.strip())
 
 # ---------------------------------------------------------------------------
@@ -215,7 +229,7 @@ check(lazy_count > 0, "no images use lazy loading")
 
 # ---------------------------------------------------------------------------
 print("11. Contact form integrity")
-contact = read("contact.html")
+contact = read("contact/index.html")
 check('id="contact-form"' in contact, "contact form is missing")
 check("data-access-key=" in contact, "form has no Web3Forms access key")
 check('name="botcheck"' in contact, "form is missing its honeypot field")
@@ -225,6 +239,20 @@ for page in list(PAGES):
     check("mailto:info@luckydomains.io" in read(page),
           "page lost the footer email link", page)
 check("tel:" not in contact, "a phone number was added, owner asked for none")
+
+# ---------------------------------------------------------------------------
+print("12. Legacy .html stubs redirect to the directory canonical")
+for stub, target in STUBS.items():
+    check(exists(stub), "legacy stub missing", stub)
+    if not exists(stub):
+        continue
+    body = read(stub)
+    check('name="robots" content="noindex' in body, "stub is not noindex", stub)
+    check('<link rel="canonical" href="%s%s">' % (DOMAIN, target) in body,
+          "stub canonical does not point at the new URL", stub)
+    check('http-equiv="refresh" content="0; url=%s"' % target in body,
+          "stub has no instant meta refresh", stub)
+    check(len(body) < 1500, "stub carries real content, it should only redirect", stub)
 
 # ---------------------------------------------------------------------------
 print("\n" + "=" * 62)

@@ -57,12 +57,16 @@ Every internal link must be **root absolute** and must exactly match that page's
 | Link to        | Correct                        | Wrong                                    |
 |----------------|--------------------------------|------------------------------------------|
 | Home           | `href="/"`                     | `index.html`, `/index.html`, `./index.html` |
-| Services       | `href="/services.html"`        | `services.html`, `/services`             |
-| About          | `href="/about.html"`           | `about.html`, `/about`                   |
-| Contact        | `href="/contact.html"`         | `contact.html`, `/contact`               |
-| News post      | `href="/news/website-relaunch.html"` | `news/website-relaunch.html`       |
+| Services       | `href="/services/"`            | `/services`, `/services.html`, `/services/index.html` |
+| About          | `href="/about/"`               | `/about`, `/about.html`                  |
+| Contact        | `href="/contact/"`             | `/contact`, `/contact.html`              |
+| News post      | `href="/news/website-relaunch/"` | `/news/website-relaunch.html`          |
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
-| Buying process | `href="/how-we-buy-domains.html"` | `how-we-buy-domains.html`, `/how-we-buy-domains` |
+| Buying process | `href="/how-we-buy-domains/"`  | `/how-we-buy-domains`, `/how-we-buy-domains.html` |
+
+Every page lives at `<slug>/index.html` so GitHub Pages serves the trailing-slash
+URL and 301s the slash-less form to it. The old `<slug>.html` files are kept only
+as noindex redirect stubs (DECISIONS D11); never link to them.
 
 Why this matters is explained in section 4.
 
@@ -90,8 +94,9 @@ python3 -m http.server 8000
 ```
 That is the entire toolchain. There is nothing to install, compile, or bundle.
 
-Note that the local server serves `/services.html` but not `/services`, whereas
-GitHub Pages serves both. Always link to the `.html` form (rule 2.4).
+Note that Python's local server serves `/services/` fine but does not 301
+`/services` to it the way GitHub Pages does. Always link to the trailing-slash
+form (rule 2.4).
 
 ### Making a change
 1. Edit the HTML/CSS/JS directly.
@@ -120,9 +125,10 @@ has three consequences:
    another, because they are literally the same file. The fix is `rel=canonical`
    plus never linking internally to `/index.html`. This is Google's documented
    approach for static hosts.
-3. **Extensionless URLs also resolve.** GitHub Pages serves `/services` as well
-   as `/services.html`. Both return 200. Canonical tags point at the `.html`
-   form, so Google consolidates them. Keep internal links on `.html`.
+3. **Directory URLs get a real redirect.** Because every page is
+   `<slug>/index.html`, GitHub Pages serves `/services/` and issues a 301 from
+   `/services`. The legacy `/services.html` files are noindex stubs with a
+   canonical and an instant meta refresh to the directory URL (D11).
 
 ### The site was migrated off Wix in June 2026
 Wix had connected the domain through GoDaddy's Domain Connect, which **locked**
@@ -194,7 +200,7 @@ Do not treat the current site copy as final or verified.
   social accounts. Keep them there and nowhere else.
 - **Shared Person schema node:** the Ken Ashe `Person` JSON-LD node (`@id`
   `https://kenashe.ai/#ken-ashe`) appears in `index.html`,
-  `news/website-relaunch.html` and `founder/ken-ashe/index.html`. It must stay
+  `news/website-relaunch/index.html` and `founder/ken-ashe/index.html`. It must stay
   byte-identical to `src/data/schema.ts` in the kenashe.ai repo. Edit it there
   first, then mirror to all three files here in the same pass (DECISIONS D9).
 - **Brand colours:** green `#16C784`, darker green `#0FA968` for text contrast,

@@ -55,13 +55,14 @@
       "description": "Profile of Ken Ashe, founder and operator of Lucky Domains, a domain acquisition, brokerage, and SEO practice run with CPA and PMP discipline.",
       "inLanguage": "en-US",
       "dateCreated": "2026-09-10T21:00:00-04:00",
-      "dateModified": "2026-09-11T14:00:00-04:00",
+      "dateModified": "2026-09-14T17:00:00-04:00",
       "mainEntity": { "@id": "https://kenashe.ai/#ken-ashe" },
       "about": [
         { "@id": "https://kenashe.ai/#ken-ashe" },
         { "@id": "https://luckydomains.io/#organization" }
       ],
       "publisher": { "@id": "https://luckydomains.io/#organization" },
+      "isPartOf": { "@id": "https://luckydomains.io/#website" },
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://luckydomains.io/assets/about-ken.jpg",
@@ -83,7 +84,7 @@
       "@id": "https://luckydomains.io/founder/ken-ashe/#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luckydomains.io/" },
-        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://luckydomains.io/about.html" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://luckydomains.io/about/" },
         { "@type": "ListItem", "position": 3, "name": "Ken Ashe", "item": "https://luckydomains.io/founder/ken-ashe/" }
       ]
     },
@@ -97,6 +98,8 @@
       "logo": "https://luckydomains.io/assets/logo-wordmark.png",
       "email": "info@luckydomains.io",
       "description": "Domain acquisition, brokerage, and SEO services company helping businesses secure stronger digital assets and build search visibility over time.",
+      "foundingDate": "2025-08-01",
+      "naics": "541613",
       "founder": {
         "@type": "Person",
         "@id": "https://kenashe.ai/#ken-ashe",
@@ -107,8 +110,27 @@
       },
       "employee": { "@id": "https://kenashe.ai/#ken-ashe" },
       "areaServed": "US",
-      "sameAs": ["https://www.linkedin.com/company/luckydomains"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@luckydomains.io",
+        "url": "https://luckydomains.io/contact/",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/luckydomains",
+        "https://www.crunchbase.com/organization/lucky-domains"
+      ],
       "knowsAbout": ["Premium domain acquisition", "Domain brokerage", "Domain negotiation", "SEO strategy", "Technical SEO", "Local SEO", "Content strategy"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://luckydomains.io/#website",
+      "url": "https://luckydomains.io/",
+      "name": "Lucky Domains",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://luckydomains.io/#organization" }
     },
     {
       "@type": "Person",
@@ -243,10 +265,10 @@
     </a>
     <nav class="nav" id="nav" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/services.html">Services</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/contact.html" class="btn btn-accent btn-sm nav-cta">Free consultation</a>
+      <a href="/services/">Services</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/contact/" class="btn btn-accent btn-sm nav-cta">Free consultation</a>
     </nav>
     <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -267,7 +289,7 @@
           <span>CPA</span><span>CGMA</span><span>PMP</span><span>PMI-ACP</span>
         </div>
         <div class="btn-row" style="margin-top:28px">
-          <a href="/contact.html" class="btn btn-accent btn-lg">Work with Ken</a>
+          <a href="/contact/" class="btn btn-accent btn-lg">Work with Ken</a>
           <a href="https://kenashe.ai/" class="btn btn-on-dark btn-lg" rel="me noopener" target="_blank">Visit kenashe.ai</a>
         </div>
       </div>
@@ -366,7 +388,7 @@
       <article class="founder-body">
         <span class="eyebrow">Connect</span>
         <h2>Follow Ken's work</h2>
-        <p>For Lucky Domains inquiries, use the <a href="/contact.html">contact page</a> or email <a href="mailto:info@luckydomains.io">info@luckydomains.io</a>. For Ken's writing, builds, and professional profiles:</p>
+        <p>For Lucky Domains inquiries, use the <a href="/contact/">contact page</a> or email <a href="mailto:info@luckydomains.io">info@luckydomains.io</a>. For Ken's writing, builds, and professional profiles:</p>
         <ul class="connect-list">
           <li>
             <a class="primary" href="https://kenashe.ai/" rel="me noopener" target="_blank">
@@ -403,7 +425,7 @@
       <div class="cta-band reveal">
         <h2>Bring this discipline to your domain or your rankings.</h2>
         <p>Tell Ken the name you want, or the search results you are chasing. First consultation is free. No obligation.</p>
-        <a href="/contact.html" class="btn btn-lg">Book a free consultation</a>
+        <a href="/contact/" class="btn btn-lg">Book a free consultation</a>
       </div>
     </div>
   </section>
@@ -420,29 +442,29 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="/services.html#domains">Domain acquisition</a></li>
-          <li><a href="/services.html#domains">Domain brokerage</a></li>
-          <li><a href="/how-we-buy-domains.html">How we buy domains</a></li>
-          <li><a href="/services.html#seo">SEO services</a></li>
-          <li><a href="/services.html#seo">Local SEO</a></li>
+          <li><a href="/services/#domains">Domain acquisition</a></li>
+          <li><a href="/services/#domains">Domain brokerage</a></li>
+          <li><a href="/how-we-buy-domains/">How we buy domains</a></li>
+          <li><a href="/services/#seo">SEO services</a></li>
+          <li><a href="/services/#seo">Local SEO</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="/about.html">About</a></li>
+          <li><a href="/about/">About</a></li>
           <li><a href="/founder/ken-ashe/" aria-current="page">Founder</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/news/website-relaunch.html">News</a></li>
-          <li><a href="/contact.html">Free consultation</a></li>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/news/website-relaunch/">News</a></li>
+          <li><a href="/contact/">Free consultation</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Get in touch</h4>
         <ul>
           <li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li>
-          <li><a href="/contact.html">Book a call</a></li>
+          <li><a href="/contact/">Book a call</a></li>
         </ul>
       </div>
     </div>

@@ -157,7 +157,7 @@ not yet cover the domain. It resolves itself, usually within the hour. If
 ### The contact form shows "Form not yet connected"
 `js/main.js` is reporting that the Web3Forms access key is missing or still the
 placeholder. Check the `data-access-key` attribute on the form in
-`contact.html`. See `DATA_SOURCES.md` section 5.
+`contact/index.html`. See `DATA_SOURCES.md` section 5.
 
 ### The contact form fails when tested with curl
 Not a fault. The Web3Forms free plan only accepts submissions originating from a
