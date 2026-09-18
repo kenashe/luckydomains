@@ -37,6 +37,7 @@ PAGES = {
     "about/index.html": DOMAIN + "/about/",
     "contact/index.html": DOMAIN + "/contact/",
     "how-we-buy-domains/index.html": DOMAIN + "/how-we-buy-domains/",
+    "news/index.html": DOMAIN + "/news/",
     "news/website-relaunch/index.html": DOMAIN + "/news/website-relaunch/",
     "founder/ken-ashe/index.html": DOMAIN + "/founder/ken-ashe/",
 }
@@ -62,7 +63,7 @@ FORBIDDEN_LINKS = [
     'href="/services.html"', 'href="/about.html"', 'href="/contact.html"',
     'href="/how-we-buy-domains.html"', 'href="/news/website-relaunch.html"',
     'href="/services"', 'href="/about"', 'href="/contact"',
-    'href="/how-we-buy-domains"', 'href="/news/website-relaunch"',
+    'href="/how-we-buy-domains"', 'href="/news/website-relaunch"', 'href="/news"',
     'href="/services/entity-seo"', 'href="/services/entity-seo.html"',
     'href="/founder/ken-ashe"', 'href="/founder/ken-ashe.html"',
     'href="/founder/ken-ashe/index.html"', 'href="/services/index.html"',

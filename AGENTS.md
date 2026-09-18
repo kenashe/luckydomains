@@ -60,6 +60,7 @@ Every internal link must be **root absolute** and must exactly match that page's
 | Services       | `href="/services/"`            | `/services`, `/services.html`, `/services/index.html` |
 | About          | `href="/about/"`               | `/about`, `/about.html`                  |
 | Contact        | `href="/contact/"`             | `/contact`, `/contact.html`              |
+| News index     | `href="/news/"`                | `/news`, `/news.html`                    |
 | News post      | `href="/news/website-relaunch/"` | `/news/website-relaunch.html`          |
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
 | Buying process | `href="/how-we-buy-domains/"`  | `/how-we-buy-domains`, `/how-we-buy-domains.html` |
