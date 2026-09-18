@@ -33,6 +33,7 @@ DOMAIN = "https://luckydomains.io"
 PAGES = {
     "index.html": DOMAIN + "/",
     "services/index.html": DOMAIN + "/services/",
+    "services/entity-seo/index.html": DOMAIN + "/services/entity-seo/",
     "about/index.html": DOMAIN + "/about/",
     "contact/index.html": DOMAIN + "/contact/",
     "how-we-buy-domains/index.html": DOMAIN + "/how-we-buy-domains/",
@@ -62,6 +63,7 @@ FORBIDDEN_LINKS = [
     'href="/how-we-buy-domains.html"', 'href="/news/website-relaunch.html"',
     'href="/services"', 'href="/about"', 'href="/contact"',
     'href="/how-we-buy-domains"', 'href="/news/website-relaunch"',
+    'href="/services/entity-seo"', 'href="/services/entity-seo.html"',
     'href="/founder/ken-ashe"', 'href="/founder/ken-ashe.html"',
     'href="/founder/ken-ashe/index.html"', 'href="/services/index.html"',
     'href="/about/index.html"', 'href="/contact/index.html"',

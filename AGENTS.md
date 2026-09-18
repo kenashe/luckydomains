@@ -63,6 +63,7 @@ Every internal link must be **root absolute** and must exactly match that page's
 | News post      | `href="/news/website-relaunch/"` | `/news/website-relaunch.html`          |
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
 | Buying process | `href="/how-we-buy-domains/"`  | `/how-we-buy-domains`, `/how-we-buy-domains.html` |
+| Entity SEO     | `href="/services/entity-seo/"` | `/services/entity-seo`, `/services/entity-seo.html` |
 
 Every page lives at `<slug>/index.html` and the trailing-slash URL is canonical.
 The old `<slug>.html` files are kept only as noindex redirect stubs (DECISIONS

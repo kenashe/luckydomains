@@ -28,6 +28,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/styles.css">
+<style>
+  /* Four engagements on this page only; the shared .price-grid stays three columns elsewhere. */
+  @media (min-width:981px){ #pricing .price-grid{grid-template-columns:repeat(4,1fr);gap:20px} #pricing .price .amt{font-size:1.7rem} }
+</style>
 
 <script type="application/ld+json">
 {
@@ -51,7 +55,8 @@
     "itemListElement":[
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Domain Acquisition & Brokerage"}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Website Consult & Build"}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"SEO Services"}}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"SEO Services"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Entity SEO & Knowledge Panel Readiness","url":"https://luckydomains.io/services/entity-seo/"}}
     ]
   }
 }
@@ -225,6 +230,14 @@
           <p>Plain-English dashboards tying rankings and traffic to leads and revenue, so you always know what you're paying for.</p>
         </article>
       </div>
+      <!-- Entity SEO subsection: part of the SEO practice, not a fourth pillar -->
+      <div class="panel reveal" style="margin-top:28px;display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between">
+        <div style="flex:1 1 520px">
+          <h3 style="font-size:1.3rem">Entity SEO</h3>
+          <p style="margin:8px 0 0">Make it easier for Google and AI systems to understand who your business is, who is behind it, and which profiles and references belong to the same entity. We audit structured data, canonical identity signals, external profiles, organization relationships, and Knowledge Panel readiness. Google generates Knowledge Panels on its own; we improve the evidence it works from.</p>
+        </div>
+        <a href="/services/entity-seo/" class="btn btn-on-dark" style="flex:none">Explore Entity SEO</a>
+      </div>
     </div>
   </section>
 
@@ -274,6 +287,18 @@
           </ul>
           <div class="price-foot"><a href="/contact/" class="btn btn-ghost">Plan my launch</a></div>
         </div>
+        <div class="price reveal">
+          <h3>Entity SEO Audit</h3>
+          <div class="amt">Scoped<small></small></div>
+          <p class="desc">A one-time audit and implementation plan for your person or organization entity.</p>
+          <ul class="check">
+            <li>Canonical entity and structured-data review</li>
+            <li>External profile and identity consistency audit</li>
+            <li>Knowledge Graph and Knowledge Panel readiness assessment</li>
+            <li>Prioritized implementation roadmap</li>
+          </ul>
+          <div class="price-foot"><a href="/contact/?need=seo" class="btn btn-ghost">Audit my entity</a></div>
+        </div>
       </div>
       <p class="section-lead" style="text-align:center;margin:28px auto 0">Already have a name? Website consult or build can be scoped on its own: written findings on an existing site, or a scoped build that can rank. Not open-ended feature work. Pricing set on the consult, from a written scope.</p>
     </div>
@@ -306,6 +331,7 @@
           <li><a href="/how-we-buy-domains/">How we buy domains</a></li>
           <li><a href="/services/#seo">SEO services</a></li>
           <li><a href="/services/#seo">Local SEO</a></li>
+          <li><a href="/services/entity-seo/">Entity SEO</a></li>
         </ul>
       </div>
       <div class="footer-col">

@@ -29,7 +29,7 @@ import urllib.request
 
 SITE = "https://luckydomains.io"
 APEX = "luckydomains.io"
-PAGES = ["/", "/services/", "/about/", "/contact/",
+PAGES = ["/", "/services/", "/services/entity-seo/", "/about/", "/contact/",
          "/news/website-relaunch/", "/404.html"]
 GITHUB_IPS = {"185.199.108.153", "185.199.109.153",
               "185.199.110.153", "185.199.111.153"}
