@@ -71,8 +71,8 @@ optimisation. That is why the URL canonicalisation work and the test suite exist
 ## 3. Scope
 
 ### In scope
-- Core pages: Home, Services, About, Contact, the founder profile, and one process page (how a private domain buy works).
-- A news/press area, currently one post at `/news/website-relaunch/`.
+- Core pages: Home, Services (`/services/`, plus the Entity SEO service page at `/services/entity-seo/`), About, Contact, the founder profile (`/founder/ken-ashe/`), and one process page (`/how-we-buy-domains/`).
+- A news area: an indexable News index at `/news/` listing every release, currently one post at `/news/website-relaunch/`. Legacy `.html` URLs remain only as noindex redirect stubs (DECISIONS D11).
 - A working contact form that delivers to the owner's inbox.
 - Strong technical SEO: canonical URLs, metadata, Open Graph, structured data,
   a sitemap, and fast static delivery.
@@ -81,7 +81,7 @@ optimisation. That is why the URL canonicalisation work and the test suite exist
 ### Out of scope, for now
 - E-commerce, payments, or online checkout.
 - Client accounts, dashboards, or logins.
-- A blog CMS. Additional posts are hand authored HTML in `news/`.
+- A blog CMS. Additional posts are hand authored HTML at `news/<slug>/index.html`, added to the `/news/` index and the sitemap by hand.
 - Live chat, booking widgets, or third party embeds.
 - Analytics and tracking, pending an explicit decision.
 - Multi language or localisation.
