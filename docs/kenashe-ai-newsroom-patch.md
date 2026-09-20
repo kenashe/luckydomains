@@ -1,5 +1,11 @@
 # kenashe.ai newsroom and press release patch (Task 4, kenashe/kenashe repo)
 
+> **Status (2026-09-20):** historical patch record. Section 4 was applied on 2026-09-10 (the founder
+> profile URL is in `personKenAshe.sameAs`), and the shared Person node has since gained further
+> `sameAs` entries (author profiles on 2026-09-11, Wikidata Q141507904 on 2026-09-20). The snippets
+> below are not a copy of the node; the source of truth is `src/data/schema.ts` in kenashe/kenashe,
+> mirrored into the three HTML files named in AGENTS.md (DECISIONS D9).
+
 Applies to the Astro site in `kenashe/kenashe`. Two files change. Nothing here touches
 `src/data/schema.ts`; the shared Person node stays byte-identical (DECISIONS D9).
 
