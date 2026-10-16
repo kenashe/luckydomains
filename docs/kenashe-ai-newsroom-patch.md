@@ -2,7 +2,7 @@
 
 > **Status (2026-09-20):** historical patch record. Section 4 was applied on 2026-09-10 (the founder
 > profile URL is in `personKenAshe.sameAs`), and the shared Person node has since gained further
-> `sameAs` entries (author profiles on 2026-09-11, Wikidata Q141507904 on 2026-09-20). The snippets
+> `sameAs` entries (author profiles on 2026-09-11, Wikidata Q141507904 on 2026-09-20, removed 2026-10-16 after the item was deleted). The snippets
 > below are not a copy of the node; the source of truth is `src/data/schema.ts` in kenashe/kenashe,
 > mirrored into the three HTML files named in AGENTS.md (DECISIONS D9).
 
