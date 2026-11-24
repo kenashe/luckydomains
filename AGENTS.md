@@ -10,9 +10,14 @@ is in this repo. You do not need access to any prior conversation.
 
 ## 1. What this project is, in one paragraph
 
-`luckydomains.io` is a four page marketing website for Lucky Domains, a business
-that sells domain acquisition/brokerage and SEO services. It is hand written
-static HTML, CSS and vanilla JavaScript with **no build step and no framework**.
+`luckydomains.io` is the company website for Lucky Domains, a founder-led digital
+venture studio and operating company. Lucky Domains builds and operates AI
+applications, digital identity systems, and internet-native ventures, and
+continues its original domain acquisition and brokerage practice. The site has
+thirteen pages (home, ventures and three venture pages, services and Entity SEO,
+the buying process, about, founder, news and one release, contact). It is hand
+written static HTML, CSS and vanilla JavaScript with **no build step and no
+framework**.
 It is hosted free on GitHub Pages, served from the `main` branch of
 `kenashe/luckydomains`, on the apex custom domain `luckydomains.io`.
 
@@ -65,6 +70,11 @@ Every internal link must be **root absolute** and must exactly match that page's
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
 | Buying process | `href="/how-we-buy-domains/"`  | `/how-we-buy-domains`, `/how-we-buy-domains.html` |
 | Entity SEO     | `href="/services/entity-seo/"` | `/services/entity-seo`, `/services/entity-seo.html` |
+| Ventures       | `href="/ventures/"`            | `/ventures`, `/ventures.html`            |
+| Venture page   | `href="/ventures/zerohuman/"`  | `/ventures/zerohuman`                    |
+
+The navigation label "Updates" points at `/news/`. There is no `/updates/` page
+and there must not be one.
 
 Every page lives at `<slug>/index.html` and the trailing-slash URL is canonical.
 The old `<slug>.html` files are kept only as noindex redirect stubs (DECISIONS
@@ -174,6 +184,10 @@ curl -sS -o /dev/null -D - https://www.luckydomains.io/ | grep -i "^location"
 python3 scripts/verify_live.py
 ```
 
+For a visible change, also run the browser checks in `docs/RUNBOOK.md` section 8
+(axe-core, six viewport widths, reduced motion, keyboard, no JavaScript) and
+test the contact form in a real browser, never with curl.
+
 `scripts/verify_live.py` runs all of the above plus DNS and canonical checks in
 one pass. Run it after every deployment.
 
@@ -188,8 +202,11 @@ Do not treat the current site copy as final or verified.
   original build. Do not reinstate them or add any quote, initials, logo row,
   star rating, or "trusted by" line that is not owner-authorized and real.
   Real snapshots, if added later, must be owner-supplied.
-- **Pricing tiers have no figures.** The Services page shows tier structure with
-  "Project", "Monthly" and "Custom" instead of prices, pending the owner's input.
+- **Sir Pitches-a-Lot has no date.** The build index on kenashe.ai says June 2026
+  and its build page says August 2026. Until the owner settles it, show no date.
+- **ZeroHuman carries a stated limitation.** As of November 20, 2026 no outside
+  agent has bought from it. Keep that sentence on the home page and the venture
+  page until the public build record on kenashe.ai changes, then update both.
 - **Email authentication is incomplete.** SPF is correct, but DKIM and DMARC are
   missing. See `DATA_SOURCES.md`.
 
@@ -197,27 +214,85 @@ Do not treat the current site copy as final or verified.
 
 ## 7. House style
 
-- **Voice:** confident, plain spoken, no jargon, no hype. Short sentences.
+- **Voice:** confident, plain spoken, evidence aware, no jargon, no hype. Short
+  sentences. The company should sound like an operator that builds and tests
+  real things.
 - **Punctuation:** no em dashes (rule 2.3).
+- **The one phrase:** say "internet-native ventures". Do not alternate with
+  businesses, products, or companies. The tests enforce this.
 - **Contact details:** `info@luckydomains.io` only. No phone number, no business
   hours, no company social media links. This is deliberate; do not add them back.
-  One exception, approved by the owner 2026-09-10: the Connect section on
+  Two approved exceptions. First (2026-09-10): the Connect section on
   `/founder/ken-ashe/` links to Ken Ashe's personal profiles (kenashe.ai,
   LinkedIn, X, GitHub). Those are founder entity links for SEO, not company
-  social accounts. Keep them there and nowhere else.
+  social accounts. Second (2026-11-23): links to kenashe.ai build records are
+  allowed sitewide, because kenashe.ai is the public record for what the company
+  builds. A project's own public code repository may be linked from that
+  project's record.
 - **Shared Person schema node:** the Ken Ashe `Person` JSON-LD node (`@id`
   `https://kenashe.ai/#ken-ashe`) appears in `index.html`,
   `news/website-relaunch/index.html` and `founder/ken-ashe/index.html`. It must stay
   byte-identical to `src/data/schema.ts` in the kenashe.ai repo. Edit it there
   first, then mirror to all three files here in the same pass (DECISIONS D9).
-- **Brand colours:** green `#16C784`, darker green `#0FA968` for text contrast,
-  deep navy `#0C2340`, mint `#ECFBF4`.
-- **Fonts:** Plus Jakarta Sans for headings, Inter for body, loaded from Google
-  Fonts.
-- **Accessibility:** keep the skip link, the `aria-label`s, the focus styles and
-  the `prefers-reduced-motion` block in `css/styles.css`.
+  The tests fail if the three copies differ.
+- **Brand colours:** green `#16C784` (accent on dark), darker green `#0A7A4B`
+  for text on the light Domain Desk, deep navy `#0C2340`, graphite `#0A0C0B`,
+  warm off-white `#ECE7DC`, warm paper `#F3EFE6`.
+- **Fonts:** Bricolage Grotesque for headings, Inter for body, JetBrains Mono
+  for metadata, dates, networks and payloads only. All three are self hosted in
+  `assets/fonts/`. Nothing is loaded from a font CDN.
+- **Logo:** never redraw or distort it. `assets/logo-wordmark-reversed.png` is
+  used on dark backgrounds (navy recolored to warm off-white, green untouched).
+  `assets/logo-wordmark.png`, the original, is used on the light Domain Desk.
+- **Accessibility:** keep the skip link, the `aria-label`s, the focus styles, the
+  Pause control on the operating-status panel, and the
+  `prefers-reduced-motion` block in `css/styles.css`. No visible text below 12px.
 - **Images:** always set `width` and `height` to protect layout stability, and
   add `loading="lazy"` to anything below the fold.
+
+### 7.1 Project taxonomy
+
+Every record on `/ventures/` shows two labels: a type and a status. Do not use
+status as a substitute for type, and do not call everything a venture.
+
+| Type | Use for | Current records |
+|---|---|---|
+| Venture (shown as "Autonomous service") | An ongoing service or product being operated | ZeroHuman |
+| Experiment | A bounded public test | AI Agent Economy, Sir Pitches-a-Lot |
+| Internal system | Software used to run the company | Autonomous SEO Agent |
+| Studio build | A shipped company asset | LuckyDomains.io |
+| Commercial service | Client-facing work | Domain Acquisition and Brokerage |
+
+Statuses: `LIVE` and `SHIPPED` mirror the label on the project's kenashe.ai build
+record. `ACTIVE` is assigned by the business to a service that is open to
+clients. Never assign a status without a public source or the owner's word.
+
+### 7.2 Cross-site relationship
+
+- Ken Ashe builds and documents in public. kenashe.ai holds the full build records.
+- Lucky Domains builds and operates the ventures and runs the commercial services.
+- Standalone brands face their own users or customers.
+- Domain brokerage remains an active Lucky Domains service.
+
+This site summarizes a project and links to its build record. It must not
+reproduce the build log. Relationship labels in use: "A Lucky Domains venture",
+"A Lucky Domains experiment", "A Lucky Domains internal system".
+
+### 7.3 Visual constraints
+
+Do not restore the agency look, add stock or generic AI imagery, add a second
+light section, add a global card glow, parallax, pointer tracking outside the
+hero and the featured venture, a sticky scroll section, or animated grids on
+interior pages. Use real evidence only: transaction payloads, ENS records,
+tracker counts, diagrams built from documented steps. Never invent a dashboard
+or a product interface.
+
+### 7.4 Never claim
+
+Customers, users, sales, transaction volume, partners, employees, investors,
+testimonials, press, adoption, awards, or metrics that a public source does not
+support. Do not advertise AI consulting, automation consulting, marketing
+retainers, social media management, or ENS naming as services.
 
 ---
 

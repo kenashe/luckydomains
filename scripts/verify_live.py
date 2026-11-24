@@ -29,14 +29,17 @@ import urllib.request
 
 SITE = "https://luckydomains.io"
 APEX = "luckydomains.io"
-PAGES = ["/", "/services/", "/services/entity-seo/", "/about/", "/contact/",
+PAGES = ["/", "/ventures/", "/ventures/zerohuman/", "/ventures/ai-agent-economy/",
+         "/ventures/autonomous-seo-agent/", "/services/", "/services/entity-seo/", "/about/", "/contact/",
          "/news/", "/news/website-relaunch/", "/404.html"]
 GITHUB_IPS = {"185.199.108.153", "185.199.109.153",
               "185.199.110.153", "185.199.111.153"}
 PAGES_HOST = "kenashe.github.io"
 CONTENT_MARKERS = {
-    "/": "Secure the perfect domain",
-    "/services/": "Own the name your brand deserves",
+    "/": "Domains were the beginning.",
+    "/services/": "Domain Acquisition &amp; Brokerage",
+    "/ventures/": "What Lucky Domains builds, runs, tests, and offers.",
+    "/ventures/zerohuman/": "A Lucky Domains venture",
     "/about/": "Ken Ashe",
     "/contact/": "info@luckydomains.io",
     "/news/website-relaunch/": "Lucky Domains",

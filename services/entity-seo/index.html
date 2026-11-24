@@ -6,7 +6,7 @@
 <title>Entity SEO &amp; Google Knowledge Panel Readiness | Lucky Domains</title>
 <meta name="description" content="Help Google and AI systems understand who you or your business are. Lucky Domains audits entity signals, structured data, profiles, relationships, and external corroboration to improve Knowledge Graph readiness.">
 <link rel="canonical" href="https://luckydomains.io/services/entity-seo/">
-<meta name="theme-color" content="#0C2340">
+<meta name="theme-color" content="#0A0C0B">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lucky Domains">
@@ -24,10 +24,10 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.className="js"</script>
 
 <!-- Structured data: this page is a Service offered by the canonical Organization. No new
      Organization or Person nodes; both are referenced by @id (DECISIONS D9). -->
@@ -77,34 +77,21 @@
 </script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header" id="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Lucky Domains home">
-      <img class="brand-logo" src="/assets/logo-wordmark.png" alt="Lucky Domains" width="170" height="38">
-    </a>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/services/" aria-current="page">Services</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/contact/" class="btn btn-accent btn-sm nav-cta">Free consultation</a>
-    </nav>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<header class="hd" id="site-header">
+  <a class="hd-logo" href="/" aria-label="Lucky Domains home"><img src="/assets/logo-wordmark-reversed.png" alt="Lucky Domains" width="153" height="38"></a>
+  <button class="hd-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="hd-nav" aria-label="Primary"><a href="/ventures/">Ventures</a><a href="/services/" aria-current="page">Services</a><a href="/about/">About</a><a href="/founder/ken-ashe/">Founder</a><a href="/news/">Updates</a><a href="/contact/">Contact</a><a class="hd-cta" href="/services/#domains">Domain acquisition</a></nav>
 </header>
 
 <main id="main">
-
-  <section class="hero hero--page">
-    <div class="container hero-inner">
-      <span class="eyebrow" style="background:rgba(22,199,132,.16);color:#7ef0c0">Entity SEO</span>
+<div class="legacy"><section class="phd">
+    <div class="phd-in">
+      <span class="eyebrow">Entity SEO</span>
       <h1>Help Google understand exactly who you are.</h1>
-      <p class="lead">Search engines increasingly organize the web around entities, not just keywords. Lucky Domains helps businesses, founders, and professionals create a clear, consistent identity across their website, structured data, external profiles, and credible third-party sources.</p>
-      <p class="lead" style="font-size:1rem;opacity:.9">Google creates Knowledge Panels automatically. We cannot guarantee one. We can improve the underlying signals that help Google understand, disambiguate, and verify an entity.</p>
+      <p class="lede">Search engines increasingly organize the web around entities, not just keywords. Lucky Domains helps businesses, founders, and professionals create a clear, consistent identity across their website, structured data, external profiles, and credible third-party sources.</p>
+      <p class="lede">Google creates Knowledge Panels automatically. We cannot guarantee one. We can improve the underlying signals that help Google understand, disambiguate, and verify an entity.</p>
       <div class="btn-row">
         <a href="/contact/?need=seo" class="btn btn-accent btn-lg">Book a free consultation</a>
         <a href="/services/#seo" class="btn btn-on-dark btn-lg">All SEO services</a>
@@ -115,7 +102,7 @@
   <!-- WHAT IT IS -->
   <section class="section">
     <div class="container">
-      <div class="split">
+      <div class="lsplit">
         <div class="split-body">
           <span class="eyebrow">What entity SEO is</span>
           <h2>Your website can rank and Google can still misunderstand who you are.</h2>
@@ -125,8 +112,8 @@
         </div>
         <div class="split-media">
           <div class="panel">
-            <h3 style="font-size:1.3rem">Signals we work on</h3>
-            <ul class="check" style="margin-top:18px">
+            <h3>Signals we work on</h3>
+            <ul class="check">
               <li>One canonical website that says who you are</li>
               <li>Structured data with stable identifiers</li>
               <li>Profiles that agree with each other</li>
@@ -147,7 +134,7 @@
         <h2>Two levels, both built on facts you already have</h2>
         <p class="section-lead">All structured data we write describes real facts already supported by you and your site. We do not add credentials, awards, clients, or relationships that cannot be shown.</p>
       </div>
-      <div class="grid grid-2">
+      <div class="lgrid">
         <div class="card reveal">
           <span class="tag">Level one</span>
           <h3>Entity foundation</h3>
@@ -182,7 +169,7 @@
             <li>Knowledge Panel claiming and correction guidance if Google has already generated a panel</li>
             <li>Ongoing recommendations for maintaining consistent entity signals</li>
           </ul>
-          <p style="margin-top:14px;font-size:.94rem">Completing this work does not produce a Knowledge Panel. It gives Google better evidence to work with.</p>
+          <p>Completing this work does not produce a Knowledge Panel. It gives Google better evidence to work with.</p>
         </div>
       </div>
     </div>
@@ -191,11 +178,11 @@
   <!-- READINESS -->
   <section class="section">
     <div class="container">
-      <div class="split alt">
+      <div class="lsplit alt">
         <div class="split-media">
           <div class="panel">
-            <h3 style="font-size:1.3rem">The evidence we work on</h3>
-            <ul class="check" style="margin-top:18px">
+            <h3>The evidence we work on</h3>
+            <ul class="check">
               <li>A clear canonical website</li>
               <li>Accurate structured data</li>
               <li>Consistent external profiles</li>
@@ -236,10 +223,10 @@
         <span class="eyebrow">Fit</span>
         <h2>Who this is for</h2>
       </div>
-      <div class="grid grid-2">
+      <div class="lgrid">
         <div class="card reveal">
           <h3>A good fit</h3>
-          <ul class="check" style="margin-top:14px">
+          <ul class="check">
             <li>Founders whose personal identity is closely tied to their company</li>
             <li>Professionals with multiple profiles, publications, or public roles</li>
             <li>Businesses with inconsistent organization information across the web</li>
@@ -251,7 +238,7 @@
         </div>
         <div class="card reveal">
           <h3>Not a fit</h3>
-          <ul class="nope" style="margin-top:14px">
+          <ul class="nope">
             <li>Anyone demanding a guaranteed Knowledge Panel</li>
             <li>Businesses seeking fake profiles or manufactured citations</li>
             <li>Clients seeking paid Wikipedia manipulation</li>
@@ -304,58 +291,23 @@
     <div class="container">
       <div class="cta-band reveal">
         <h2>Find out what Google currently thinks you are.</h2>
-        <p>Tell Ken your name or your company and where your profiles live. The first consultation is free. No obligation, and no promises about panels. You can also read <a href="/about/" style="color:#0C2340;text-decoration:underline">how the practice works</a> first.</p>
+        <p>Tell Ken your name or your company and where your profiles live. The first consultation is free. No obligation, and no promises about panels. You can also read <a href="/about/">how the practice works</a> first.</p>
         <a href="/contact/?need=seo" class="btn btn-lg">Book a free consultation</a>
       </div>
     </div>
-  </section>
-
+  </section></div>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo"><img src="/assets/logo-icon.png" alt="" width="42" height="42" loading="lazy" decoding="async"><span>Lucky Domains</span></a>
-        <p>Helping businesses secure the right domain and earn the rankings they deserve.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="/services/#domains">Domain acquisition</a></li>
-          <li><a href="/services/#domains">Domain brokerage</a></li>
-          <li><a href="/how-we-buy-domains/">How we buy domains</a></li>
-          <li><a href="/services/#seo">SEO services</a></li>
-          <li><a href="/services/#seo">Local SEO</a></li>
-          <li><a href="/services/entity-seo/">Entity SEO</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/founder/ken-ashe/">Founder</a></li>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/news/">News</a></li>
-          <li><a href="/contact/">Free consultation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Get in touch</h4>
-        <ul>
-          <li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li>
-          <li><a href="/contact/">Book a call</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span>
-      <span>luckydomains.io</span>
-    </div>
+<footer class="ft">
+  <div class="ft-top">
+    <div class="ft-brand"><img src="/assets/logo-wordmark-reversed.png" alt="Lucky Domains" width="185" height="46" loading="lazy"><p>Lucky Domains builds and operates AI applications, digital identity systems, and internet-native ventures. Domain acquisition and brokerage remain active.</p></div>
+    <div><h2>Ventures</h2><ul><li><a href="/ventures/zerohuman/">ZeroHuman</a></li><li><a href="/ventures/ai-agent-economy/">AI Agent Economy</a></li><li><a href="/ventures/autonomous-seo-agent/">Autonomous SEO Agent</a></li><li><a href="/ventures/">All ventures</a></li></ul></div>
+    <div><h2>Company</h2><ul><li><a href="/services/#domains">Domain acquisition</a></li><li><a href="/services/">Services</a></li><li><a href="/about/">About</a></li><li><a href="/founder/ken-ashe/">Founder</a></li><li><a href="/news/">News</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+    <div><h2>Build record</h2><ul><li><a href="https://kenashe.ai/">KenAshe.ai</a></li><li><a href="https://kenashe.ai/building/">All build logs</a></li><li><a href="https://kenashe.ai/building/zerohuman/">ZeroHuman build log</a></li><li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li></ul></div>
   </div>
+  <p class="ft-note"><span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span> <span>luckydomains.io</span></p>
 </footer>
 
-<script src="/js/main.js"></script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>

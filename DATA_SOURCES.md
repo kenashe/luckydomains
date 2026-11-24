@@ -16,7 +16,6 @@ tooling needs and where their values live.
 | GoDaddy | Domain registrar and authoritative DNS | Owner's | Critical, site and email both depend on it |
 | Google Workspace | Email for `info@luckydomains.io` | Owner's | Critical for business, no effect on the website |
 | Web3Forms | Contact form delivery | Free tier | Degraded, `mailto:` fallback remains |
-| Google Fonts | Two webfont families | None, public CDN | Cosmetic, system fonts fall back |
 | GitHub REST API | Used by `scripts/deploy.py` | Fine grained PAT | Convenience only, `git push` needs none |
 
 ---
@@ -165,22 +164,24 @@ value in `contact/index.html`, run the tests, and push.
 
 ---
 
-## 6. Google Fonts
+## 6. Fonts (self hosted, no external source)
 
-- **Families:** Inter (400, 500, 600) and Plus Jakarta Sans (600, 700, 800)
-- **Loaded from:** `fonts.googleapis.com` and `fonts.gstatic.com`, with
-  `preconnect` hints and `display=swap`
-- **Auth:** none, public CDN
-- **Limits:** none in practice
+Google Fonts was removed on 2026-11-23. The site no longer requests anything
+from `fonts.googleapis.com` or `fonts.gstatic.com`.
 
-**Fallback.** The CSS declares a full system font stack after each family, so if
-Google Fonts is blocked or slow the site renders immediately in system fonts
-with no layout shift beyond the swap. Purely cosmetic.
+| File in `assets/fonts/` | Family | Weights | License |
+|---|---|---|---|
+| `bricolage-grotesque.woff2` | Bricolage Grotesque (variable) | 400 to 800 | SIL Open Font License 1.1 |
+| `inter.woff2` | Inter (variable) | 400 to 600 | SIL Open Font License 1.1 |
+| `jetbrains-mono.woff2` | JetBrains Mono (variable) | 400 to 600 | SIL Open Font License 1.1 |
 
-**Privacy note.** Requests to Google Fonts expose visitor IPs to Google. If that
-ever becomes a concern, the two families can be self hosted in `assets/fonts/`
-and the `@font-face` rules moved into `css/styles.css`, removing the third party
-request entirely.
+The files are the Latin subsets published by Google Fonts, downloaded once and
+committed. To update one, download the new Latin `woff2` and replace the file.
+
+**Fallback.** The CSS declares a full system font stack after each family and
+uses `font-display: swap`, so text renders immediately if a font file is slow.
+
+**Privacy.** No visitor IP is exposed to a font CDN.
 
 ---
 

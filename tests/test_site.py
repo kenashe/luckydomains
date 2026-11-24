@@ -19,6 +19,11 @@ than generic best practice:
   8. Deployment critical files are correct: CNAME, .nojekyll, robots.txt
   9. Images carry width and height, and below the fold images lazy load
  10. The contact form keeps its mailto fallback and honeypot
+ 13. Production pages are indexable and carry no staging or design-review text
+ 14. Structured data parses, and the shared Person node is identical everywhere
+ 15. Fonts are self hosted and no third party script or stylesheet is loaded
+ 16. Portfolio records show a type and a status, and limits stay visible
+ 17. In-page anchors that other pages link to still exist
 
 Run it before every commit. It takes well under a second.
 """
@@ -32,6 +37,10 @@ DOMAIN = "https://luckydomains.io"
 # Page file -> canonical URL. The single source of truth for URL shape.
 PAGES = {
     "index.html": DOMAIN + "/",
+    "ventures/index.html": DOMAIN + "/ventures/",
+    "ventures/zerohuman/index.html": DOMAIN + "/ventures/zerohuman/",
+    "ventures/ai-agent-economy/index.html": DOMAIN + "/ventures/ai-agent-economy/",
+    "ventures/autonomous-seo-agent/index.html": DOMAIN + "/ventures/autonomous-seo-agent/",
     "services/index.html": DOMAIN + "/services/",
     "services/entity-seo/index.html": DOMAIN + "/services/entity-seo/",
     "about/index.html": DOMAIN + "/about/",
@@ -68,7 +77,38 @@ FORBIDDEN_LINKS = [
     'href="/founder/ken-ashe"', 'href="/founder/ken-ashe.html"',
     'href="/founder/ken-ashe/index.html"', 'href="/services/index.html"',
     'href="/about/index.html"', 'href="/contact/index.html"',
+    'href="/ventures"', 'href="/ventures.html"', 'href="/ventures/index.html"',
+    'href="/ventures/zerohuman"', 'href="/ventures/ai-agent-economy"',
+    'href="/ventures/autonomous-seo-agent"', 'href="/updates/"', 'href="/founder/"',
 ]
+
+# Text that belongs only to the design review or the staging copy. None of it
+# may reach production (DECISIONS D13, docs/VENTURE_LAB_MIGRATION.md).
+REVIEW_ONLY = [
+    "Design concept only", "Not the live Lucky Domains website", "Venture Lab v2",
+    "All concepts", "Selected direction refinement", "This concept proposes",
+    "proposed positioning", "luckydomains-design-concepts", "production-candidate",
+    "kenashe.github.io", "Facts as of", "Staging review", "Concept form",
+]
+
+# The one phrase used for what the company builds. Variants drift, so they fail.
+PHRASE_VARIANTS = ["internet-native businesses", "internet-native products",
+                   "internet-native companies"]
+
+# Services the owner has not approved for sale. They must not be advertised.
+UNAPPROVED_SERVICES = ["Naming across DNS and ENS", "AI consulting",
+                       "AI transformation", "automation consulting",
+                       "social media management services", "monthly retainer"]
+
+# Anchors that inbound links depend on, including links from kenashe.ai.
+REQUIRED_ANCHORS = {
+    "services/index.html": ["domains", "selling", "websites", "seo", "identity"],
+    "ventures/index.html": ["operating", "experiments", "internal", "services",
+                            "zerohuman", "domain-brokerage"],
+    "founder/ken-ashe/index.html": ["connect"],
+    "news/index.html": ["media-resources"],
+    "index.html": ["domain-desk", "featured"],
+}
 
 PLACEHOLDERS = [
     "YOUR_WEB3FORMS_ACCESS_KEY", "YOUR_ACCESS_KEY", "TODO", "FIXME",
@@ -119,7 +159,13 @@ for f in ["index.html", "services/index.html", "about/index.html", "contact/inde
           "news/website-relaunch/index.html", "css/styles.css", "js/main.js",
           "CNAME", ".nojekyll", "robots.txt", "sitemap.xml", "site.webmanifest",
           "README.md", "AGENTS.md", "ARCHITECTURE.md", "PRODUCT.md",
-          "DECISIONS.md", "DATA_SOURCES.md", ".env.example", "docs/RUNBOOK.md"]:
+          "DECISIONS.md", "DATA_SOURCES.md", ".env.example", "docs/RUNBOOK.md",
+          "docs/VENTURE_LAB_MIGRATION.md", "ventures/index.html",
+          "ventures/zerohuman/index.html", "ventures/ai-agent-economy/index.html",
+          "ventures/autonomous-seo-agent/index.html", "services/entity-seo/index.html",
+          "news/index.html", "assets/logo-wordmark.png",
+          "assets/logo-wordmark-reversed.png", "assets/fonts/inter.woff2",
+          "assets/fonts/bricolage-grotesque.woff2", "assets/fonts/jetbrains-mono.woff2"]:
     check(exists(f), "missing file", f)
 
 # ---------------------------------------------------------------------------
@@ -234,6 +280,17 @@ check(lazy_count > 0, "no images use lazy loading")
 print("11. Contact form integrity")
 contact = read("contact/index.html")
 check('id="contact-form"' in contact, "contact form is missing")
+check('data-access-key="78e7aac4-b264-47c3-b006-c42db75d9889"' in contact,
+      "the Web3Forms access key changed, it must stay the existing key")
+check("https://api.web3forms.com/submit" in read("js/main.js"),
+      "main.js no longer posts to Web3Forms")
+check(contact.count('type="radio" name="need"') == 4,
+      "contact form should offer exactly four inquiry paths")
+for path_label in ["Domain acquisition or brokerage", "Venture or product partnership",
+                   "Media or speaking inquiry", "General inquiry"]:
+    check(path_label in contact, "contact path missing", path_label)
+check("<noscript>" in contact, "contact form lost its no JavaScript fallback")
+check('role="status"' in contact, "contact form lost its status region")
 check("data-access-key=" in contact, "form has no Web3Forms access key")
 check('name="botcheck"' in contact, "form is missing its honeypot field")
 check("mailto:info@luckydomains.io" in contact,
@@ -256,6 +313,124 @@ for stub, target in STUBS.items():
     check('http-equiv="refresh" content="0; url=%s"' % target in body,
           "stub has no instant meta refresh", stub)
     check(len(body) < 1500, "stub carries real content, it should only redirect", stub)
+
+# ---------------------------------------------------------------------------
+print("13. Production pages are indexable and free of review text")
+for page in PAGES:
+    body = read(page)
+    check('name="robots"' not in body, "production page carries a robots meta", page)
+    check(body.count("<h1") == 1, "page should have exactly one h1", page)
+    check('property="og:url" content="%s"' % PAGES[page] in body,
+          "og:url does not match the canonical", page)
+SOURCE_FILES = ALL_HTML + ["css/styles.css", "js/main.js", "sitemap.xml",
+                           "robots.txt", "site.webmanifest"]
+for f in SOURCE_FILES:
+    body = read(f)
+    for token in REVIEW_ONLY:
+        check(token not in body, "review or staging text in %s" % f, token)
+    for token in PHRASE_VARIANTS:
+        check(token not in body, "use 'internet-native ventures' in %s" % f, token)
+    for token in UNAPPROVED_SERVICES:
+        check(token.lower() not in body.lower(), "unapproved service in %s" % f, token)
+
+# ---------------------------------------------------------------------------
+print("14. Structured data")
+import json
+ld_re = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+
+
+def find_person(node):
+    """Return the full Ken Ashe Person node (the one that carries sameAs)."""
+    if isinstance(node, dict):
+        if node.get("@id") == "https://kenashe.ai/#ken-ashe" and "sameAs" in node:
+            return node
+        for value in node.values():
+            hit = find_person(value)
+            if hit:
+                return hit
+    elif isinstance(node, list):
+        for value in node:
+            hit = find_person(value)
+            if hit:
+                return hit
+    return None
+
+
+persons = {}
+for page in PAGES:
+    for block in ld_re.findall(read(page)):
+        try:
+            data = json.loads(block)
+        except ValueError as exc:
+            check(False, "structured data does not parse in %s" % page, str(exc))
+            continue
+        person = find_person(data)
+        if person:
+            persons[page] = json.dumps(person, sort_keys=True)
+for page in ["index.html", "founder/ken-ashe/index.html",
+             "news/website-relaunch/index.html"]:
+    check(page in persons, "shared Person node missing", page)
+check(len(set(persons.values())) == 1,
+      "the Ken Ashe Person node differs between pages (DECISIONS D9)",
+      ", ".join(sorted(persons)))
+home = read("index.html")
+check('"@type": "Organization"' in home, "home page lost its Organization node")
+check("Domain brokerage" in home, "Organization no longer mentions domain brokerage")
+for page in ["ventures/index.html", "ventures/zerohuman/index.html", "services/index.html"]:
+    check("BreadcrumbList" in read(page), "no breadcrumb markup", page)
+
+# ---------------------------------------------------------------------------
+print("15. No third party requests")
+for page in ALL_HTML:
+    body = read(page)
+    for host in ["fonts.googleapis.com", "fonts.gstatic.com", "googletagmanager",
+                 "google-analytics", "gtag(", "plausible", "hotjar", "facebook.net"]:
+        check(host not in body, "third party resource in %s" % page, host)
+    for src in re.findall(r'<script[^>]+src="([^"]+)"', body):
+        check(src.startswith("/"), "external script in %s" % page, src)
+css = read("css/styles.css")
+check("@import" not in css and "http" not in css, "stylesheet loads something external")
+check("prefers-reduced-motion" in css, "reduced motion block is missing from the stylesheet")
+check(".skip" in css, "skip link style is missing")
+
+# ---------------------------------------------------------------------------
+print("16. Portfolio taxonomy and limits")
+ventures = read("ventures/index.html")
+for label in ["Autonomous service", "Experiment", "Internal operating system",
+              "Commercial service", "Studio build"]:
+    check('class="ty">%s<' % label in ventures, "portfolio type missing", label)
+for label in ["LIVE", "SHIPPED", "ACTIVE"]:
+    check("</i>%s</span>" % label in ventures, "portfolio status missing", label)
+zh = read("ventures/zerohuman/index.html")
+check("no outside agent has bought from it" in zh,
+      "ZeroHuman page lost its outside-agent limitation")
+check("no outside agent has bought from it" in home,
+      "home page lost the ZeroHuman limitation")
+check("A Lucky Domains venture" in zh, "ZeroHuman relationship label missing")
+check("Built by" in home and "Operated by" in home,
+      "home page lost the built by and operated by line")
+check("The domain desk is still open." in home, "home page lost the domain desk")
+check("Domains were the beginning." in home, "home page lost its headline")
+for page in PAGES:
+    check('href="/services/#domains"' in read(page),
+          "domain acquisition is not linked from", page)
+release = read("news/website-relaunch/index.html")
+check("Lucky Domains Launches Redesigned Website for Premium Domain Acquisition and SEO"
+      in release, "the June 2026 release headline changed")
+
+# ---------------------------------------------------------------------------
+print("17. Anchors that inbound links rely on")
+for page, anchors in REQUIRED_ANCHORS.items():
+    body = read(page)
+    for anchor in anchors:
+        check('id="%s"' % anchor in body, "anchor missing in %s" % page, "#" + anchor)
+frag_re = re.compile(r'href="(/[^"#?]*)(?:\?[^"#]*)?#([^"]+)"')
+for page in ALL_HTML:
+    for path, frag in frag_re.findall(read(page)):
+        target = "index.html" if path == "/" else path.lstrip("/") + "index.html"
+        if exists(target):
+            check('id="%s"' % frag in read(target),
+                  "link to a missing anchor in %s" % page, "%s#%s" % (path, frag))
 
 # ---------------------------------------------------------------------------
 print("\n" + "=" * 62)

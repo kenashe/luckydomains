@@ -26,7 +26,7 @@ moves through it.
                     │   Browser renders page   │
                     └────────┬─────────┬───────┘
                              │         │
-              Google Fonts <─┘         └─> Web3Forms API
+              (none)       <─┘         └─> Web3Forms API
               (CSS + WOFF2)                (contact form POST)
                                                    │
                                                    v
@@ -122,40 +122,72 @@ Since Pages cannot issue redirects, duplicates are consolidated with:
 ### Pages
 | File | URL | Notes |
 |---|---|---|
-| `index.html` | `/` | Hero, services overview, why us, process, testimonials, FAQ, CTA |
-| `services/index.html` | `/services/` | Domain acquisition, SEO services, engagement tiers |
-| `about/index.html` | `/about/` | Story, values, founder |
-| `contact/index.html` | `/contact/` | Contact form, quick answers |
+| `index.html` | `/` | Hero, operating status, Build/Operate/Acquire, featured venture, more from the lab, progression, Domain Desk, how it fits together |
+| `ventures/index.html` | `/ventures/` | Portfolio in four groups, each record with type and status |
+| `ventures/zerohuman/index.html` | `/ventures/zerohuman/` | Venture page: what it is, how it works, what happened, evidence, limitation, raw evidence, links |
+| `ventures/ai-agent-economy/index.html` | `/ventures/ai-agent-economy/` | Experiment page, same structure |
+| `ventures/autonomous-seo-agent/index.html` | `/ventures/autonomous-seo-agent/` | Internal system page, same structure |
+| `services/index.html` | `/services/` | Domain Desk (`#domains`, `#selling`), identity (`#identity`), selected engagements (`#websites`, `#seo`, `#pricing`) |
+| `services/entity-seo/index.html` | `/services/entity-seo/` | Entity SEO detail, content carried over |
+| `how-we-buy-domains/index.html` | `/how-we-buy-domains/` | Buying process, content carried over |
+| `about/index.html` | `/about/` | Evolution, operating philosophy, company timeline, operating model |
+| `founder/ken-ashe/index.html` | `/founder/ken-ashe/` | Portrait, credentials, background, speaking, Connect (`#connect`) |
+| `news/index.html` | `/news/` | Company news, project updates, media resources |
+| `news/website-relaunch/index.html` | `/news/website-relaunch/` | June 2026 press release, body unchanged, `NewsArticle` schema |
+| `contact/index.html` | `/contact/` | Four inquiry paths and the contact form |
 | `404.html` | any missing path | Served by Pages, `noindex` |
-| `news/website-relaunch/index.html` | `/news/website-relaunch/` | Press release, `NewsArticle` schema |
+
+The anchors named above are linked from other pages and from kenashe.ai. The
+tests fail if one disappears.
+
+Three pages (`how-we-buy-domains`, `services/entity-seo`, `news/website-relaunch`)
+keep the markup of their main content from the previous design, wrapped in
+`<div class="legacy">`. The `.legacy` rules at the end of the component section
+of the stylesheet restyle those older class names.
 
 ### CSS
 A single stylesheet, `css/styles.css`. Design tokens are CSS custom properties
-declared once in `:root` (brand colours, spacing, radii, shadows, easing).
-Layout is CSS Grid and Flexbox. Responsive breakpoints at 980px, 760px and
-460px. Includes a `prefers-reduced-motion` block that disables all animation.
+declared once in `:root` (colours, type families, widths, easing). Layout is CSS
+Grid and Flexbox. Breakpoints at 1100px, 900px and 560px. Three `@font-face`
+rules load the self hosted fonts from `assets/fonts/` with `font-display: swap`
+and a full system fallback stack. Includes a `prefers-reduced-motion` block that
+disables all animation.
+
+Enhancements that depend on JavaScript are scoped under `.js`, a class an inline
+one-line script sets on `<html>`. Without it, every panel is open and every
+element is visible.
 
 No CSS framework, no preprocessor, no utility library.
 
 ### JavaScript
-A single file, `js/main.js`, roughly 100 lines of vanilla JS in an IIFE. It
+A single file, `js/main.js`, roughly 230 lines of vanilla JS in an IIFE. It
 provides:
 
-- sticky header shadow on scroll
-- mobile navigation toggle
-- FAQ accordion with correct `aria-expanded` handling
+- mobile navigation toggle, closed with Escape
+- hero dot field on a canvas, cursor responsive, drawn only while the hero is
+  on screen and the tab is visible
+- operating-status panel rotation every 5 seconds, paused on hover, focus, a
+  hidden tab, or the Pause button, and never started under reduced motion
+- a spotlight inside the featured venture only while the pointer is inside it
+- a one-time draw of the order-flow diagram when it scrolls into view
+- a progression line that follows scroll position (no scroll-jacking)
 - reveal on scroll via `IntersectionObserver`, with a graceful fallback
+- FAQ accordion on the Entity SEO page with correct `aria-expanded` handling
 - current year in the footer
-- contact form submission (section 6)
+- contact form path selection and submission (section 6)
 
 There is no framework and no bundle. The file is served as written.
 **The site is fully readable and navigable with JavaScript disabled**; JS only
 adds progressive enhancement, except for the contact form.
 
 ### Structured data
-JSON-LD is embedded per page: `ProfessionalService` and `WebSite` on the home
-page, `Service` and `BreadcrumbList` on services, `AboutPage` with a `Person`
-for the founder, `ContactPage` on contact, and `NewsArticle` on the news post.
+JSON-LD is embedded per page: `Organization`, `WebSite`, `ProfilePage` and the
+shared `Person` on the home page; `BreadcrumbList` and `CollectionPage` on
+ventures; `BreadcrumbList` and `WebPage` on each venture page; `Service` and
+`BreadcrumbList` on services; `AboutPage` on about; `ProfilePage` and `Person`
+on the founder page; `ContactPage` on contact; `CollectionPage` on news and
+`NewsArticle` on the release. No page claims a software product, a customer, a
+rating, or a metric.
 
 ---
 
@@ -201,9 +233,11 @@ Details that matter:
 |---|---|---|
 | GitHub Pages | Hosting, TLS, CDN | Site offline. Any static host can serve this repo unchanged. |
 | GoDaddy DNS | Domain resolution | Site and email unreachable. |
-| Google Fonts | Inter, Plus Jakarta Sans | Fonts fall back to the system stack declared in the CSS. Site stays usable. |
 | Web3Forms | Contact form delivery | Form shows its fallback message; `mailto:` still works. |
 | Google Workspace | `info@luckydomains.io` | Email only, no effect on the website. |
+
+Fonts are self hosted since November 2026, so the pages make no third party
+request at all until the contact form is submitted.
 
 Every dependency degrades gracefully except hosting and DNS. Full details,
 including rate limits, are in `DATA_SOURCES.md`.

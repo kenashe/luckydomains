@@ -4,46 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | Lucky Domains</title>
+<meta name="description" content="This page could not be found.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<meta name="theme-color" content="#0A0C0B">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lucky Domains">
+<meta property="og:title" content="Page not found | Lucky Domains">
+<meta property="og:description" content="This page could not be found.">
+<meta property="og:image" content="https://luckydomains.io/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Page not found | Lucky Domains">
+<meta name="twitter:description" content="This page could not be found.">
+<meta name="twitter:image" content="https://luckydomains.io/assets/og-image.png">
+
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.className="js"</script>
+
+
 </head>
 <body>
-<header class="site-header" id="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Lucky Domains home">
-      <img class="brand-logo" src="assets/logo-wordmark.png" alt="Lucky Domains" width="170" height="38">
-    </a>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/services/">Services</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/contact/" class="btn btn-accent btn-sm nav-cta">Free consultation</a>
-    </nav>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd" id="site-header">
+  <a class="hd-logo" href="/" aria-label="Lucky Domains home"><img src="/assets/logo-wordmark-reversed.png" alt="Lucky Domains" width="153" height="38"></a>
+  <button class="hd-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="hd-nav" aria-label="Primary"><a href="/ventures/">Ventures</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/founder/ken-ashe/">Founder</a><a href="/news/">Updates</a><a href="/contact/">Contact</a><a class="hd-cta" href="/services/#domains">Domain acquisition</a></nav>
 </header>
+
 <main id="main">
-  <section class="hero" style="min-height:62vh;display:flex;align-items:center">
-    <div class="container hero-inner" style="padding:90px 0">
-      <span class="eyebrow" style="background:rgba(22,199,132,.16);color:#7ef0c0">404</span>
-      <h1>This page wandered off.</h1>
-      <p class="lead">The page you're looking for doesn't exist or has moved. Let's get you back on track.</p>
-      <div class="btn-row">
-        <a href="/" class="btn btn-accent btn-lg">Back to home</a>
-        <a href="/contact/" class="btn btn-on-dark btn-lg">Contact us</a>
-      </div>
-    </div>
-  </section>
+<section class="phd"><div class="phd-in"><p class="eyebrow">404</p><h1>This page is not here.</h1><p class="lede">The link may be old, or the page may have moved.</p><p class="cta"><a class="btn btn-p" href="/">Go to the homepage</a><a class="btn" href="/ventures/">See the ventures</a><a class="btn" href="/services/#domains">Domain acquisition</a></p></div></section>
 </main>
-<script src="js/main.js"></script>
+
+<footer class="ft">
+  <div class="ft-top">
+    <div class="ft-brand"><img src="/assets/logo-wordmark-reversed.png" alt="Lucky Domains" width="185" height="46" loading="lazy"><p>Lucky Domains builds and operates AI applications, digital identity systems, and internet-native ventures. Domain acquisition and brokerage remain active.</p></div>
+    <div><h2>Ventures</h2><ul><li><a href="/ventures/zerohuman/">ZeroHuman</a></li><li><a href="/ventures/ai-agent-economy/">AI Agent Economy</a></li><li><a href="/ventures/autonomous-seo-agent/">Autonomous SEO Agent</a></li><li><a href="/ventures/">All ventures</a></li></ul></div>
+    <div><h2>Company</h2><ul><li><a href="/services/#domains">Domain acquisition</a></li><li><a href="/services/">Services</a></li><li><a href="/about/">About</a></li><li><a href="/founder/ken-ashe/">Founder</a></li><li><a href="/news/">News</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+    <div><h2>Build record</h2><ul><li><a href="https://kenashe.ai/">KenAshe.ai</a></li><li><a href="https://kenashe.ai/building/">All build logs</a></li><li><a href="https://kenashe.ai/building/zerohuman/">ZeroHuman build log</a></li><li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li></ul></div>
+  </div>
+  <p class="ft-note"><span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span> <span>luckydomains.io</span></p>
+</footer>
+
+<script src="/js/main.js" defer></script>
 </body>
 </html>

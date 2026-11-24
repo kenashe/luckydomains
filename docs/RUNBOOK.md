@@ -216,6 +216,95 @@ Not blocking, but open. Fuller detail in `DATA_SOURCES.md` and `PRODUCT.md`.
    and use URL Inspection on `https://luckydomains.io/` to request indexing.
    No manual removal of the `www` URLs is needed: the automatic 301 plus the
    canonical tags consolidate them.
-3. **Replace or remove the fabricated homepage testimonials.** See `PRODUCT.md`
-   section 8.
+3. **Testimonials.** The fabricated homepage quotes are gone. Add only real,
+   owner-supplied material. See `PRODUCT.md` section 8.
 4. **Decide on analytics.** See `DECISIONS.md` D10.
+
+---
+
+## 8. Browser checks for a visible change
+
+The test suite is static. A change to layout, motion, or the form also needs a
+browser pass. Any tool works. The checks that matter:
+
+- **Widths:** 320, 375, 390, 768, 1024 and 1440 pixels. No horizontal scroll.
+- **Engines:** Chromium and Firefox at minimum. Check Safari on a Mac and on an
+  iPhone before a launch. Do not report Safari as tested unless Safari or WebKit
+  actually ran.
+- **Accessibility:** axe-core, WCAG 2 A and AA, on every page.
+- **Keyboard:** skip link, visible focus on every control, menu opens and closes
+  with Escape, Pause works on the operating-status panel, FAQ and raw-evidence
+  disclosures open with Enter.
+- **Reduced motion:** nothing animates, nothing is hidden, and the hero buttons
+  stay in the first screen.
+- **No JavaScript:** navigation, every status row, every FAQ answer and all
+  content are visible. The contact page shows its email fallback.
+- **Console:** no errors on any page.
+
+## 9. Test the contact form
+
+Use a real browser. Never curl: Web3Forms sits behind Cloudflare and rejects
+non-browser requests, which looks like a failure and is not one.
+
+1. Open `/contact/`. Confirm the four paths show and that choosing a non-domain
+   path hides the domain fields.
+2. Submit with empty fields. The first empty required field takes focus and the
+   status line asks for the highlighted fields.
+3. Fill the form with a subject line that says it is a test, and submit once.
+4. Expect "Thanks. Your message is on its way." and an email at
+   `info@luckydomains.io` with the subject `luckydomains.io: <need> / <domain>`.
+5. Do not change `data-access-key`. The tests fail if it changes.
+
+## 10. Staging review
+
+Staging lives outside this repository, at
+`kenashe/luckydomains-design-concepts`, under `production-candidate/`. It is a
+generated copy of a branch of this repository with five differences: a path
+prefix, noindex, a review notice, a disabled form, and no `CNAME`. To refresh it,
+run `tools/export_staging.py` in that repository against a checkout of the
+branch. Never edit the staging copy by hand, and never copy a staging file back
+here.
+
+## 11. Production cutover checklist
+
+Do these in order. Stop and roll back (section 12) on any critical failure.
+
+1. The owner reviews staging.
+2. The owner approves both draft pull requests (this repository and kenashe.ai).
+3. Rebase the branch on the current `main`. Keep the shared Person schema node
+   from `main` if it changed.
+4. Run `python3 tests/test_site.py` and the browser checks in section 8.
+5. Record the current `main` commit hash for rollback.
+6. Merge the pull request to `main`.
+7. Watch the Pages deployment finish (repository > Actions > pages build).
+8. Run `python3 scripts/verify_live.py`.
+9. Test the live contact form in a browser (section 9).
+10. Verify canonicals, robots.txt, sitemap.xml, Open Graph tags, structured data
+    and the legacy `.html` stubs on the live site.
+11. Verify `https://www.luckydomains.io/` still 301s to the apex.
+12. Verify the MX and TXT records are unchanged (`verify_live.py` checks MX).
+13. Review in Safari on a Mac and on an iPhone.
+14. In Search Console, resubmit `https://luckydomains.io/sitemap.xml` and inspect
+    `/ventures/` and `/ventures/zerohuman/`.
+15. Only now merge the kenashe.ai cross-link pull request, so its links point at
+    pages that exist.
+16. Capture final screenshots.
+
+## 12. Roll back
+
+The site is whatever `main` contains, so rolling back is a revert.
+
+```bash
+git checkout main && git pull
+git revert -m 1 <merge commit>     # for a merge commit
+# or, for a squash merge:  git revert <squash commit>
+python3 tests/test_site.py
+git push origin main
+```
+
+Pages redeploys within about a minute. Then run `python3 scripts/verify_live.py`
+(its content markers on that commit match the older pages). Do not force push
+`main`, do not delete the branch, and do not touch DNS: a content rollback never
+needs a DNS change. If kenashe.ai cross-links were already merged, revert that
+pull request too, because its links would point at pages that no longer exist.
+

@@ -9,7 +9,7 @@
 <meta name="author" content="Ken Ashe">
 <meta property="article:author" content="https://luckydomains.io/founder/ken-ashe/">
 <meta property="article:published_time" content="2026-06-24T09:00:00-04:00">
-<meta name="theme-color" content="#0C2340">
+<meta name="theme-color" content="#0A0C0B">
 
 <!-- Open Graph / Twitter -->
 <meta property="og:title" content="Lucky Domains Launches Redesigned Website for Premium Domain Acquisition and SEO" />
@@ -33,11 +33,10 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.className="js"</script>
 
 <!-- Structured data: entity-triangulation graph (NewsArticle + Organization + Service + Ken Ashe Person) -->
 <script type="application/ld+json">
@@ -81,7 +80,7 @@
       "url": "https://luckydomains.io/",
       "logo": "https://luckydomains.io/assets/logo-wordmark.png",
       "email": "info@luckydomains.io",
-      "description": "Domain acquisition, brokerage, and SEO services company helping businesses secure stronger digital assets and build search visibility over time.",
+      "description": "Founder-led digital venture studio that builds and operates AI applications, digital identity systems, and internet-native ventures. Domain acquisition and brokerage remain active.",
       "foundingDate": "2025-08-01",
       "naics": "541613",
       "founder": {
@@ -106,7 +105,7 @@
         "https://www.linkedin.com/company/luckydomains",
         "https://www.crunchbase.com/organization/lucky-domains"
       ],
-      "knowsAbout": ["Premium domain acquisition", "Domain brokerage", "Domain negotiation", "SEO strategy", "Technical SEO", "Local SEO", "Content strategy"]
+      "knowsAbout": ["Premium domain acquisition", "Domain brokerage", "Domain negotiation", "Digital identity", "Entity SEO", "Technical SEO", "AI applications", "Autonomous agents", "Internet-native ventures"]
     },
     {
       "@type": "WebSite",
@@ -226,58 +225,22 @@
 }
 </script>
 
-<style>
-  .release-body { max-width: 720px; margin: 0 auto; }
-  .release-body p { margin: 0 0 1.2rem; line-height: 1.7; }
-  .release-body h2 { margin: 2.4rem 0 .9rem; }
-  .release-meta { margin-bottom: 2rem; }
-  /* Author byline: linked Ken Ashe attribution (replaces any generic Admin/Staff credit) */
-  .release-byline { display: flex; align-items: center; gap: 14px; margin: 0 0 1.8rem; padding: 14px 18px; border: 1px solid #d6dee4; border-radius: 14px; background: #fff; }
-  .release-byline img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: none; }
-  .release-byline .by { font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: #5b6b7a; display: block; }
-  .release-byline .name { font-weight: 700; color: #0C2340; text-decoration: none; }
-  .release-byline .name:hover { color: #0FA968; }
-  .release-byline .role { color: #5b6b7a; font-size: .94rem; }
-  .release-byline .role a { color: #0FA968; }
-  .release-byline time { margin-left: auto; color: #5b6b7a; font-size: .9rem; white-space: nowrap; }
-  /* Founder quote: standardized pull quote with attribution */
-  .founder-quote { margin: 1.6rem 0 1.8rem; padding: 22px 26px; border-left: 4px solid #16C784; background: #ECFBF4; border-radius: 0 14px 14px 0; }
-  .founder-quote p { margin: 0 0 .8rem; font-size: 1.06rem; line-height: 1.65; color: #0C2340; }
-  .founder-quote footer { font-size: .94rem; color: #5b6b7a; }
-  .founder-quote footer a { color: #0FA968; font-weight: 600; }
-  @media (max-width: 600px) { .release-byline { flex-wrap: wrap; } .release-byline time { margin-left: 0; width: 100%; } }
-  .release-hero { margin: 0 0 2rem; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(12,35,64,.12); }
-  .release-hero img { display: block; width: 100%; height: auto; }
-</style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header" id="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Lucky Domains home">
-      <img class="brand-logo" src="/assets/logo-wordmark.png" alt="Lucky Domains" width="170" height="38">
-    </a>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/services/">Services</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/contact/" class="btn btn-accent btn-sm nav-cta">Free consultation</a>
-    </nav>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<header class="hd" id="site-header">
+  <a class="hd-logo" href="/" aria-label="Lucky Domains home"><img src="/assets/logo-wordmark-reversed.png" alt="Lucky Domains" width="153" height="38"></a>
+  <button class="hd-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="hd-nav" aria-label="Primary"><a href="/ventures/">Ventures</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/founder/ken-ashe/">Founder</a><a href="/news/" aria-current="page">Updates</a><a href="/contact/">Contact</a><a class="hd-cta" href="/services/#domains">Domain acquisition</a></nav>
 </header>
 
 <main id="main">
-
-  <section class="hero hero--page">
-    <div class="container hero-inner">
-      <span class="eyebrow" style="background:rgba(22,199,132,.16);color:#7ef0c0">For Immediate Release</span>
+<div class="legacy"><section class="phd">
+    <div class="phd-in">
+      <span class="eyebrow">For Immediate Release</span>
       <h1>Lucky Domains Launches Redesigned Website for Premium Domain Acquisition and SEO</h1>
-      <p class="lead">LuckyDomains.io positions the company as a focused partner for businesses that need a better domain name and durable search visibility</p>
+      <p class="lede">LuckyDomains.io positions the company as a focused partner for businesses that need a better domain name and durable search visibility</p>
     </div>
   </section>
 
@@ -336,53 +299,19 @@
         </p>
       </article>
     </div>
-  </section>
-
+  </section></div>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo"><img src="/assets/logo-icon.png" alt="" width="42" height="42" loading="lazy" decoding="async"><span>Lucky Domains</span></a>
-        <p>Helping businesses secure the right domain and earn the rankings they deserve.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="/services/#domains">Domain acquisition</a></li>
-          <li><a href="/services/#domains">Domain brokerage</a></li>
-          <li><a href="/how-we-buy-domains/">How we buy domains</a></li>
-          <li><a href="/services/#seo">SEO services</a></li>
-          <li><a href="/services/#seo">Local SEO</a></li>
-          <li><a href="/services/entity-seo/">Entity SEO</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/news/">News</a></li>
-          <li><a href="/contact/">Free consultation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Get in touch</h4>
-        <ul>
-          <li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li>
-          <li><a href="/contact/">Book a call</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span>
-      <span>luckydomains.io</span>
-    </div>
+<footer class="ft">
+  <div class="ft-top">
+    <div class="ft-brand"><img src="/assets/logo-wordmark-reversed.png" alt="Lucky Domains" width="185" height="46" loading="lazy"><p>Lucky Domains builds and operates AI applications, digital identity systems, and internet-native ventures. Domain acquisition and brokerage remain active.</p></div>
+    <div><h2>Ventures</h2><ul><li><a href="/ventures/zerohuman/">ZeroHuman</a></li><li><a href="/ventures/ai-agent-economy/">AI Agent Economy</a></li><li><a href="/ventures/autonomous-seo-agent/">Autonomous SEO Agent</a></li><li><a href="/ventures/">All ventures</a></li></ul></div>
+    <div><h2>Company</h2><ul><li><a href="/services/#domains">Domain acquisition</a></li><li><a href="/services/">Services</a></li><li><a href="/about/">About</a></li><li><a href="/founder/ken-ashe/">Founder</a></li><li><a href="/news/">News</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+    <div><h2>Build record</h2><ul><li><a href="https://kenashe.ai/">KenAshe.ai</a></li><li><a href="https://kenashe.ai/building/">All build logs</a></li><li><a href="https://kenashe.ai/building/zerohuman/">ZeroHuman build log</a></li><li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li></ul></div>
   </div>
+  <p class="ft-note"><span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span> <span>luckydomains.io</span></p>
 </footer>
 
-<script src="/js/main.js"></script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>

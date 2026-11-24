@@ -265,3 +265,86 @@ the directory layout works unchanged on either.
 
 **Revisit if.** Search Console shows the legacy URLs still indexed after a
 couple of months, in which case a proxy-level 301 is the next step.
+
+---
+
+## D12. Broaden Lucky Domains from an agency into a digital venture studio
+
+**Date:** 2026-11-23
+**Status:** Approved by the owner for staging. Not yet live. See
+`docs/VENTURE_LAB_MIGRATION.md` for the approval status.
+
+**Context.** The site described Lucky Domains as a domain acquisition,
+brokerage, and SEO practice. By November 2026 the founder was also building and
+running AI applications and agent systems in public: an always-on service on
+Ethereum mainnet, a two-agent payment experiment, and an agent that maintains
+web profiles by itself. The agency framing no longer described the company.
+
+**Decision.**
+
+1. Lucky Domains is presented as a founder-led digital venture studio and
+   operating company that builds and operates AI applications, digital identity
+   systems, and internet-native ventures.
+2. Domain acquisition and brokerage stay an active, prominent commercial
+   service. They are not hidden and not retired.
+3. Website, search, and entity work become selective, taken on only where they
+   support a venture, a rebrand, a domain acquisition, or an important identity.
+4. kenashe.ai stays the build-in-public record. This site summarizes and links.
+5. Projects are classified by type: venture, experiment, internal system, studio
+   build, and commercial service. Each record also shows a status.
+6. Authorized classifications: ZeroHuman is a venture (autonomous service,
+   LIVE, built by Ken Ashe, operated by Lucky Domains). AI Agent Economy is an
+   experiment (SHIPPED). The Autonomous SEO Agent is an internal system (LIVE).
+   Domain Acquisition and Brokerage is a commercial service (ACTIVE).
+
+**Consequences.**
+
+- The company must not drift into AI consulting. `PRODUCT.md` section 1 lists
+  what is not sold, and the tests reject several of those phrases.
+- Claims are limited to what a public source supports. Limits are stated on the
+  page, for example that no outside agent has bought from ZeroHuman as of
+  November 20, 2026.
+- Older decisions and the June 2026 press release are left as written. They
+  describe the company as it was.
+
+---
+
+## D13. Venture Lab as the production design, on the same static architecture
+
+**Date:** 2026-11-23
+**Status:** Approved by the owner for staging. Not yet live.
+
+**Context.** Three design concepts were built in a separate review repository,
+`kenashe/luckydomains-design-concepts`. The owner chose the first, Venture Lab,
+and then a refined second version of it (source commit `d05e5c1`).
+
+**Decision.**
+
+1. Port Venture Lab v2 to this repository as hand written static HTML, one
+   stylesheet, and one script. No framework, no build step, no package manager,
+   no server. D2 stands unchanged.
+2. Self host the three font files. This removes the only third party request the
+   pages made (Google Fonts) and supersedes the font note in D2's era docs.
+3. Keep every existing URL, the trailing-slash canonical form, and the legacy
+   stubs (D4, D11). Add `/ventures/` and three venture pages.
+4. Keep the Web3Forms integration and its access key exactly as they were (D6).
+5. Review on a separate noindex staging copy before any production change. The
+   staging copy is exported from this branch by a script in the concept
+   repository, so the two cannot drift. Nothing reaches `main` without the
+   owner's explicit approval.
+
+**Alternatives considered.** A static site generator would have removed repeated
+header and footer markup across fourteen pages. It was rejected for the reasons
+in D2: the owner edits pages by hand, and the repository must stay usable with
+git and a text editor alone. A generator script was used once to write the pages
+during the migration. It is not part of this repository and is not needed to
+edit or deploy the site.
+
+**Consequences.**
+
+- The header and footer are repeated in every page. A change to either must be
+  made in every HTML file. `tests/test_site.py` catches the common mistakes.
+- Three pages keep their older content markup under a `.legacy` wrapper.
+- The stylesheet is larger than before (about 50 KB uncompressed) and the fonts
+  add about 156 KB, cached after the first page.
+

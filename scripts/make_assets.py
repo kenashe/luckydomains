@@ -21,6 +21,8 @@ Outputs, in assets/
     icon-192.png icon-512.png    PWA manifest icons
     og-image.png                 1200x630 social share card
     about-ken.jpg                640x640 founder portrait for the About page
+    logo-wordmark-reversed.png   440px wordmark for dark backgrounds: navy recolored to
+                                 warm off-white, green and geometry untouched
 
 The source images have white backgrounds. White is keyed out to transparency so
 the marks sit cleanly on the navy footer and on light sections alike.
@@ -89,6 +91,25 @@ def square_on(img, size, bg):
     return canvas
 
 
+def reversed_wordmark(img, navy=(12, 35, 64), green=(22, 199, 132),
+                      light=(236, 231, 220)):
+    """Recolor the navy parts of the wordmark for dark backgrounds."""
+    img = img.convert("RGBA")
+    axis = [g - n for g, n in zip(green, navy)]
+    norm = float(sum(a * a for a in axis))
+    out = Image.new("RGBA", img.size)
+    src, dst = img.load(), out.load()
+    for y in range(img.size[1]):
+        for x in range(img.size[0]):
+            r, g, b, a = src[x, y]
+            t = ((r - navy[0]) * axis[0] + (g - navy[1]) * axis[1]
+                 + (b - navy[2]) * axis[2]) / norm
+            t = 0.0 if t < 0 else 1.0 if t > 1 else t
+            dst[x, y] = tuple(round(light[i] * (1 - t) + green[i] * t)
+                              for i in range(3)) + (a,)
+    return out
+
+
 def main():
     for p in (WORDMARK_SRC, ICON_SRC, HEADSHOT_SRC):
         if not os.path.isfile(p):
@@ -140,6 +161,14 @@ def main():
     hs.save(os.path.join(OUT, "about-ken.jpg"), quality=86, optimize=True,
             progressive=True)
     print("about-ken.jpg", hs.size)
+
+    # Reversed wordmark for the dark header and footer. Only the navy changes
+    # color: each pixel is placed between brand navy and brand green and the
+    # navy end is swapped for warm off-white. Shapes and proportions are identical.
+    # 440px wide is ample for the 153px header and 185px footer at 2x density.
+    rev = resize_w(reversed_wordmark(Image.open(os.path.join(OUT, "logo-wordmark.png"))), 440)
+    rev.save(os.path.join(OUT, "logo-wordmark-reversed.png"), optimize=True)
+    print("logo-wordmark-reversed.png", rev.size)
 
     print("\nDone. Run: python3 tests/test_site.py")
 
