@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{seo_title}}</title>
+<meta name="description" content="{{description}}">
+{{robots}}<link rel="canonical" href="{{url}}">
+<meta name="theme-color" content="#0C2340">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lucky Domains">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:image" content="https://luckydomains.io/assets/og-image.png">
+{{og_dates}}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="https://luckydomains.io/assets/og-image.png">
+
+{{head_common}}
+
+<script type="application/ld+json">
+{{jsonld}}
+</script>
+<!-- Article settings. Edit these values, then run: python3 scripts/articles.py sync -->
+<script type="application/json" id="article-meta">
+{{meta_json}}
+</script>
+</head>
+<body class="rf pg-article">
+<a class="skip-link" href="#main">Skip to content</a>
+{{header}}
+<main id="main">
+<article class="art">
+  <header class="phero art-head">
+    <div class="container art-head-in">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/insights/">Insights</a></li><li aria-current="page">{{category}}</li></ol></nav>
+      <p class="art-kind">{{category}} · {{topic}}</p>
+      <h1>{{title}}</h1>
+      <p class="lead">{{summary}}</p>
+      <p class="art-by">By <a href="/founder/ken-ashe/">{{author}}</a><span class="art-dot" aria-hidden="true"></span>{{date_line}}<span class="art-dot" aria-hidden="true"></span>{{minutes}} min read</p>
+    </div>
+  </header>
+  <div class="container art-layout">
+    <nav class="art-toc" aria-label="In this article">
+      <p class="art-toc-t">In this article</p>
+      <ol>
+{{toc}}
+      </ol>
+    </nav>
+    <div class="art-body">
+<!-- article:start -->
+{{body}}
+<!-- article:end -->
+{{sources}}
+    </div>
+  </div>
+</article>
+{{services}}
+{{related}}
+<section class="section section--tight" aria-label="Contact"><div class="container"><div class="cta-band reveal"><h2>Have a question about your own situation?</h2><p>Tell Ken what you are working on. The first consultation is free, with no obligation.</p><div class="btn-row" style="justify-content:center"><a class="btn btn-lg" href="/contact/">Start a project</a><a class="btn btn-ghost btn-lg cta-ghost" href="mailto:info@luckydomains.io">Email Ken</a></div></div></div></section>
+</main>
+{{footer}}
+<script src="/js/main.js" defer></script>
+</body>
+</html>

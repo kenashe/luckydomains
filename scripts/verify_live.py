@@ -29,15 +29,21 @@ import urllib.request
 
 SITE = "https://luckydomains.io"
 APEX = "luckydomains.io"
-PAGES = ["/", "/services/", "/services/entity-seo/", "/about/", "/contact/",
-         "/news/", "/news/website-relaunch/", "/404.html"]
+PAGES = ["/", "/services/", "/services/website-design/", "/services/seo/",
+         "/services/ai-visibility/", "/services/entity-seo/",
+         "/services/domain-acquisition/", "/how-we-buy-domains/",
+         "/tools/digital-presence-check/", "/about/", "/founder/ken-ashe/",
+         "/insights/", "/contact/", "/news/", "/news/website-relaunch/", "/404.html"]
 GITHUB_IPS = {"185.199.108.153", "185.199.109.153",
               "185.199.110.153", "185.199.111.153"}
 PAGES_HOST = "kenashe.github.io"
 CONTENT_MARKERS = {
-    "/": "Secure the perfect domain",
-    "/services/": "Own the name your brand deserves",
-    "/about/": "Ken Ashe",
+    "/": "Build a digital presence people, search engines, and AI recognize.",
+    "/services/": "Five services. One digital presence.",
+    "/tools/digital-presence-check/": "This is a preliminary self-check, not a technical audit.",
+    "/insights/": "Insights",
+    "/about/": "Domains were the beginning. Not the boundary.",
+    "/founder/ken-ashe/": "Ken Ashe",
     "/contact/": "info@luckydomains.io",
     "/news/website-relaunch/": "Lucky Domains",
 }

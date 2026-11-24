@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://luckydomains.io/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://luckydomains.io/services/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://luckydomains.io/services/entity-seo/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://luckydomains.io/about/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://luckydomains.io/contact/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://luckydomains.io/how-we-buy-domains/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://luckydomains.io/news/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://luckydomains.io/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://luckydomains.io/services/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://luckydomains.io/services/website-design/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://luckydomains.io/services/seo/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://luckydomains.io/services/ai-visibility/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://luckydomains.io/services/entity-seo/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://luckydomains.io/services/domain-acquisition/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://luckydomains.io/how-we-buy-domains/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://luckydomains.io/tools/digital-presence-check/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://luckydomains.io/about/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://luckydomains.io/founder/ken-ashe/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://luckydomains.io/contact/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://luckydomains.io/insights/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://luckydomains.io/news/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://luckydomains.io/news/website-relaunch/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://luckydomains.io/founder/ken-ashe/</loc><lastmod>2026-09-14</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <!-- Published Insights articles. This block is maintained by scripts/articles.py. Drafts are left out. -->
+  <!-- insights:start -->
+  <!-- insights:end -->
 </urlset>

@@ -1,0 +1,5 @@
+Plus Jakarta Sans (jakarta-normal-400-800.woff2) and Inter (inter-normal-400-600.woff2) are variable fonts,
+Latin subset, licensed under the SIL Open Font License 1.1.
+Plus Jakarta Sans: https://github.com/tokotype/PlusJakartaSans
+Inter: https://github.com/rsms/inter
+License text: https://openfontlicense.org/

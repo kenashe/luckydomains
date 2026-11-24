@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can Domains Become the Identity Layer for AI Agents? | Lucky Domains</title>
+<meta name="description" content="Domains identify businesses. Could naming systems do the same for autonomous AI agents? A look at the proposals, two first-party experiments, and what is unresolved.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://luckydomains.io/insights/domains-identity-for-ai-agents/">
+<meta name="theme-color" content="#0C2340">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lucky Domains">
+<meta property="og:title" content="Can Domains Become the Identity Layer for AI Agents?">
+<meta property="og:description" content="Domains identify businesses. Could naming systems do the same for autonomous AI agents? A look at the proposals, two first-party experiments, and what is unresolved.">
+<meta property="og:url" content="https://luckydomains.io/insights/domains-identity-for-ai-agents/">
+<meta property="og:image" content="https://luckydomains.io/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Can Domains Become the Identity Layer for AI Agents?">
+<meta name="twitter:description" content="Domains identify businesses. Could naming systems do the same for autonomous AI agents? A look at the proposals, two first-party experiments, and what is unresolved.">
+<meta name="twitter:image" content="https://luckydomains.io/assets/og-image.png">
+
+<!-- head-common:start -->
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/jakarta-normal-400-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.className='js'</script>
+<!-- head-common:end -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://luckydomains.io/insights/domains-identity-for-ai-agents/#article",
+      "headline": "Can Domains Become the Identity Layer for AI Agents?",
+      "description": "Domains identify businesses. Could naming systems do the same for autonomous AI agents? A look at the proposals, two first-party experiments, and what is unresolved.",
+      "url": "https://luckydomains.io/insights/domains-identity-for-ai-agents/",
+      "mainEntityOfPage": "https://luckydomains.io/insights/domains-identity-for-ai-agents/",
+      "inLanguage": "en-US",
+      "articleSection": "Agent identity",
+      "image": "https://luckydomains.io/assets/og-image.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://kenashe.ai/#ken-ashe",
+        "name": "Ken Ashe",
+        "url": "https://luckydomains.io/founder/ken-ashe/"
+      },
+      "publisher": {
+        "@id": "https://luckydomains.io/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://luckydomains.io/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://luckydomains.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Insights",
+          "item": "https://luckydomains.io/insights/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Can Domains Become the Identity Layer for AI Agents?",
+          "item": "https://luckydomains.io/insights/domains-identity-for-ai-agents/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Article settings. Edit these values, then run: python3 scripts/articles.py sync -->
+<script type="application/json" id="article-meta">
+{
+  "title": "Can Domains Become the Identity Layer for AI Agents?",
+  "description": "Domains identify businesses. Could naming systems do the same for autonomous AI agents? A look at the proposals, two first-party experiments, and what is unresolved.",
+  "summary": "People and businesses use domains as durable identities. AI agents may need something similar: a readable name, a way to be found, and a way to check who stands behind them. Nothing here is settled.",
+  "category": "Research",
+  "topic": "Agent identity",
+  "author": "Ken Ashe",
+  "status": "draft",
+  "drafted": "2026-11-24",
+  "published": "",
+  "updated": "",
+  "order": 5,
+  "services": [
+    "domains",
+    "entity",
+    "founder"
+  ],
+  "related": [
+    "how-a-private-domain-purchase-works",
+    "entity-seo-for-founders"
+  ],
+  "sources": [
+    {
+      "title": "ZeroHuman: A Business Only AI Agents Can Use (build record)",
+      "publisher": "KenAshe.ai (first party)",
+      "url": "https://kenashe.ai/building/zerohuman/"
+    },
+    {
+      "title": "I Built Two AI Agents That Buy and Sell Services on Ethereum (build record)",
+      "publisher": "KenAshe.ai (first party)",
+      "url": "https://kenashe.ai/building/ai-agent-economy/"
+    },
+    {
+      "title": "How It Works",
+      "publisher": "Let's Encrypt",
+      "url": "https://letsencrypt.org/how-it-works/"
+    },
+    {
+      "title": "RFC 6376: DomainKeys Identified Mail (DKIM) Signatures",
+      "publisher": "IETF",
+      "url": "https://www.rfc-editor.org/rfc/rfc6376.html"
+    },
+    {
+      "title": "Agent2Agent (A2A) Protocol Specification",
+      "publisher": "A2A Project, Linux Foundation",
+      "url": "https://a2a-protocol.org/latest/specification/"
+    },
+    {
+      "title": "The MCP Registry",
+      "publisher": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/registry/about"
+    },
+    {
+      "title": "Discovery of Agents With Names (dawn) working group",
+      "publisher": "IETF",
+      "url": "https://datatracker.ietf.org/wg/dawn/about/"
+    },
+    {
+      "title": "Agent Name Service v2 (ANS): A Domain-Anchored Identity Layer for Autonomous AI Agents (Internet-Draft)",
+      "publisher": "IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-narajala-courtney-ansv2/"
+    },
+    {
+      "title": "DNS for AI Discovery (Internet-Draft)",
+      "publisher": "IETF Datatracker",
+      "url": "https://datatracker.ietf.org/doc/draft-mozleywilliams-dawn-dnsaid/"
+    },
+    {
+      "title": "Text Records",
+      "publisher": "ENS documentation",
+      "url": "https://docs.ens.domains/web/records"
+    },
+    {
+      "title": "ENSIP-25: AI Agent Registry ENS Name Verification (draft)",
+      "publisher": "ENS documentation",
+      "url": "https://docs.ens.domains/ensip/25"
+    },
+    {
+      "title": "ERC-8004: Trustless Agents (draft)",
+      "publisher": "Ethereum Improvement Proposals",
+      "url": "https://eips.ethereum.org/EIPS/eip-8004"
+    },
+    {
+      "title": "Welcome to x402",
+      "publisher": "x402 Foundation",
+      "url": "https://docs.x402.org/"
+    },
+    {
+      "title": "Verifiable Credentials Data Model v2.0",
+      "publisher": "W3C",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+      "title": "Summary of Comments on the Concept Paper",
+      "publisher": "NIST National Cybersecurity Center of Excellence",
+      "url": "https://pages.nist.gov/nccoe-ai-identity/summary-of-comments.html"
+    },
+    {
+      "title": "New whitepaper tackles AI agent identity challenges",
+      "publisher": "OpenID Foundation",
+      "url": "https://openid.net/new-whitepaper-tackles-ai-agent-identity-challenges/"
+    }
+  ],
+  "sources_checked": "2026-11-24"
+}
+</script>
+</head>
+<body class="rf pg-article">
+<a class="skip-link" href="#main">Skip to content</a>
+<!-- header:start -->
+<header class="site-header" id="site-header">
+<div class="container header-inner"> <a class="brand" href="/" aria-label="Lucky Domains home"><img class="brand-logo" src="/assets/logo-wordmark.png" alt="Lucky Domains" width="170" height="38"></a>
+<nav class="nav" id="nav" aria-label="Primary">
+<div class="has-menu"><a href="/services/">Services</a><button class="menu-btn" type="button" aria-expanded="false" aria-controls="m-svc"><span class="sr">Show service pages</span></button>
+<ul class="menu" id="m-svc">
+<li><a href="/services/website-design/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg><span>Website Design &amp; Development</span></a></li>
+<li><a href="/services/seo/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>SEO &amp; Search Visibility</span></a></li>
+<li><a href="/services/ai-visibility/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span>AI Visibility &amp; Brand Authority</span></a></li>
+<li><a href="/services/entity-seo/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 3.6a3.2 3.2 0 0 1 0 6.2M18 14c2.5.6 4 2.3 4 6"/></svg><span>Entity SEO &amp; Digital Identity</span></a></li>
+<li><a href="/services/domain-acquisition/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg><span>Domain Acquisition &amp; Brokerage</span></a></li>
+<li class="menu-x"><a href="/services/">All services</a><a href="/how-we-buy-domains/">How we buy domains</a><a href="/tools/digital-presence-check/">Digital Presence Check</a></li>
+</ul>
+</div>
+<a href="/about/">About</a><a href="/insights/" aria-current="page">Insights</a><a href="/founder/ken-ashe/">Founder</a><a href="/contact/">Contact</a><a href="/contact/" class="btn btn-accent btn-sm nav-cta">Start a project</a></nav>
+<button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button> </div>
+</header>
+<!-- header:end -->
+<main id="main">
+<article class="art">
+  <header class="phero art-head">
+    <div class="container art-head-in">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/insights/">Insights</a></li><li aria-current="page">Research</li></ol></nav>
+      <p class="art-kind">Research · Agent identity</p>
+      <h1>Can Domains Become the Identity Layer for AI Agents?</h1>
+      <p class="lead">People and businesses use domains as durable identities. AI agents may need something similar: a readable name, a way to be found, and a way to check who stands behind them. Nothing here is settled.</p>
+      <p class="art-by">By <a href="/founder/ken-ashe/">Ken Ashe</a><span class="art-dot" aria-hidden="true"></span><span class="art-draft">Editorial draft, November 24, 2026. Not yet published.</span><span class="art-dot" aria-hidden="true"></span>6 min read</p>
+    </div>
+  </header>
+  <div class="container art-layout">
+    <nav class="art-toc" aria-label="In this article">
+      <p class="art-toc-t">In this article</p>
+      <ol>
+        <li><a href="#what-a-domain-does">What a domain already does for a business</a></li>
+        <li><a href="#what-an-agent-needs">What an identity for an agent would need to carry</a></li>
+        <li><a href="#domain-anchored">Family one: anchor the agent to a domain</a></li>
+        <li><a href="#blockchain-naming">Family two: names that carry payment with them</a></li>
+        <li><a href="#what-ken-tested">What our founder has tested in public</a></li>
+        <li><a href="#what-it-does-not-show">What those tests do not show</a></li>
+        <li><a href="#open-questions">What is unresolved</a></li>
+        <li><a href="#for-a-business-today">What this means for a business today</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </nav>
+    <div class="art-body">
+<!-- article:start -->
+<p>A domain is the one identifier most businesses fully control. If software agents are going to act on their own, finding services, paying for them, and delivering results, they will need identifiers too. This article asks whether naming systems could do that job.</p>
+<aside class="callout"><p><strong>Read this as research.</strong> It describes proposals that are still drafts and two small experiments run by our founder. Lucky Domains does not sell agent identity, and nothing here is a prediction.</p></aside>
+
+<h2 id="what-a-domain-does">What a domain already does for a business</h2>
+<p>A domain does more than point to a website. Email, profiles, structured data, and press mentions all refer back to it, which is why a search engine or an AI system can use it to decide which company a mention belongs to.</p>
+<p>It also carries the web's working machinery for trust. When a certificate authority issues a certificate, it ties a cryptographic key to a domain name, so a browser can check that it is talking to the real site. Let's Encrypt describes issuing "a certificate for example.com" once control of the domain has been shown. Email works the same way: the DKIM standard "permits a person, role, or organization that owns the signing domain to claim some responsibility for a message."</p>
+<p>In both cases the question "who is this, really?" is answered by a name that someone demonstrably controls. That is the model people are now trying to extend to agents.</p>
+
+<h2 id="what-an-agent-needs">What an identity for an agent would need to carry</h2>
+<p>Set aside the technology and the list is familiar. An agent that offers a service, or pays for one, needs most of what a business needs.</p>
+<div class="art-table" tabindex="0" role="region" aria-label="What an identity needs, for a business and for an agent">
+<table>
+<caption>The same needs, for a business today and for an agent</caption>
+<thead><tr><th scope="col">Need</th><th scope="col">How a business meets it today</th><th scope="col">What is being tried for agents</th></tr></thead>
+<tbody>
+<tr><th scope="row">A readable name</th><td>A domain name</td><td>A domain name, or a name in a blockchain naming system such as ENS</td></tr>
+<tr><th scope="row">Ownership</th><td>A registrar account and a certificate</td><td>Proof of control of a domain, or on-chain ownership of a name</td></tr>
+<tr><th scope="row">Discovery</th><td>Search, links, and DNS</td><td>A published description at a known address on the agent's domain, or records attached to its name</td></tr>
+<tr><th scope="row">A description software can read</th><td>Web pages and structured data</td><td>A standard "agent card," or text records on a name</td></tr>
+<tr><th scope="row">A payment destination</th><td>An invoice or a checkout page</td><td>A wallet address tied to the name, or payment requested over the web's 402 status code</td></tr>
+<tr><th scope="row">Provenance</th><td>Certificates and signed email</td><td>Results signed by the key behind the name, and verifiable credentials</td></tr>
+<tr><th scope="row">Reputation</th><td>Reviews, references, coverage</td><td>Shared registries where feedback is recorded</td></tr>
+</tbody>
+</table>
+</div>
+<p>None of the entries in the right-hand column is an agreed standard. They fall into two families.</p>
+
+<h2 id="domain-anchored">Family one: anchor the agent to a domain</h2>
+<p>The first family reuses what businesses already have.</p>
+<p>The Agent2Agent protocol, created by Google and now a Linux Foundation project, defines an Agent Card as "a JSON metadata document published by an A2A Server," and gives it a conventional home: a file at a well-known address on the server's own domain. Whoever controls the domain controls what the card says.</p>
+<p>The Model Context Protocol, which Anthropic donated to a Linux Foundation fund in December 2025, takes a similar line in its registry, currently in preview. The registry's documentation lists "Namespace management through DNS verification" among its functions: to publish under a domain's name, you show that you control the domain.</p>
+<p>The Internet Engineering Task Force, which maintains core internet standards, has chartered a working group called Discovery of Agents With Names. Its charter says it "will consider DNS and mDNS as mechanisms upon which to build a discovery protocol." Two individual drafts sit alongside it: Agent Name Service v2, subtitled "A Domain-Anchored Identity Layer for Autonomous AI Agents" with a co-author from GoDaddy, and DNS for AI Discovery, with authors from Infoblox, Deutsche Telekom, Amazon, and GoDaddy. Both are individual submissions that expire in spring 2027. Neither has been adopted by the working group.</p>
+
+<h2 id="blockchain-naming">Family two: names that carry payment with them</h2>
+<p>The second family starts from blockchain naming, most visibly the Ethereum Name Service, or ENS. An ENS name can hold addresses and what its documentation calls text records: "key-value pairs that can be used to store any arbitrary data associated with a name." A name can therefore point to a wallet and publish a description in the same place.</p>
+<p>Two draft specifications build on that. ERC-8004, titled Trustless Agents, proposes "three lightweight registries" for identity, reputation, and validation. ENSIP-25 proposes "a standardized method for directly verifying, using text records, the association between an ENS name and an AI agent identity." Both are drafts.</p>
+<p>Payment has its own effort. The x402 protocol, contributed by Coinbase to a foundation launched under the Linux Foundation in July 2026, is "built around the HTTP 402 Payment Required status code," a part of the web's design that went largely unused for decades.</p>
+<p>The two families are not rivals in principle. An agent could be discoverable through a domain and paid through a wallet. Whether they converge is one of the open questions.</p>
+
+<h2 id="what-ken-tested">What our founder has tested in public</h2>
+<p>Ken Ashe has run two small experiments in the second family and published the full build records on KenAshe.ai. They are his own research. They are not Lucky Domains products, and no client is involved.</p>
+<p><strong>ZeroHuman</strong> is, in the words of its build record, "an always-on service that sells two small jobs to other AI agents for 0.0001 ETH each." Its ENS name, zerohuman.eth, "is the storefront, the payment address, and the sender of every result." A text record on the name publishes the menu. The service is listed in the ERC-8004 agent registry as agent #56626 and linked back from the name with an ENSIP-25 record. It also publishes an Agent Card, so it uses pieces from both families.</p>
+<p><strong>An earlier experiment</strong>, on November 10, 2026, had two AI agents, each with its own Ethereum wallet, complete one purchase on the Ethereum main network, with a text record on an ENS name acting as the storefront.</p>
+
+<h2 id="what-it-does-not-show">What those tests do not show</h2>
+<p>The limits are stated in the build records and matter more than the results.</p>
+<ul>
+<li>As of November 20, 2026, no outside agent had bought from ZeroHuman. Both paid orders came from Ken's own test buyer.</li>
+<li>In the earlier experiment, Ken operated both agents, on one machine.</li>
+<li>ZeroHuman has no escrow. A buyer pays first, and refunds are manual.</li>
+<li>The registry link rests on two specifications that are still drafts.</li>
+</ul>
+<p>The honest reading is narrow. The pieces can be assembled into something that works end to end. That is not evidence that agents will buy from each other, or that this is the design the market will choose.</p>
+
+<h2 id="open-questions">What is unresolved</h2>
+<p><strong>Which kind of name.</strong> Domains are where businesses already are, with registrars, renewal rules, and dispute procedures built over decades. Blockchain names carry payment natively and can be updated by software. Nobody knows which matters more to an agent, or whether both will be used.</p>
+<p><strong>What a name proves.</strong> Control of a name shows who controls the name. It does not show that the agent behind it is competent or honest. Certificates have the same limit for websites.</p>
+<p><strong>Who is accountable.</strong> A summary of public comments published in September 2026 by the U.S. National Institute of Standards and Technology reported near unanimity that agents need verifiable identities, and that "there was no consensus on the exact means for doing this." The OpenID Foundation has said autonomous agents require "a fundamental rethinking of identity and authorization."</p>
+<p><strong>Whether the drafts survive.</strong> Several of the documents cited here expire or change within months. Any of them could be replaced.</p>
+<p><strong>Whether there is a market.</strong> All of this assumes agents will transact with each other at meaningful scale. That has not been shown.</p>
+
+<h2 id="for-a-business-today">What this means for a business today</h2>
+<p>There is nothing to buy and no deadline. Two things are worth doing anyway, because they pay off whether or not any of this arrives.</p>
+<p>First, hold your domain properly: registered to the business, in an account the business controls. Every domain-anchored proposal assumes the owner of the name is the one in charge.</p>
+<p>Second, keep your identity consistent and verifiable. The signals that help search engines and AI systems recognize a business now, a clear website, accurate structured data, and profiles that agree, are the same ones any future lookup by software would lean on.</p>
+<p>That is the connection to our commercial work, and it is the only one. <a href="/services/domain-acquisition/">Domain Acquisition &amp; Brokerage</a> and <a href="/services/entity-seo/">Entity SEO &amp; Digital Identity</a> are services for businesses today. Agent identity is a question we are watching, and one our <a href="/founder/ken-ashe/">founder</a> tests in public on <a href="https://kenashe.ai/building/" rel="noopener">KenAshe.ai</a>.</p>
+<!-- article:end -->
+<section class="art-sources" id="sources"><h2>Sources</h2><ol><li><a href="https://kenashe.ai/building/zerohuman/" rel="noopener">ZeroHuman: A Business Only AI Agents Can Use (build record)</a>, KenAshe.ai (first party)</li><li><a href="https://kenashe.ai/building/ai-agent-economy/" rel="noopener">I Built Two AI Agents That Buy and Sell Services on Ethereum (build record)</a>, KenAshe.ai (first party)</li><li><a href="https://letsencrypt.org/how-it-works/" rel="noopener">How It Works</a>, Let&#x27;s Encrypt</li><li><a href="https://www.rfc-editor.org/rfc/rfc6376.html" rel="noopener">RFC 6376: DomainKeys Identified Mail (DKIM) Signatures</a>, IETF</li><li><a href="https://a2a-protocol.org/latest/specification/" rel="noopener">Agent2Agent (A2A) Protocol Specification</a>, A2A Project, Linux Foundation</li><li><a href="https://modelcontextprotocol.io/registry/about" rel="noopener">The MCP Registry</a>, Model Context Protocol</li><li><a href="https://datatracker.ietf.org/wg/dawn/about/" rel="noopener">Discovery of Agents With Names (dawn) working group</a>, IETF</li><li><a href="https://datatracker.ietf.org/doc/draft-narajala-courtney-ansv2/" rel="noopener">Agent Name Service v2 (ANS): A Domain-Anchored Identity Layer for Autonomous AI Agents (Internet-Draft)</a>, IETF Datatracker</li><li><a href="https://datatracker.ietf.org/doc/draft-mozleywilliams-dawn-dnsaid/" rel="noopener">DNS for AI Discovery (Internet-Draft)</a>, IETF Datatracker</li><li><a href="https://docs.ens.domains/web/records" rel="noopener">Text Records</a>, ENS documentation</li><li><a href="https://docs.ens.domains/ensip/25" rel="noopener">ENSIP-25: AI Agent Registry ENS Name Verification (draft)</a>, ENS documentation</li><li><a href="https://eips.ethereum.org/EIPS/eip-8004" rel="noopener">ERC-8004: Trustless Agents (draft)</a>, Ethereum Improvement Proposals</li><li><a href="https://docs.x402.org/" rel="noopener">Welcome to x402</a>, x402 Foundation</li><li><a href="https://www.w3.org/TR/vc-data-model-2.0/" rel="noopener">Verifiable Credentials Data Model v2.0</a>, W3C</li><li><a href="https://pages.nist.gov/nccoe-ai-identity/summary-of-comments.html" rel="noopener">Summary of Comments on the Concept Paper</a>, NIST National Cybersecurity Center of Excellence</li><li><a href="https://openid.net/new-whitepaper-tackles-ai-agent-identity-challenges/" rel="noopener">New whitepaper tackles AI agent identity challenges</a>, OpenID Foundation</li></ol><p class="art-checked">Links checked November 24, 2026.</p></section>
+    </div>
+  </div>
+</article>
+<section class="section section-soft art-next" aria-labelledby="art-next-h"><div class="container"><h2 id="art-next-h">Where Lucky Domains can help</h2><div class="art-svcs"><a class="card art-svc reveal" href="/services/domain-acquisition/"><span class="tag">Service</span><strong>Domain Acquisition &amp; Brokerage</strong><span>The right name, even when someone else owns it.</span></a><a class="card art-svc reveal" href="/services/entity-seo/"><span class="tag">Service</span><strong>Entity SEO &amp; Digital Identity</strong><span>One verifiable identity across your site and your profiles.</span></a><a class="card art-svc reveal" href="/founder/ken-ashe/"><span class="tag">Founder</span><strong>About the founder</strong><span>Ken Ashe, CPA, PMP, founder and operator.</span></a></div></div></section>
+<section class="section art-related" aria-labelledby="art-rel-h"><div class="container"><h2 id="art-rel-h">Keep reading</h2><div class="grid grid-2"><article class="card ins-card reveal"><p class="art-kind">Explainer · Domains</p><h3><a href="/insights/how-a-private-domain-purchase-works/">How a Private Domain Purchase Actually Works</a></h3><p>The name you want is taken. That is the normal case, and it does not mean the name cannot be bought. Here is how a private purchase works from first lookup to final transfer.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>7 min read</p></article><article class="card ins-card reveal"><p class="art-kind">Explainer · Digital identity</p><h3><a href="/insights/entity-seo-for-founders/">Entity SEO for Founders: One Name, Many Profiles</a></h3><p>Your name appears on your company site, old profiles, press pages, and directories. Here is how to make those pieces read as one person, and what no one can promise.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>7 min read</p></article></div><p class="center v3-more"><a class="link-arrow" href="/insights/">All insights</a></p></div></section>
+<section class="section section--tight" aria-label="Contact"><div class="container"><div class="cta-band reveal"><h2>Have a question about your own situation?</h2><p>Tell Ken what you are working on. The first consultation is free, with no obligation.</p><div class="btn-row" style="justify-content:center"><a class="btn btn-lg" href="/contact/">Start a project</a><a class="btn btn-ghost btn-lg cta-ghost" href="mailto:info@luckydomains.io">Email Ken</a></div></div></div></section>
+</main>
+<!-- footer:start -->
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><a href="/" class="footer-logo"><img src="/assets/logo-icon.png" alt="" width="42" height="42" loading="lazy" decoding="async"><span>Lucky Domains</span></a>
+<p>Lucky Domains helps businesses build a digital presence that people, search engines, and AI systems can find, understand, and trust.</p>
+</div>
+<div class="footer-col">
+<h2 class="fh">Services</h2>
+<ul>
+<li><a href="/services/website-design/">Website Design &amp; Development</a></li>
+<li><a href="/services/seo/">SEO &amp; Search Visibility</a></li>
+<li><a href="/services/ai-visibility/">AI Visibility &amp; Brand Authority</a></li>
+<li><a href="/services/entity-seo/">Entity SEO &amp; Digital Identity</a></li>
+<li><a href="/services/domain-acquisition/">Domain Acquisition &amp; Brokerage</a></li>
+<li><a href="/how-we-buy-domains/">How we buy domains</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h2 class="fh">Company</h2>
+<ul>
+<li><a href="/about/">About</a></li>
+<li><a href="/founder/ken-ashe/">Founder</a></li>
+<li><a href="/insights/">Insights</a></li>
+<li><a href="/news/">News &amp; media</a></li>
+<li><a href="/tools/digital-presence-check/">Digital Presence Check</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h2 class="fh">Get in touch</h2>
+<ul>
+<li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li>
+<li>Berkeley Heights, New Jersey</li>
+<li><a href="/contact/">Start a project</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom"><span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span><span>Founded and operated by Ken Ashe, CPA, PMP.</span></div>
+</div>
+</footer>
+<!-- footer:end -->
+<script src="/js/main.js" defer></script>
+</body>
+</html>

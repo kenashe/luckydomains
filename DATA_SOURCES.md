@@ -16,7 +16,7 @@ tooling needs and where their values live.
 | GoDaddy | Domain registrar and authoritative DNS | Owner's | Critical, site and email both depend on it |
 | Google Workspace | Email for `info@luckydomains.io` | Owner's | Critical for business, no effect on the website |
 | Web3Forms | Contact form delivery | Free tier | Degraded, `mailto:` fallback remains |
-| Google Fonts | Two webfont families | None, public CDN | Cosmetic, system fonts fall back |
+| Self hosted fonts | Two webfont families in `assets/fonts/` | None, served with the site | Cosmetic, system fonts fall back |
 | GitHub REST API | Used by `scripts/deploy.py` | Fine grained PAT | Convenience only, `git push` needs none |
 
 ---
@@ -165,22 +165,19 @@ value in `contact/index.html`, run the tests, and push.
 
 ---
 
-## 6. Google Fonts
+## 6. Fonts, self hosted
 
-- **Families:** Inter (400, 500, 600) and Plus Jakarta Sans (600, 700, 800)
-- **Loaded from:** `fonts.googleapis.com` and `fonts.gstatic.com`, with
-  `preconnect` hints and `display=swap`
-- **Auth:** none, public CDN
-- **Limits:** none in practice
+- **Files:** `assets/fonts/jakarta-normal-400-800.woff2` (Plus Jakarta Sans) and
+  `assets/fonts/inter-normal-400-600.woff2` (Inter). Variable fonts, Latin
+  subset, declared with two `@font-face` rules in `css/styles.css` and
+  preloaded in every page head.
+- **Licence:** SIL Open Font License 1.1 for both. See `assets/fonts/LICENSE.txt`.
+- **Failure mode:** if a font file fails to load the page renders in the system
+  font stack declared in the CSS.
 
-**Fallback.** The CSS declares a full system font stack after each family, so if
-Google Fonts is blocked or slow the site renders immediately in system fonts
-with no layout shift beyond the swap. Purely cosmetic.
-
-**Privacy note.** Requests to Google Fonts expose visitor IPs to Google. If that
-ever becomes a concern, the two families can be self hosted in `assets/fonts/`
-and the `@font-face` rules moved into `css/styles.css`, removing the third party
-request entirely.
+The site loaded these families from Google Fonts until November 2026. They were
+moved into the repository so that a page view makes no third party request and
+no visitor IP address reaches Google (DECISIONS D13).
 
 ---
 
