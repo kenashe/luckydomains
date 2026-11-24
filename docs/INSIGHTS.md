@@ -86,7 +86,7 @@ them. These classes are already styled:
 
 | Markup | Use |
 |---|---|
-| `<aside class="callout"><p><strong>Label.</strong> Text.</p></aside>` | A takeaway or a limit. Add `warn` for a caution |
+| `<div class="callout" role="note"><p><strong>Label.</strong> Text.</p></div>` | A takeaway or a limit. Use `class="callout warn"` for a caution |
 | `<ol class="flow"><li><strong>Step name.</strong> Text.</li></ol>` | A numbered sequence |
 | `<figure class="art-fig"><div class="lanes"><div class="lane">...</div></div><figcaption>...</figcaption></figure>` | A side by side diagram. `lanes two` for two columns |
 | `<div class="art-table" tabindex="0" role="region" aria-label="..."><table>...</table></div>` | A table that scrolls sideways on a phone. Use `<caption>` and `<th scope>` |

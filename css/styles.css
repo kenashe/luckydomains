@@ -748,6 +748,9 @@ html:not(.js) [data-sum],html:not(.js) .dpc-reset{display:none}
 /* ---- Production additions: three-way service distinction, related reading, Insights library, articles, founder, news, 404 ---- */
 .distinct-g.distinct-3{grid-template-columns:repeat(3,1fr)}
 .h-sm{font-size:1.5rem}
+/* The June 2026 press release keeps its markup. These rules bring its links up to WCAG AA contrast and target size. */
+.pg-release main a:not(.btn){color:#0A7A4B}
+.pg-release main :is(div,span,footer)>a:not(.btn){display:inline-block;padding:3px 0}
 .news-card h3{font-size:1.3rem}
 .news-card h3 a{color:var(--navy)}
 .hero-404{min-height:56vh;display:flex;align-items:center}
