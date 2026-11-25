@@ -143,7 +143,8 @@ def minutes(body):
 
 def sort_key(meta):
     if meta["status"] == "published":
-        return (0, -datetime.date.fromisoformat(meta["published"]).toordinal(), meta["slug"])
+        # newest first; articles published on the same day keep their "order" setting
+        return (0, -datetime.date.fromisoformat(meta["published"]).toordinal(), meta.get("order", 99), meta["slug"])
     return (1, meta.get("order", 99), meta["slug"])
 
 

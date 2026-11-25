@@ -17,10 +17,10 @@
   <url><loc>https://luckydomains.io/news/website-relaunch/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <!-- Published Insights articles. This block is maintained by scripts/articles.py. Drafts are left out. -->
   <!-- insights:start -->
-  <url><loc>https://luckydomains.io/insights/domains-identity-for-ai-agents/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://luckydomains.io/insights/entity-seo-for-founders/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://luckydomains.io/insights/fix-or-rebuild-your-website/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://luckydomains.io/insights/how-a-private-domain-purchase-works/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://luckydomains.io/insights/what-ai-search-reads-on-your-website/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://luckydomains.io/insights/fix-or-rebuild-your-website/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://luckydomains.io/insights/entity-seo-for-founders/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://luckydomains.io/insights/how-a-private-domain-purchase-works/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://luckydomains.io/insights/domains-identity-for-ai-agents/</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <!-- insights:end -->
 </urlset>

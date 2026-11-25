@@ -78,7 +78,7 @@ by hand. They are overwritten on the next sync.
 | `status` | `draft` or `published`. Change it only with the `publish` command |
 | `drafted` | The date the draft was written. Shown only while it is a draft |
 | `published`, `updated` | Set by the `publish` and `update` commands. Never typed in by hand |
-| `order` | Position among drafts in the library. Published articles sort by date, newest first |
+| `order` | Position among drafts, and among articles published on the same day. Published articles sort by date, newest first |
 | `services` | Pages to point readers to. Keys: `websites`, `seo`, `ai`, `entity`, `domains`, `buy`, `check`, `founder`, `contact` |
 | `related` | Slugs of other articles to show under "Keep reading" |
 | `sources` | The sources list: `title`, `publisher`, `url` |
