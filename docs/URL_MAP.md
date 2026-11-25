@@ -16,7 +16,7 @@ redirects. The rules for URL shape are in `AGENTS.md` section 2.4.
 | `/founder/ken-ashe/` | `/founder/ken-ashe/` | Same URL. The design concept used `/founder/`; production keeps the live URL |
 | `/contact/` | `/contact/` | Same URL, same form provider. `?need=` accepts `website`, `seo`, `ai`, `entity`, `buying`, `selling` |
 | `/news/` | `/news/` | Same URL |
-| `/news/website-relaunch/` | `/news/website-relaunch/` | Same URL. Head and body exactly as published; only the shared header and footer changed |
+| `/news/website-relaunch/` | `/news/website-relaunch/` | Same URL. Headline, text, dates and `NewsArticle` data exactly as published. The shared header and footer changed, and the shared Organization record in its structured data is kept current, as the shared Person record already was |
 | `/404.html` | `/404.html` | Updated, still `noindex` |
 
 ## Legacy redirect stubs, unchanged

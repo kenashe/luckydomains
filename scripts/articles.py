@@ -11,6 +11,7 @@ consistent so nobody has to recreate the layout by hand.
     python3 scripts/articles.py sync --check    # exit 1 if anything is out of date (used by the tests)
     python3 scripts/articles.py publish <slug> --date YYYY-MM-DD
     python3 scripts/articles.py publish --all --date YYYY-MM-DD
+    python3 scripts/articles.py publish --all --date YYYY-MM-DD --redate   # correct the date before launch
     python3 scripts/articles.py update <slug> --date YYYY-MM-DD
     python3 scripts/articles.py status
 
@@ -176,9 +177,12 @@ def jsonld(meta, url):
         "inLanguage": "en-US",
         "articleSection": meta["topic"],
         "image": DOMAIN + "/assets/og-image.png",
+        # The author is the shared Ken Ashe Person record. Keep these values the same as that record
+        # (AGENTS.md section 7): one @id, one url. The visible byline links to the founder page.
         "author": {"@type": "Person", "@id": "https://kenashe.ai/#ken-ashe", "name": meta["author"],
-                   "url": DOMAIN + "/founder/ken-ashe/"},
-        "publisher": {"@id": DOMAIN + "/#organization"},
+                   "url": "https://kenashe.ai/"},
+        "publisher": {"@type": "Organization", "@id": DOMAIN + "/#organization", "name": "Lucky Domains",
+                      "url": DOMAIN + "/"},
         "isPartOf": {"@id": DOMAIN + "/#website"},
     }
     if meta["status"] == "published":
@@ -360,8 +364,8 @@ def main(argv):
             sys.exit("Name an article slug, or use --all")
         for slug in targets:
             meta, _, _ = load(slug)
-            if meta["status"] == "published":
-                print("already published, left alone: %s" % slug)
+            if meta["status"] == "published" and "--redate" not in args:
+                print("already published, left alone: %s (add --redate to correct its date before it goes live)" % slug)
                 continue
             set_meta(slug, {"status": "published", "published": date, "updated": date})
             print("published %s on %s" % (slug, date))

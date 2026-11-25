@@ -50,10 +50,13 @@
         "@type": "Person",
         "@id": "https://kenashe.ai/#ken-ashe",
         "name": "Ken Ashe",
-        "url": "https://luckydomains.io/founder/ken-ashe/"
+        "url": "https://kenashe.ai/"
       },
       "publisher": {
-        "@id": "https://luckydomains.io/#organization"
+        "@type": "Organization",
+        "@id": "https://luckydomains.io/#organization",
+        "name": "Lucky Domains",
+        "url": "https://luckydomains.io/"
       },
       "isPartOf": {
         "@id": "https://luckydomains.io/#website"
@@ -90,7 +93,7 @@
 {
   "title": "How a Private Domain Purchase Actually Works",
   "description": "A plain-English guide to buying a domain name someone else already owns: research, valuation, anonymous outreach, negotiation, escrow, transfer, and when to walk away.",
-  "summary": "The name you want is taken. That is the normal case, and it does not mean the name cannot be bought. Here is how a private purchase works from first lookup to final transfer.",
+  "summary": "The name you want is taken. That is common, and it does not always mean the name cannot be bought. Here is how a private purchase works from first lookup to final transfer.",
   "category": "Explainer",
   "topic": "Domains",
   "author": "Ken Ashe",
@@ -160,6 +163,16 @@
       "url": "https://www.icann.org/resources/pages/benefits-2013-09-16-en"
     },
     {
+      "title": "About ccTLD Compliance",
+      "publisher": "ICANN",
+      "url": "https://www.icann.org/resources/pages/ccTLD-2012-02-25-en"
+    },
+    {
+      "title": "Implement Policy (implementation projects in queue)",
+      "publisher": "ICANN",
+      "url": "https://www.icann.org/policy/implementation"
+    },
+    {
       "title": "Uniform Domain Name Dispute Resolution Policy",
       "publisher": "ICANN",
       "url": "https://www.icann.org/resources/pages/policy-2024-02-21-en"
@@ -183,6 +196,11 @@
       "title": "How to buy and sell domains online",
       "publisher": "Escrow.com",
       "url": "https://www.escrow.com/domains/how-it-works"
+    },
+    {
+      "title": "What is Escrow.com?",
+      "publisher": "Escrow.com",
+      "url": "https://www.escrow.com/what-is-escrow"
     },
     {
       "title": "Inspection Period",
@@ -210,7 +228,7 @@
       "url": "https://support.google.com/webmasters/answer/9044175"
     }
   ],
-  "sources_checked": "2026-11-24"
+  "sources_checked": "2026-11-25"
 }
 </script>
 </head>
@@ -241,8 +259,8 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/insights/">Insights</a></li><li aria-current="page">Explainer</li></ol></nav>
       <p class="art-kind">Explainer · Domains</p>
       <h1>How a Private Domain Purchase Actually Works</h1>
-      <p class="lead">The name you want is taken. That is the normal case, and it does not mean the name cannot be bought. Here is how a private purchase works from first lookup to final transfer.</p>
-      <p class="art-by">By <a href="/founder/ken-ashe/">Ken Ashe</a><span class="art-dot" aria-hidden="true"></span><span class="art-draft">Editorial draft, November 24, 2026. Not yet published.</span><span class="art-dot" aria-hidden="true"></span>7 min read</p>
+      <p class="lead">The name you want is taken. That is common, and it does not always mean the name cannot be bought. Here is how a private purchase works from first lookup to final transfer.</p>
+      <p class="art-by">By <a href="/founder/ken-ashe/">Ken Ashe</a><span class="art-dot" aria-hidden="true"></span><span class="art-draft">Editorial draft, November 24, 2026. Not yet published.</span><span class="art-dot" aria-hidden="true"></span>8 min read</p>
     </div>
   </header>
   <div class="container art-layout">
@@ -255,7 +273,7 @@
         <li><a href="#what-it-is-worth">Decide what it is worth to you</a></li>
         <li><a href="#first-contact">Make contact without raising the price</a></li>
         <li><a href="#negotiate">Negotiate against your number, not theirs</a></li>
-        <li><a href="#escrow">Use escrow, every time</a></li>
+        <li><a href="#escrow">Close through escrow</a></li>
         <li><a href="#the-transfer">The transfer itself</a></li>
         <li><a href="#common-mistakes">Common mistakes</a></li>
         <li><a href="#walk-away">When to walk away, and what to do instead</a></li>
@@ -264,25 +282,26 @@
     </nav>
     <div class="art-body">
 <!-- article:start -->
-<p>You search for the name you want and it is taken. That is the normal case. Most short, sensible names were registered years ago, and many of them sit unused.</p>
-<p>Taken does not mean unavailable. A private purchase is buying a domain directly from the person or company that holds it, usually when it is not advertised for sale. This guide explains how one works in general, whoever runs it. Our own process is described separately in <a href="/how-we-buy-domains/">How we buy domains</a>.</p>
+<p>You search for the name you want and it is taken. That is common. Many short, sensible names were registered years ago, and plenty of them sit unused.</p>
+<p>Taken does not always mean unavailable. A private purchase is buying a domain directly from the person or company that holds it, usually when it is not advertised for sale. This guide explains how one works in general, whoever runs it. Our own process is described separately in <a href="/how-we-buy-domains/">How we buy domains</a>.</p>
+<div class="callout" role="note"><p><strong>A note on scope.</strong> The rules quoted here are ICANN's, and they apply to generic endings such as .com, .net, and .org. Country-code endings, such as .uk, .de, or .io, are run by their own managers. ICANN says country-code policies on registration and registrars "are managed according to the relevant oversight and governance mechanisms within the country." Lookup tools, grace periods, transfer rules, and dispute procedures can all differ, so check the registry's own rules before relying on the details below.</p></div>
 
 <h2 id="what-taken-means">First, find out what "taken" means</h2>
 <p>A registered name is in one of four situations, and each calls for a different approach.</p>
 <ul>
 <li><strong>Listed for sale.</strong> The address shows a price or a "make an offer" page. This is a negotiation, but not a private one.</li>
-<li><strong>Registered and unused.</strong> No site, or a placeholder. Most private purchases start here.</li>
+<li><strong>Registered and unused.</strong> No site, or a placeholder. Many private purchases start here.</li>
 <li><strong>Registered and in use.</strong> A real business runs on it. This is the hardest case, and often the answer is no.</li>
-<li><strong>Expired or about to expire.</strong> Not the shortcut it looks like. ICANN, the body that coordinates domain names, shows an expired name passing through an auto-renew grace period of up to 45 days, a redemption grace period of 30 days, and five days pending deletion before anyone else can register it. The current holder can usually recover it for most of that time.</li>
+<li><strong>Expired or about to expire.</strong> Not the shortcut it looks like. For generic endings, ICANN, the body that coordinates domain names, shows an expired name passing through an auto-renew grace period of up to 45 days, a redemption grace period of 30 days, and five days pending deletion before anyone else can register it. The current holder can often recover it during much of that time.</li>
 </ul>
 
 <h2 id="who-holds-it">Find out who holds it</h2>
-<p>The holder of a domain is called the registrant. ICANN's free lookup tool lets you "look up the current registration data" for a name. It runs on RDAP, the system ICANN has been phasing in since January 2025 to replace the older WHOIS service.</p>
-<p>You will often not see a name. Under ICANN's Registration Data Policy, in force since August 2025, registrant details such as name and phone number are commonly redacted. The same policy requires the registrar to publish "an email address or a link to a web form" for reaching the registrant. That form is the legitimate way in.</p>
+<p>The holder of a domain is called the registrant. ICANN's free lookup tool lets you "look up the current registration data" for a name. It uses RDAP, the protocol that is replacing the older WHOIS service for generic endings.</p>
+<p>You will often not see a name. Under ICANN's Registration Data Policy, in force since August 2025, registrant details such as name and phone number are commonly redacted. The same policy requires the registrar to publish "an email address or a link to a web form" for reaching the registrant. That contact route is the intended way to reach a holder you cannot identify.</p>
 <p>The lookup still tells you useful things: which registrar holds the name, when it was first registered, and when it expires. The Internet Archive's Wayback Machine, "a service that allows people to visit archived versions of Web sites," shows what the name was used for in the past.</p>
 
 <h2 id="check-the-name">Check the name before you fall for it</h2>
-<p><strong>Trademarks.</strong> Owning a domain does not give you the right to use a name someone else has protected. The United States Patent and Trademark Office calls searching its trademark database "one essential step," and the World Intellectual Property Organization runs a Global Brand Database covering many countries. A conflict here is a reason to stop, whatever the price.</p>
+<p><strong>Trademarks.</strong> Owning a domain does not give you the right to use a name someone else has protected. The United States Patent and Trademark Office calls searching its trademark database "one essential step," and the World Intellectual Property Organization runs a Global Brand Database covering many countries. A search is not legal clearance. A likely conflict is a reason to stop and take legal advice, whatever the price.</p>
 <p><strong>History.</strong> Google says "it's fine to use an old domain name for a new, original site that's designed to serve people first." A name's past can still follow it. Google's Search Console help tells people who "recently bought a site that violated our spam policies before you owned it" to fix the problems and then ask for a review. Look at the archive before you buy, not after.</p>
 <p><strong>A warning about disputes.</strong> There is a formal procedure for taking a domain from its holder, called the UDRP. It is not a buying tool. WIPO describes it as "only available to resolve disputes between a trademark owner alleging an abusive registration of a domain name and the domain name registrant," and the complainant must prove three things, including that the name was "registered and is being used in bad faith." Wanting a name more than its owner does is not a case.</p>
 
@@ -291,16 +310,16 @@
 <p>Then set a maximum and write it down before anyone is contacted. The number should come from the value of the name to your business, not from what the seller asks. If you cannot say what the name is worth to you, you are not ready to negotiate.</p>
 
 <h2 id="first-contact">Make contact without raising the price</h2>
-<p>Sellers price to the buyer. An inquiry from a funded company's email address invites a larger number than the same inquiry from an individual. This is why first contact is usually made without naming the buyer, either from a neutral address or through a broker.</p>
-<p>Keep the first message short: you are interested in the name, and you would like to know whether the owner would consider selling. No backstory, no budget, no urgency. Expect silence. Many owners answer the second or third polite message, weeks apart.</p>
+<p>Sellers often price to the buyer. An inquiry from a funded company's email address can invite a larger number than the same inquiry from an individual. This is why first contact is often made without naming the buyer, either from a neutral address or through a broker.</p>
+<p>Keep the first message short: you are interested in the name, and you would like to know whether the owner would consider selling. No backstory, no budget, no urgency. Expect silence at first. A polite follow-up after a few weeks is reasonable. Some owners never reply.</p>
 <p>A broker's role is to do this work for you: research, valuation, outreach, negotiation, and managing the closing. You do not need one for a name with a published price you are happy to pay. One helps most when the name is not for sale and the buyer's identity would move the price.</p>
 
 <h2 id="negotiate">Negotiate against your number, not theirs</h2>
 <p>An opening ask is an anchor, not a valuation. The common responses are no reply, "not for sale," and a high counteroffer. Each one is information. Respond to the counter with your reasoning, move in small steps, and stop at the maximum you wrote down.</p>
 <p>Where the gap is financing and not price, payment over time is possible. Escrow.com, for example, offers a holding service in which it will "hold the domain(s) in escrow while the Buyer makes scheduled payments."</p>
 
-<h2 id="escrow">Use escrow, every time</h2>
-<p>The risk in a private sale is simple: one side has to go first. Escrow removes that. A licensed third party holds the money until the domain has moved. Escrow.com, which describes itself as "a regulated and audited service," sets out five steps.</p>
+<h2 id="escrow">Close through escrow</h2>
+<p>The central risk in a private sale is that one side has to go first. Escrow reduces that risk. An independent third party holds the money until the domain has moved, so neither side has to hand over its part on trust. It does not remove every risk. An escrow service does not check trademarks, the name's history, or whether the price is fair, and it protects only a deal that follows its own process. Escrow.com, which says it is "licensed as an escrow service" and "regularly audited by each state's regulatory agency," sets out five steps.</p>
 <div class="art-table" tabindex="0" role="region" aria-label="Who holds the money and the domain at each step of escrow">
 <table>
 <caption>Who holds what at each step of an escrow sale</caption>
@@ -314,18 +333,18 @@
 </tbody>
 </table>
 </div>
-<p>The buyer gets an inspection period to confirm control of the name, which Escrow.com says "can range between 1 to 30 calendar days." Who pays the escrow fee is part of the deal: the buyer, the seller, or a split. Never send money directly to a stranger for a domain, however reasonable they sound.</p>
+<p>The buyer gets an inspection period to confirm control of the name, which Escrow.com says "can range between 1 to 30 calendar days." Who pays the escrow fee is part of the deal: the buyer, the seller, or a split. Sending money directly to a stranger for a domain leaves you with little recourse if the name never arrives.</p>
 
 <h2 id="the-transfer">The transfer itself</h2>
 <p>Two different things are both called a transfer. A <strong>change of registrant</strong> makes you the holder of the name. A <strong>registrar transfer</strong> moves the name from one registrar company to another. ICANN's guidance is that to pass a name to another registrant, "you can initiate a change of registrant by contacting your current registrar."</p>
 <p>In practice the quickest route is often for the buyer to open an account at the seller's registrar, take the name there, and move it to a preferred registrar later. The timing rules explain why:</p>
 <ul>
-<li>Under ICANN's current Transfer Policy, a registrar may refuse a move to another registrar within 60 days of a name's creation or of a previous registrar transfer.</li>
+<li>Under ICANN's current Transfer Policy, which covers generic endings, a registrar may refuse a move to another registrar within 60 days of a name's creation or of a previous registrar transfer.</li>
 <li>A registrar "must impose a 60-day inter-registrar transfer lock following a Change of Registrant," although it may let the previous holder opt out in advance.</li>
 <li>A registrar transfer needs an authorization code, which the registrar must supply within five calendar days of a request.</li>
 </ul>
-<div class="callout warn" role="note"><p><strong>These rules are changing.</strong> In June 2026 the ICANN Board adopted a revised transfer policy that shortens the waiting periods and removes the lock after a change of registrant. As of November 2026 it had not taken effect and no date had been published. Check the current policy before you plan around a date.</p></div>
-<p>When the name arrives, finish the job. Confirm that the registrant is your business, in an account your business controls, at a registrar accredited by ICANN. Turn on the transfer lock and automatic renewal. Keep the contact details accurate, which ICANN requires of every registrant.</p>
+<div class="callout warn" role="note"><p><strong>These rules are changing.</strong> In June 2026 the ICANN Board adopted a revised transfer policy for generic endings that shortens the waiting periods and removes the lock after a change of registrant. When this article was last checked, on November 25, 2026, the revision was still in ICANN's implementation queue and no effective date had been published. Check the current policy before you plan around a date. Country-code endings follow their own registries' transfer rules.</p></div>
+<p>When the name arrives, finish the job. Confirm that the registrant is your business, in an account your business controls, at a registrar accredited by ICANN. Turn on the transfer lock and automatic renewal. Keep the contact details accurate, which ICANN requires of registrants.</p>
 
 <h2 id="common-mistakes">Common mistakes</h2>
 <ul>
@@ -341,15 +360,15 @@
 <h2 id="walk-away">When to walk away, and what to do instead</h2>
 <p>Walk away when the price is above your written maximum, when there is a trademark conflict, when the name's history is a liability, or when the holder is an operating business that depends on it. No one can guarantee that a particular domain can be bought. Some owners never sell.</p>
 <p>The alternatives are better than they feel in the moment: a different ending that suits your market, a short qualifying word added to the name, or a new name altogether. You can also keep a standing offer open and revisit it in a year. Circumstances change, and so do owners.</p>
-<div class="callout" role="note"><p><strong>The short version.</strong> Research the name and its holder, check trademarks and history, fix your maximum, approach quietly, negotiate against your own number, close through escrow, and make sure the business ends up as the registrant. A name you own outright is worth more than a better one you could not get.</p></div>
+<div class="callout" role="note"><p><strong>The short version.</strong> Research the name and its holder, check trademarks and history, fix your maximum, approach quietly, negotiate against your own number, close through escrow, and make sure the business ends up as the registrant. A good name your business controls is usually worth more to it than a better one it could not get.</p></div>
 <p>If you would like this handled for you, <a href="/services/domain-acquisition/">Domain Acquisition &amp; Brokerage</a> describes the service, <a href="/how-we-buy-domains/">How we buy domains</a> sets out our process and how the fee works, and you can <a href="/contact/">tell Ken the name you want</a>.</p>
 <!-- article:end -->
-<section class="art-sources" id="sources"><h2>Sources</h2><ol><li><a href="https://lookup.icann.org/en" rel="noopener">ICANN Lookup</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/registry-operators/resources/registration-data-access-protocol" rel="noopener">Registration Data Access Protocol (RDAP)</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/consensus-policies/registration-data-policy" rel="noopener">Registration Data Policy</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/accredited-registrars/resources/gtld-lifecycle" rel="noopener">Life Cycle of a Typical gTLD Domain Name</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/errp-2024-02-21-en" rel="noopener">Expired Registration Recovery Policy</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy" rel="noopener">Transfer Policy</a>, ICANN</li><li><a href="https://www.icann.org/en/board-activities-and-meetings/materials/approved-resolutions-regular-meeting-of-the-icann-board-07-06-2026-en" rel="noopener">Approved Resolutions, Regular Meeting of the ICANN Board, 7 June 2026</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en" rel="noopener">FAQs for Registrants: Transferring Your Domain Name</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/domain-name-registration-process-2023-11-02-en" rel="noopener">The Domain Name Registration Process</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en" rel="noopener">Registrants&#x27; Benefits and Responsibilities</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/policy-2024-02-21-en" rel="noopener">Uniform Domain Name Dispute Resolution Policy</a>, ICANN</li><li><a href="https://www.wipo.int/amc/en/domains/guide/" rel="noopener">WIPO Guide to the Uniform Domain Name Dispute Resolution Policy (UDRP)</a>, WIPO</li><li><a href="https://www.uspto.gov/trademarks/search/federal-trademark-searching" rel="noopener">Federal trademark searching</a>, USPTO</li><li><a href="https://www.wipo.int/en/web/global-brand-database" rel="noopener">Global Brand Database</a>, WIPO</li><li><a href="https://www.escrow.com/domains/how-it-works" rel="noopener">How to buy and sell domains online</a>, Escrow.com</li><li><a href="https://www.escrow.com/inspection-period" rel="noopener">Inspection Period</a>, Escrow.com</li><li><a href="https://www.escrow.com/domain-name-holding" rel="noopener">Secure Domain Name Holding</a>, Escrow.com</li><li><a href="https://help.archive.org/help/wayback-machine-general-information/" rel="noopener">Wayback Machine General Information</a>, Internet Archive</li><li><a href="https://developers.google.com/search/blog/2024/03/core-update-spam-policies" rel="noopener">What web creators should know about our March 2024 core update and new spam policies</a>, Google Search Central Blog</li><li><a href="https://support.google.com/webmasters/answer/9044175" rel="noopener">Manual actions report</a>, Google Search Console Help</li></ol><p class="art-checked">Links checked November 24, 2026.</p></section>
+<section class="art-sources" id="sources"><h2>Sources</h2><ol><li><a href="https://lookup.icann.org/en" rel="noopener">ICANN Lookup</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/registry-operators/resources/registration-data-access-protocol" rel="noopener">Registration Data Access Protocol (RDAP)</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/consensus-policies/registration-data-policy" rel="noopener">Registration Data Policy</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/accredited-registrars/resources/gtld-lifecycle" rel="noopener">Life Cycle of a Typical gTLD Domain Name</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/errp-2024-02-21-en" rel="noopener">Expired Registration Recovery Policy</a>, ICANN</li><li><a href="https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy" rel="noopener">Transfer Policy</a>, ICANN</li><li><a href="https://www.icann.org/en/board-activities-and-meetings/materials/approved-resolutions-regular-meeting-of-the-icann-board-07-06-2026-en" rel="noopener">Approved Resolutions, Regular Meeting of the ICANN Board, 7 June 2026</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en" rel="noopener">FAQs for Registrants: Transferring Your Domain Name</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/domain-name-registration-process-2023-11-02-en" rel="noopener">The Domain Name Registration Process</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en" rel="noopener">Registrants&#x27; Benefits and Responsibilities</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/ccTLD-2012-02-25-en" rel="noopener">About ccTLD Compliance</a>, ICANN</li><li><a href="https://www.icann.org/policy/implementation" rel="noopener">Implement Policy (implementation projects in queue)</a>, ICANN</li><li><a href="https://www.icann.org/resources/pages/policy-2024-02-21-en" rel="noopener">Uniform Domain Name Dispute Resolution Policy</a>, ICANN</li><li><a href="https://www.wipo.int/amc/en/domains/guide/" rel="noopener">WIPO Guide to the Uniform Domain Name Dispute Resolution Policy (UDRP)</a>, WIPO</li><li><a href="https://www.uspto.gov/trademarks/search/federal-trademark-searching" rel="noopener">Federal trademark searching</a>, USPTO</li><li><a href="https://www.wipo.int/en/web/global-brand-database" rel="noopener">Global Brand Database</a>, WIPO</li><li><a href="https://www.escrow.com/domains/how-it-works" rel="noopener">How to buy and sell domains online</a>, Escrow.com</li><li><a href="https://www.escrow.com/what-is-escrow" rel="noopener">What is Escrow.com?</a>, Escrow.com</li><li><a href="https://www.escrow.com/inspection-period" rel="noopener">Inspection Period</a>, Escrow.com</li><li><a href="https://www.escrow.com/domain-name-holding" rel="noopener">Secure Domain Name Holding</a>, Escrow.com</li><li><a href="https://help.archive.org/help/wayback-machine-general-information/" rel="noopener">Wayback Machine General Information</a>, Internet Archive</li><li><a href="https://developers.google.com/search/blog/2024/03/core-update-spam-policies" rel="noopener">What web creators should know about our March 2024 core update and new spam policies</a>, Google Search Central Blog</li><li><a href="https://support.google.com/webmasters/answer/9044175" rel="noopener">Manual actions report</a>, Google Search Console Help</li></ol><p class="art-checked">Links checked November 25, 2026.</p></section>
     </div>
   </div>
 </article>
 <section class="section section-soft art-next" aria-labelledby="art-next-h"><div class="container"><h2 id="art-next-h">Where Lucky Domains can help</h2><div class="art-svcs"><a class="card art-svc reveal" href="/services/domain-acquisition/"><span class="tag">Service</span><strong>Domain Acquisition &amp; Brokerage</strong><span>The right name, even when someone else owns it.</span></a><a class="card art-svc reveal" href="/how-we-buy-domains/"><span class="tag">Process</span><strong>How we buy domains</strong><span>The Lucky Domains acquisition process, step by step.</span></a><a class="card art-svc reveal" href="/contact/"><span class="tag">Contact</span><strong>Talk to Ken</strong><span>The first consultation is free, with no obligation.</span></a></div></div></section>
-<section class="section art-related" aria-labelledby="art-rel-h"><div class="container"><h2 id="art-rel-h">Keep reading</h2><div class="grid grid-2"><article class="card ins-card reveal"><p class="art-kind">Research · Agent identity</p><h3><a href="/insights/domains-identity-for-ai-agents/">Can Domains Become the Identity Layer for AI Agents?</a></h3><p>People and businesses use domains as durable identities. AI agents may need something similar: a readable name, a way to be found, and a way to check who stands behind them. Nothing here is settled.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>6 min read</p></article><article class="card ins-card reveal"><p class="art-kind">Guide · Websites</p><h3><a href="/insights/fix-or-rebuild-your-website/">When to Fix a Website and When to Rebuild It</a></h3><p>Most websites that disappoint their owners do not need replacing. Some do. Here is how to tell the difference before you pay for either.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>6 min read</p></article></div><p class="center v3-more"><a class="link-arrow" href="/insights/">All insights</a></p></div></section>
+<section class="section art-related" aria-labelledby="art-rel-h"><div class="container"><h2 id="art-rel-h">Keep reading</h2><div class="grid grid-2"><article class="card ins-card reveal"><p class="art-kind">Research · Agent identity</p><h3><a href="/insights/domains-identity-for-ai-agents/">Can Domains Become the Identity Layer for AI Agents?</a></h3><p>People and businesses use domains as durable identities. AI agents may need something similar: a readable name, a way to be found, and a way to check who stands behind them. Nothing here is settled.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>7 min read</p></article><article class="card ins-card reveal"><p class="art-kind">Guide · Websites</p><h3><a href="/insights/fix-or-rebuild-your-website/">When to Fix a Website and When to Rebuild It</a></h3><p>A disappointing website does not automatically need replacing. Some can be repaired and some cannot. Here is how to tell the difference before you pay for either.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>7 min read</p></article></div><p class="center v3-more"><a class="link-arrow" href="/insights/">All insights</a></p></div></section>
 <section class="section section--tight" aria-label="Contact"><div class="container"><div class="cta-band reveal"><h2>Have a question about your own situation?</h2><p>Tell Ken what you are working on. The first consultation is free, with no obligation.</p><div class="btn-row" style="justify-content:center"><a class="btn btn-lg" href="/contact/">Start a project</a><a class="btn btn-ghost btn-lg cta-ghost" href="mailto:info@luckydomains.io">Email Ken</a></div></div></div></section>
 </main>
 <!-- footer:start -->

@@ -20,8 +20,9 @@ Five services, in the commercial order the site presents them:
    place. Named engagement: Website Build.
 2. **SEO & Search Visibility.** One-time SEO audits, technical SEO reviews,
    scoped implementation projects, and search and content strategy. Ongoing
-   optimization and monitoring by agreement. There is no named monthly package
-   (the "Growth SEO" package was retired in November 2026).
+   optimization and monitoring by agreement. The engagement is named SEO Audits
+   & Optimization. There is no named monthly package (the "Growth SEO" package
+   was retired in November 2026).
 3. **AI Visibility & Brand Authority.** Improve the content and supporting
    evidence that search engines and AI systems use when they understand,
    describe, cite, or answer questions about a business.
@@ -258,7 +259,7 @@ closing call to action. The site is predominantly light.
 | Service descriptions | Approved by the owner | None |
 | Founder bio and photo | Real, supplied or confirmed by the owner | None |
 | Contact email | Real and working | None |
-| News post (June 2026) | Real, published, left exactly as published | None |
+| News post (June 2026) | Real, published. Headline, text and dates left exactly as published | None |
 | Insights articles | Written for the November 2026 redesign | Owner approves text, byline and publication dates before launch (`docs/INSIGHTS.md`) |
 | Pricing | No figures. Every engagement is scoped in writing | Owner to confirm if figures are ever published |
 | Testimonials, client logos, case studies | None, by owner decision | Do not add |

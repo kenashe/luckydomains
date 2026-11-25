@@ -267,6 +267,13 @@ Do not treat the current site copy as final or verified.
   `news/website-relaunch/index.html` and `founder/ken-ashe/index.html`. It must stay
   byte-identical to `src/data/schema.ts` in the kenashe.ai repo. Edit it there
   first, then mirror to all three files here in the same pass (DECISIONS D9).
+- **Shared Organization schema node:** the Lucky Domains `Organization` node
+  (`@id` `https://luckydomains.io/#organization`) appears in full on the same
+  three pages, and in shorter form on About and Contact. Its description,
+  `knowsAbout` list and address must be the same wherever they appear. Change
+  them on every page in the same commit; the test suite compares them. Never
+  add a second `Organization` or `Person` identity for the company or the
+  founder. Insights articles refer to both records by `@id`.
 - **Brand colours:** green `#16C784`, text safe green `#0A7A4B` for links and
   button fills (the older `#0FA968` fails WCAG AA on white), deep navy
   `#0C2340`, mint `#ECFBF4`.

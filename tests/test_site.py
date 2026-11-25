@@ -344,6 +344,56 @@ if person:
     for page in ("founder/ken-ashe/index.html", "news/website-relaunch/index.html"):
         check(person.group(0) in read(page), "the shared Person node differs in %s (DECISIONS D9)" % page)
 
+# One Organization, described the same way on every page that describes it.
+ORG_ID = DOMAIN + "/#organization"
+ORG_DESCRIPTION = ("Lucky Domains is a digital presence studio for the AI era, offering website design and "
+                   "development, SEO, AI visibility, digital identity, and domain acquisition and brokerage.")
+
+
+def nodes(obj):
+    if isinstance(obj, dict):
+        yield obj
+        for value in obj.values():
+            for n in nodes(value):
+                yield n
+    elif isinstance(obj, list):
+        for value in obj:
+            for n in nodes(value):
+                yield n
+
+
+org_topics, org_addresses, people = set(), set(), set()
+for page in list(PAGES) + ["insights/%s/index.html" % a for a in ARTICLES]:
+    for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', read(page), re.S):
+        try:
+            data = json.loads(raw)
+        except ValueError:
+            continue
+        for n in nodes(data):
+            if n.get("@id") == ORG_ID:
+                check(n.get("name", "Lucky Domains") == "Lucky Domains", "the Organization is renamed in %s" % page)
+                if "description" in n:
+                    check(n["description"] == ORG_DESCRIPTION, "the Organization description differs in %s" % page,
+                          n["description"][:80])
+                if "knowsAbout" in n:
+                    org_topics.add(json.dumps(n["knowsAbout"]))
+                if "address" in n:
+                    org_addresses.add(json.dumps(n["address"], sort_keys=True))
+            if n.get("@id") == "https://kenashe.ai/#ken-ashe" and "url" in n:
+                people.add(n["url"])
+            if n.get("@type") == "Organization" and n.get("name") == "Lucky Domains":
+                check(n.get("@id") == ORG_ID, "a second Lucky Domains Organization identity in %s" % page, str(n.get("@id")))
+            if n.get("@type") == "ProfilePage" and "description" in n:
+                check("digital presence studio" in n["description"] and "SEO practice" not in n["description"],
+                      "the ProfilePage description is out of date in %s" % page, n["description"][:80])
+            if n.get("@type") == "Article":
+                author, publisher = n.get("author", {}), n.get("publisher", {})
+                check(author.get("@id") == "https://kenashe.ai/#ken-ashe", "article author is not the shared Person record", page)
+                check(publisher.get("@id") == ORG_ID, "article publisher is not the shared Organization record", page)
+check(len(org_topics) == 1, "the Organization knowsAbout list differs between pages", str(len(org_topics)))
+check(len(org_addresses) == 1, "the Organization address differs between pages", str(len(org_addresses)))
+check(people == set(["https://kenashe.ai/"]), "the shared Person record is given more than one url", str(sorted(people)))
+
 # ---------------------------------------------------------------------------
 print("15. Insights articles")
 check(len(ARTICLES) > 0, "no Insights articles found")
@@ -408,6 +458,9 @@ for page in ALL_HTML:
     check(not re.search(r"case stud|testimonial|our portfolio|selected work", visible, re.I),
           "portfolio or testimonial wording in %s" % page)
     check("Growth SEO" not in body, "the retired Growth SEO package is named in %s" % page)
+    check("SEO Audit or Project" not in body, "the earlier engagement name is used in %s" % page)
+    check(not re.search(r"domain acquisition, brokerage,? and SEO|SEO practice run with", body, re.I),
+          "the earlier company description is used in %s" % page)
     check(not re.search(r"Design concept only|Staging review|noindex,nofollow,noarchive", body),
           "a review or staging banner leaked into %s" % page)
     check(not re.search(r"guaranteed? (rankings|ranking|citations|placement)", re.sub(r"(no|not|never|cannot|without|do not)[^.]{0,80}guarantee", "", body, flags=re.I), re.I),
@@ -416,6 +469,7 @@ for page in PAGES:
     if page == release:
         continue
     check('name="robots"' not in read(page), "an indexable page carries a robots meta tag", page)
+check("<h3>SEO Audits &amp; Optimization</h3>" in read("services/index.html"), "the SEO engagement is not named SEO Audits & Optimization")
 
 # ---------------------------------------------------------------------------
 print("\n" + "=" * 62)

@@ -304,7 +304,11 @@ Website, Search, Entity, AI.
 **What stayed.** The logo, the navy hero, the green accent, the typography, the
 original component styles (`css/styles.css` keeps the earlier rules and adds to
 them), the domain brokerage offer, the contact integration, every existing URL,
-the legacy `.html` stubs, and the June 2026 press release exactly as published.
+the legacy `.html` stubs, and the June 2026 press release: its headline, text,
+dates and `NewsArticle` data are exactly as published. That page also carries the
+shared Organization and Person records, which are kept identical to the home page
+on every page that carries them, so the Organization record there was updated
+along with the others. The release itself was not rewritten.
 
 **What was rejected.** Venture studio positioning. Presenting the founder's
 experiments (ZeroHuman, the AI Agent Economy experiment, ENS naming) as the

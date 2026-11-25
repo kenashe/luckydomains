@@ -147,6 +147,12 @@ House rules, all of which apply to articles:
   Panels. No claim that special markup or a technique guarantees AI visibility.
 - No invented experience, client, statistic, quotation, search result or AI
   answer. If there is no evidence, say so.
+- No unsupported generalizations and no unnecessary absolutes. A claim about
+  what "most" sites, owners or businesses do needs a source or softer wording.
+  Say a measure reduces a risk unless it truly removes it. Present a checklist
+  or a set of questions as practical guidance, not as a validated scoring
+  system.
+- Put every quotation in the source's exact words, and list that source.
 - Say what the reader can control and what they cannot.
 - Link to the relevant service pages where it helps the reader, not in every
   paragraph.
@@ -176,6 +182,11 @@ A draft is safe to keep in the repository while this happens. It is marked
 `noindex`, it is left out of the sitemap, and its byline reads "Editorial
 draft".
 
+Standing decisions from the owner (November 2026): the byline is "By Ken Ashe".
+The publication date is the actual day the article goes live on production.
+When several articles launch together they share that date; dates are not
+staggered.
+
 ### Step 6. Publish
 Only after the owner has approved, and with the date the owner gave:
 
@@ -188,6 +199,15 @@ git add -A && git commit -m "Publish: <article title>" && git push
 `publish` removes the draft marking, writes the date into the byline, the Open
 Graph tags and the structured data, and adds the article to the sitemap. Never
 type a publication date into the file by hand, and never backdate one.
+
+Run `publish` on the day the change is merged, because the date must be the day
+the article goes live. If the merge slips to another day before anything has
+gone live, correct the date with the same command plus `--redate`. Do not use
+`--redate` on an article that is already live; use `update` for a real revision.
+
+On the day, before publishing, reopen any source whose facts can change (policy
+pages, crawler documentation, product controls), correct the article if the
+source has changed, and set `sources_checked` to that day.
 
 ### Step 7. Connect it
 - Add the new slug to the `related` setting of one or two existing articles,

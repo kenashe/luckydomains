@@ -50,10 +50,13 @@
         "@type": "Person",
         "@id": "https://kenashe.ai/#ken-ashe",
         "name": "Ken Ashe",
-        "url": "https://luckydomains.io/founder/ken-ashe/"
+        "url": "https://kenashe.ai/"
       },
       "publisher": {
-        "@id": "https://luckydomains.io/#organization"
+        "@type": "Organization",
+        "@id": "https://luckydomains.io/#organization",
+        "name": "Lucky Domains",
+        "url": "https://luckydomains.io/"
       },
       "isPartOf": {
         "@id": "https://luckydomains.io/#website"
@@ -166,7 +169,7 @@
       "url": "https://schema.org/sameAs"
     }
   ],
-  "sources_checked": "2026-11-24"
+  "sources_checked": "2026-11-25"
 }
 </script>
 </head>
@@ -220,21 +223,21 @@
     </nav>
     <div class="art-body">
 <!-- article:start -->
-<p>Search for your own name. What comes back is rarely one tidy person. It is a company bio, a profile you last touched years ago, a conference page with an old job title, a podcast episode, and quite possibly someone else who shares your name.</p>
+<p>Search for your own name. What comes back is often not one tidy person. It is a company bio, a profile you last touched years ago, a conference page with an old job title, a podcast episode, and quite possibly someone else who shares your name.</p>
 <p>To you, the pieces that are yours obviously belong together. To a search engine or an AI system assembling an answer, they are separate documents that may or may not describe the same person. Entity SEO is the work of making them agree.</p>
 
 <h2 id="why-identity-fragments">Why a founder's identity fragments</h2>
-<p>Nobody sets out to have an inconsistent identity. It accumulates. You sign up for profiles over fifteen years, under slightly different names, with whatever title you held that month. Your company site describes the company and mentions you in a line. Event organizers and journalists write their own version of who you are. Each page is reasonable. Together they disagree about your name, your role, and sometimes your employer.</p>
-<p>No one is responsible for reconciling them except you.</p>
+<p>Few people set out to have an inconsistent identity. It accumulates. You sign up for profiles over fifteen years, under slightly different names, with whatever title you held that month. Your company site describes the company and mentions you in a line. Event organizers and journalists write their own version of who you are. Each page is reasonable. Together they disagree about your name, your role, and sometimes your employer.</p>
+<p>In practice, the job of reconciling them falls to you.</p>
 
 <h2 id="things-not-strings">Things, not strings</h2>
 <p>Search engines stopped treating a name as a string of letters a long time ago. When Google introduced its Knowledge Graph in 2012, it described the goal as understanding "things, not strings," and gave the example of telling the Taj Mahal monument from the musician of the same name. An entity is a thing a system can tell apart from other things: a person, a company, a place.</p>
-<p>Google says the facts it holds about entities "come from a variety of sources that compile factual information." That is the practical point. A system's picture of you is built from many pages, most of which you did not write.</p>
+<p>Google says the facts it holds about entities "come from a variety of sources that compile factual information." That is the practical point. A system's picture of you is built from many pages, many of which you did not write.</p>
 
 <h2 id="one-home">Give your identity one home</h2>
-<p>Start by choosing the single page that is the authoritative account of you. For most founders it is an About page on a personal site, or a founder page on the company site. Everything else should point to it, and it should point back to the profiles that are really yours.</p>
+<p>Start by choosing the single page that is the authoritative account of you. For many founders it is an About page on a personal site, or a founder page on the company site. Everything else should point to it, and it should point back to the profiles that are really yours.</p>
 <p>Google has a structured data type for this kind of page. It describes ProfilePage markup as designed for sites "where creators (either people or organizations) share first-hand perspectives," and lists an About Me page and "an employee page on a company website" among the valid uses.</p>
-<p>The page itself matters more than the markup. It should say, in plain sentences, who you are, what you do now, which company you founded, and where else you can be found.</p>
+<p>Start with the page itself, not the markup. It should say, in plain sentences, who you are, what you do now, which company you founded, and where else you can be found.</p>
 
 <h2 id="say-the-same-thing">Say the same thing everywhere</h2>
 <p>Pick one form of your name and use it. If people also know you by another form, such as a full first name or a handle, state it once on your home page as an alternate. Then make four things match wherever you have a profile:</p>
@@ -244,14 +247,14 @@
 <li>Your current role and company</li>
 <li>The same recent photograph</li>
 </ul>
-<p>Old profiles are the usual problem. Update the ones you want to keep and close the ones you do not. A dormant profile with an old title is still a source.</p>
+<p>Old profiles are a common problem. Update the ones you want to keep and close the ones you do not. A dormant profile with an old title is still a source.</p>
 
 <figure class="art-fig">
 <div class="lanes two">
 <div class="lane g"><p class="lane-t">What you control</p><p class="lane-s">Describes you</p><ul><li>Your own website and its About or founder page</li><li>Structured data on your pages</li><li>Your official profiles</li><li>Bylines and author pages</li><li>How consistent all of it is</li></ul></div>
 <div class="lane m"><p class="lane-t">What others control</p><p class="lane-s">Corroborates you, or does not</p><ul><li>Press coverage and interviews</li><li>Directories and professional bodies</li><li>Event and speaker pages</li><li>Reference sources such as Wikidata</li><li>What a search engine or an AI system concludes</li></ul></div>
 </div>
-<figcaption>Owner-controlled signals describe an identity. Independent sources are what make it credible. Entity work needs both, and only the first column is in your hands.</figcaption>
+<figcaption>Owner-controlled signals describe an identity. Independent sources are what make it more credible. Entity work needs both, and only the first column is fully in your hands.</figcaption>
 </figure>
 
 <h2 id="connect-the-dots">Connect the dots in structured data</h2>
@@ -261,7 +264,7 @@
 <ul>
 <li>"Don't mark up content that is not visible to readers of the page." The code must describe what the page says.</li>
 <li>"Using structured data enables a feature to be present, it does not guarantee that it will be present."</li>
-<li>Google's documentation names only some properties. Others, such as credentials or areas of expertise, are valid vocabulary, but nobody outside a given system can tell you how much weight it gives them.</li>
+<li>Google's documentation names only some properties. Others, such as credentials or areas of expertise, are valid vocabulary, but how much weight a given system gives them is not published.</li>
 </ul>
 
 <h2 id="authorship">Put your name on your work</h2>
@@ -270,21 +273,21 @@
 <p>The reverse is also stated plainly. Google calls fabricated creator profiles, with made-up names or false credentials, a form of deception. Entity work only helps a real person state true things clearly.</p>
 
 <h2 id="sharing-a-name">When someone shares your name</h2>
-<p>There is no published method for how Google separates two people with one name, and no way to instruct it. What exists is an acknowledgment that it goes wrong: Google's help pages list "the content of the knowledge panel is mixed with another of the same or similar name" as an issue to report.</p>
+<p>There is no published method for how Google separates two people with one name, and no documented way to instruct it. What exists is an acknowledgment that it goes wrong: Google's help pages list "the content of the knowledge panel is mixed with another of the same or similar name" as an issue to report.</p>
 <p>What you can do is make the difference easy to see. Use the same distinguishing details everywhere: your profession, your company, your city or state, a credential after your name if you use one. Consistency is what lets a system keep two records apart.</p>
 
 <h2 id="knowledge-panels">Knowledge Panels: what you can and cannot do</h2>
-<p>A Knowledge Panel is the box of facts Google sometimes shows beside results for a person or a company. Founders ask for one more than anything else in this field, so the facts are worth stating exactly:</p>
+<p>A Knowledge Panel is the box of facts Google sometimes shows beside results for a person or a company. Panels attract a lot of attention, so the facts are worth stating exactly:</p>
 <ul>
 <li>"Knowledge panels are automatically generated, and information that appears in a knowledge panel comes from various sources across the web."</li>
 <li>Google's policy "doesn't manually create or delete Knowledge Panels." Panels appear, in its words, "when there is enough information available on the open web."</li>
 <li>If a panel about you already exists, "you can claim this panel and suggest changes." Google adds that "not all knowledge panels are claimable as of now."</li>
 </ul>
-<p>No form, markup, or service creates a panel. Consistent profiles and structured data improve the evidence Google works from. Whether a panel follows is Google's decision.</p>
+<p>No form or markup that Google documents creates a panel on request. Consistent profiles and structured data improve the evidence Google works from. Whether a panel follows is Google's decision.</p>
 
 <h2 id="independent-recognition">The part you cannot write yourself</h2>
 <p>Everything above is you describing yourself. It is necessary, and it is not sufficient. What makes an identity credible is other people describing you the same way: an interview, a profile in a trade publication, a professional body's member page, a speaker page, a byline in an outlet you do not own.</p>
-<p>You cannot manufacture that, and paying for fake versions of it is the fastest way to damage the thing you are building. What you can do is make it easy to get right. Give journalists and organizers one bio, one name, one photo, and one link, every time.</p>
+<p>It cannot be honestly manufactured, and paying for fake versions of it risks damaging the thing you are building. What you can do is make it easy to get right. Give journalists and organizers one bio, one name, one photo, and one link, every time.</p>
 <p>How much this helps in search and in AI answers is not something anyone can quantify for you in advance. The reasonable expectation is modest: when your own pages and independent pages agree, there is less for a system to get wrong.</p>
 
 <div class="callout" role="note"><p><strong>A first-party example.</strong> Ken Ashe's identity is described once, in a single Person record with one stable identifier. The same record appears, character for character, on KenAshe.ai and on LuckyDomains.io, and a rule in both repositories keeps the copies identical. It lists 19 profile links and four professional credentials. The <a href="/founder/ken-ashe/">founder page</a> on this site is marked up as a profile page about that same person. This describes a setup, not a result. No Knowledge Panel is claimed.</p></div>
@@ -301,12 +304,12 @@
 </ul>
 <p>The <a href="/tools/digital-presence-check/">Digital Presence Check</a> includes two questions on identity if you want a quick read on where you stand. Reconciling it properly is the work of <a href="/services/entity-seo/">Entity SEO &amp; Digital Identity</a>, and what search engines and AI systems then say about that identity is the subject of <a href="/services/ai-visibility/">AI Visibility &amp; Brand Authority</a>.</p>
 <!-- article:end -->
-<section class="art-sources" id="sources"><h2>Sources</h2><ol><li><a href="https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/" rel="noopener">Introducing the Knowledge Graph: things, not strings</a>, Google (2012)</li><li><a href="https://support.google.com/knowledgepanel/answer/9787176?hl=en" rel="noopener">How Google&#x27;s Knowledge Graph works</a>, Google Knowledge Panel Help</li><li><a href="https://support.google.com/knowledgepanel/answer/9163198?hl=en" rel="noopener">About knowledge panels</a>, Google Knowledge Panel Help</li><li><a href="https://support.google.com/knowledgepanel/answer/7534842?hl=en" rel="noopener">Submit feedback on content about you</a>, Google Knowledge Panel Help</li><li><a href="https://support.google.com/knowledgepanel/answer/7534902?hl=en" rel="noopener">Get verified on Google</a>, Google Knowledge Panel Help</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/profile-page" rel="noopener">Profile page (ProfilePage) structured data</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/organization" rel="noopener">Organization structured data</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/article#author-bp" rel="noopener">Article structured data: author markup best practices</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies" rel="noopener">General structured data guidelines</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">Creating helpful, reliable, people-first content</a>, Google Search Central</li><li><a href="https://schema.org/sameAs" rel="noopener">sameAs</a>, Schema.org</li></ol><p class="art-checked">Links checked November 24, 2026.</p></section>
+<section class="art-sources" id="sources"><h2>Sources</h2><ol><li><a href="https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/" rel="noopener">Introducing the Knowledge Graph: things, not strings</a>, Google (2012)</li><li><a href="https://support.google.com/knowledgepanel/answer/9787176?hl=en" rel="noopener">How Google&#x27;s Knowledge Graph works</a>, Google Knowledge Panel Help</li><li><a href="https://support.google.com/knowledgepanel/answer/9163198?hl=en" rel="noopener">About knowledge panels</a>, Google Knowledge Panel Help</li><li><a href="https://support.google.com/knowledgepanel/answer/7534842?hl=en" rel="noopener">Submit feedback on content about you</a>, Google Knowledge Panel Help</li><li><a href="https://support.google.com/knowledgepanel/answer/7534902?hl=en" rel="noopener">Get verified on Google</a>, Google Knowledge Panel Help</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/profile-page" rel="noopener">Profile page (ProfilePage) structured data</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/organization" rel="noopener">Organization structured data</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/article#author-bp" rel="noopener">Article structured data: author markup best practices</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies" rel="noopener">General structured data guidelines</a>, Google Search Central</li><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">Creating helpful, reliable, people-first content</a>, Google Search Central</li><li><a href="https://schema.org/sameAs" rel="noopener">sameAs</a>, Schema.org</li></ol><p class="art-checked">Links checked November 25, 2026.</p></section>
     </div>
   </div>
 </article>
 <section class="section section-soft art-next" aria-labelledby="art-next-h"><div class="container"><h2 id="art-next-h">Where Lucky Domains can help</h2><div class="art-svcs"><a class="card art-svc reveal" href="/services/entity-seo/"><span class="tag">Service</span><strong>Entity SEO &amp; Digital Identity</strong><span>One verifiable identity across your site and your profiles.</span></a><a class="card art-svc reveal" href="/services/ai-visibility/"><span class="tag">Service</span><strong>AI Visibility &amp; Brand Authority</strong><span>Clear, consistent evidence for search engines and AI systems to draw on.</span></a><a class="card art-svc reveal" href="/founder/ken-ashe/"><span class="tag">Founder</span><strong>About the founder</strong><span>Ken Ashe, CPA, PMP, founder and operator.</span></a><a class="card art-svc reveal" href="/tools/digital-presence-check/"><span class="tag">Free tool</span><strong>Digital Presence Check</strong><span>Ten questions, about two minutes. Nothing is stored or sent.</span></a></div></div></section>
-<section class="section art-related" aria-labelledby="art-rel-h"><div class="container"><h2 id="art-rel-h">Keep reading</h2><div class="grid grid-2"><article class="card ins-card reveal"><p class="art-kind">Guide · AI visibility</p><h3><a href="/insights/what-ai-search-reads-on-your-website/">What AI Search Reads When It Reads Your Website</a></h3><p>AI systems do not all read websites the same way. Here is what Google, Microsoft, OpenAI, Anthropic, and Perplexity say they do, and what that means for your pages.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>6 min read</p></article><article class="card ins-card reveal"><p class="art-kind">Research · Agent identity</p><h3><a href="/insights/domains-identity-for-ai-agents/">Can Domains Become the Identity Layer for AI Agents?</a></h3><p>People and businesses use domains as durable identities. AI agents may need something similar: a readable name, a way to be found, and a way to check who stands behind them. Nothing here is settled.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>6 min read</p></article></div><p class="center v3-more"><a class="link-arrow" href="/insights/">All insights</a></p></div></section>
+<section class="section art-related" aria-labelledby="art-rel-h"><div class="container"><h2 id="art-rel-h">Keep reading</h2><div class="grid grid-2"><article class="card ins-card reveal"><p class="art-kind">Guide · AI visibility</p><h3><a href="/insights/what-ai-search-reads-on-your-website/">What AI Search Reads When It Reads Your Website</a></h3><p>AI systems do not all read websites the same way. Here is what Google, Microsoft, OpenAI, Anthropic, and Perplexity say they do, and what that means for your pages.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>7 min read</p></article><article class="card ins-card reveal"><p class="art-kind">Research · Agent identity</p><h3><a href="/insights/domains-identity-for-ai-agents/">Can Domains Become the Identity Layer for AI Agents?</a></h3><p>People and businesses use domains as durable identities. AI agents may need something similar: a readable name, a way to be found, and a way to check who stands behind them. Nothing here is settled.</p><p class="ins-meta">Editorial draft<span class="art-dot" aria-hidden="true"></span>7 min read</p></article></div><p class="center v3-more"><a class="link-arrow" href="/insights/">All insights</a></p></div></section>
 <section class="section section--tight" aria-label="Contact"><div class="container"><div class="cta-band reveal"><h2>Have a question about your own situation?</h2><p>Tell Ken what you are working on. The first consultation is free, with no obligation.</p><div class="btn-row" style="justify-content:center"><a class="btn btn-lg" href="/contact/">Start a project</a><a class="btn btn-ghost btn-lg cta-ghost" href="mailto:info@luckydomains.io">Email Ken</a></div></div></div></section>
 </main>
 <!-- footer:start -->
