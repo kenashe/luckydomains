@@ -260,7 +260,8 @@ those after launch (section 9).
 
 ## 9. Launch checklist for the November 2026 redesign
 
-Prepared, not executed. Every step that changes production needs the owner's
+Executed on 2026-11-25 with the owner's authorization, and kept as the record
+and as the template for the next large change. Every step that changes production needs the owner's
 explicit approval. Work top to bottom and stop at the first failure.
 
 **Before the merge**

@@ -285,7 +285,7 @@ closing call to action. The site is predominantly light.
 | Founder bio and photo | Real, supplied or confirmed by the owner | None |
 | Contact email | Real and working | None |
 | News post (June 2026) | Real, published. Headline, text and dates left exactly as published | None |
-| Insights articles | Written for the November 2026 redesign | Owner approves text, byline and publication dates before launch (`docs/INSIGHTS.md`) |
+| Insights articles | Five articles, approved by the owner and published 2026-11-25, byline Ken Ashe | Recheck sources when an article is revised (`docs/INSIGHTS.md`) |
 | Pricing | No figures. Every engagement is scoped in writing | Owner to confirm if figures are ever published |
 | Testimonials, client logos, case studies | None, by owner decision | Do not add |
 | Statistics band | Removed at the owner's request | Do not reinstate invented numbers |

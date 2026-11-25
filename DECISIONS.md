@@ -269,7 +269,7 @@ couple of months, in which case a proxy-level 301 is the next step.
 ---
 
 ## D12. Reposition as a digital presence studio, and rebuild the site around five services
-**Date:** November 2026 · **Status:** production candidate, awaiting owner approval to launch
+**Date:** November 2026 · **Status:** done, launched 2026-11-25 with the owner's approval
 
 **Decision.** Lucky Domains is presented as a digital presence studio for the
 AI era: it "helps businesses build a digital presence that people, search
@@ -321,7 +321,7 @@ decisions and belong here before they reach the HTML.
 ---
 
 ## D13. Self host the two font families
-**Date:** November 2026 · **Status:** production candidate
+**Date:** November 2026 · **Status:** done, launched 2026-11-25
 
 **Decision.** Plus Jakarta Sans and Inter are served from `assets/fonts/` as two
 variable WOFF2 files (Latin subset), preloaded in the page head. The Google
@@ -344,7 +344,7 @@ the two `@font-face` rules in `css/styles.css`.
 ---
 
 ## D14. Insights articles: complete HTML pages, kept in sync by an optional script
-**Date:** November 2026 · **Status:** production candidate
+**Date:** November 2026 · **Status:** done, launched 2026-11-25
 
 **Decision.** Each article is a complete HTML page at
 `insights/<slug>/index.html`. Its settings (title, summary, status, dates,
@@ -396,7 +396,7 @@ it to be published.
 ---
 
 ## D16. A free, browser only Digital Presence Check
-**Date:** November 2026 · **Status:** production candidate
+**Date:** November 2026 · **Status:** done, launched 2026-11-25
 
 **Decision.** `/tools/digital-presence-check/` asks ten questions in five areas
 with Yes, No and Not sure, and names areas worth investigating with a link to
