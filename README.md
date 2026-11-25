@@ -1,7 +1,10 @@
 # Lucky Domains
 
-Marketing website for **Lucky Domains**, a business offering premium domain
-acquisition, domain brokerage, and SEO services.
+Marketing website for **Lucky Domains**, a digital presence studio for the AI
+era. Lucky Domains helps businesses build a digital presence that people,
+search engines, and AI systems can find, understand, and trust: website design
+and development, SEO, AI visibility, digital identity, and domain acquisition
+and brokerage.
 
 **Live site:** https://luckydomains.io
 **Hosting:** GitHub Pages, served from the `main` branch of this repository
@@ -21,7 +24,9 @@ acquisition, domain brokerage, and SEO services.
 | [`PRODUCT.md`](PRODUCT.md) | Product goals, audience, scope, brand and UX principles |
 | [`DECISIONS.md`](DECISIONS.md) | Significant decisions and the reasoning behind them |
 | [`DATA_SOURCES.md`](DATA_SOURCES.md) | External services, APIs, DNS records, limits and fallbacks |
-| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | Deployment, DNS, certificates, incident recovery |
+| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | Deployment, staging review, launch checklist, rollback, DNS, incident recovery |
+| [`docs/INSIGHTS.md`](docs/INSIGHTS.md) | How Insights articles are researched, written, approved and published |
+| [`docs/URL_MAP.md`](docs/URL_MAP.md) | Every URL before and after the November 2026 redesign |
 | [`.env.example`](.env.example) | Environment variables required by the tooling |
 
 ---
@@ -40,7 +45,7 @@ file server works equally well.
 
 One difference from production: the local server serves `/services/` but not
 the extensionless `/services`, whereas GitHub Pages serves both. Always link to
-the `.html` form.
+the trailing slash form, for example `/services/`.
 
 ---
 
@@ -49,25 +54,41 @@ the `.html` form.
 ```
 .
 ├── index.html               Home
-├── services/index.html      Services and engagement tiers
-├── about/index.html         About and founder teaser
-├── contact/index.html       Contact form
-├── how-we-buy-domains/      How a private domain buy works
+├── services/
+│   ├── index.html           The five services and engagements
+│   ├── website-design/      Website Design & Development
+│   ├── seo/                 SEO & Search Visibility
+│   ├── ai-visibility/       AI Visibility & Brand Authority
+│   ├── entity-seo/          Entity SEO & Digital Identity
+│   └── domain-acquisition/  Domain Acquisition & Brokerage
+├── how-we-buy-domains/      The acquisition process
+├── tools/
+│   └── digital-presence-check/   Free self-check, runs in the browser
+├── insights/
+│   ├── index.html           Article library
+│   └── <slug>/index.html    One article each
+├── about/index.html         Company story
 ├── founder/ken-ashe/        Founder profile page
+├── contact/index.html       Contact form
+├── news/
+│   ├── index.html           News index
+│   └── website-relaunch/    June 2026 press release (legacy .html stub alongside)
 ├── *.html (services, about, contact, how-we-buy-domains)
 │                            Legacy noindex redirect stubs, see DECISIONS D11
 ├── 404.html                 Not found page (served by GitHub Pages)
-├── news/
-│   └── website-relaunch/    Press release / news post (legacy .html stub alongside)
 ├── css/styles.css           All styles, single stylesheet
-├── js/main.js               Nav, FAQ accordion, scroll reveal, contact form
+├── js/main.js               Navigation, presence map, diagnostic, presence check, contact form
 ├── assets/                  Images, favicons, social share image
+│   ├── fonts/               Self hosted Plus Jakarta Sans and Inter (DECISIONS D13)
 │   └── source/              Original brand files, used to regenerate assets
 ├── scripts/                 Maintenance and deployment tooling
+│   ├── articles.py          Keep Insights articles, the library and the sitemap in sync
+│   ├── templates/article.html   The article page layout used by articles.py
 │   ├── deploy.py            Push the site via the GitHub API (agents without git)
 │   ├── make_assets.py       Regenerate favicons and social image from source
 │   └── verify_live.py       Post deployment verification of the live site
 ├── tests/test_site.py       Dependency free test suite
+├── docs/                    Runbook, Insights instructions, URL map
 ├── .github/workflows/ci.yml Runs the tests on every push and pull request
 ├── CNAME                    Custom domain for GitHub Pages (luckydomains.io)
 ├── .nojekyll                Serve files as is, skip Jekyll processing
@@ -88,6 +109,17 @@ this project. If a task seems to require one, see `ARCHITECTURE.md` section
 1. Edit the HTML, CSS or JS directly.
 2. Run the tests: `python3 tests/test_site.py`
 3. Commit and push to `main`.
+
+### Adding an Insights article
+```bash
+python3 scripts/articles.py new my-article-slug "The article title"
+# write the article in insights/my-article-slug/index.html, then:
+python3 scripts/articles.py sync
+python3 tests/test_site.py
+```
+The article is a draft (noindex, not in the sitemap) until the owner approves
+it and a publication date is set with `articles.py publish`. The full
+procedure is in [`docs/INSIGHTS.md`](docs/INSIGHTS.md).
 
 ### Regenerating brand assets
 Favicons, the app icons and the Open Graph image are generated from the files in
@@ -119,6 +151,14 @@ have actually broken on this project:
 - no leftover placeholder tokens (for example an unconfigured form key)
 - no em dashes, which is a house style rule
 - `CNAME`, `robots.txt` and `sitemap.xml` are internally consistent
+- the header and footer are identical on every page
+- titles and descriptions are unique, and structured data is valid JSON
+- Insights articles are in sync, and a draft never carries a publication date
+- the Digital Presence Check stores and sends nothing
+- owner decisions hold: no portfolio, no monthly SEO package, no guarantees
+
+Before a production launch, run `python3 tests/test_site.py --launch`. It also
+fails while any Insights article is still a draft.
 
 CI runs the identical command on every push and pull request.
 

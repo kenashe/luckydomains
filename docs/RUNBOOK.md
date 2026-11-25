@@ -216,6 +216,217 @@ Not blocking, but open. Fuller detail in `DATA_SOURCES.md` and `PRODUCT.md`.
    and use URL Inspection on `https://luckydomains.io/` to request indexing.
    No manual removal of the `www` URLs is needed: the automatic 301 plus the
    canonical tags consolidate them.
-3. **Replace or remove the fabricated homepage testimonials.** See `PRODUCT.md`
-   section 8.
-4. **Decide on analytics.** See `DECISIONS.md` D10.
+3. **Decide on analytics.** See `DECISIONS.md` D10.
+4. **Delete the legacy `.html` stubs** once Search Console shows the `.html`
+   URLs dropped (DECISIONS D11).
+
+---
+
+## 8. Staging review for a large change
+
+Small edits go straight to `main`. A redesign, a new section, or a batch of
+articles goes through a branch, a draft pull request and a staging copy, and
+reaches `main` only when the owner says so.
+
+1. Work on a named branch, for example `digital-presence-production-candidate`.
+   Open a **draft** pull request against `main`. Do not merge it.
+2. Export a staging copy from the branch into the separate review repository,
+   `kenashe/luckydomains-design-concepts`:
+
+   ```bash
+   # in a checkout of kenashe/luckydomains-design-concepts
+   python3 tools/dp_export.py /path/to/luckydomains-checkout
+   ```
+
+   The export refuses to run from `main` or with uncommitted changes, so the
+   staging copy always matches a commit. It records that commit in
+   `STAGING.json`.
+3. The staging copy lives at
+   `https://kenashe.github.io/luckydomains-design-concepts/digital-presence-production-candidate/`.
+   The export makes only these changes, and checks each one before it finishes:
+   a path prefix on root absolute links; `noindex,nofollow,noarchive` on every
+   page; staging canonical and social URLs; a notice bar; and a disabled contact
+   form (access key removed, endpoint replaced, submit blocked). It leaves out
+   `CNAME`, `robots.txt`, `sitemap.xml`, documentation, tests and scripts.
+4. Never edit the staging copy by hand, and never point a custom domain,
+   analytics, or a live form at it.
+
+The staging copy cannot prove three things, because they only exist on the real
+domain: the contact form delivering mail, the legacy stubs and `www`
+redirecting, and the `404.html` page being served for missing paths. Check
+those after launch (section 9).
+
+---
+
+## 9. Launch checklist for the November 2026 redesign
+
+Executed on 2026-11-25 with the owner's authorization, and kept as the record
+and as the template for the next large change. Every step that changes production needs the owner's
+explicit approval. Work top to bottom and stop at the first failure.
+
+**Before the merge**
+
+1. The owner has reviewed the complete staging site.
+2. The owner has approved the final text of all five Insights articles and the
+   byline, "By Ken Ashe".
+3. The owner has completed the Safari check below on a MacBook and an iPhone.
+   The automated checks ran in Chromium and Firefox only.
+4. Bring the branch up to date with `main` and resolve anything that changed:
+
+   ```bash
+   git fetch origin && git checkout digital-presence-production-candidate
+   git merge origin/main        # or rebase, then re-export staging if anything changed
+   ```
+
+   If `main` changed the shared Ken Ashe `Person` node, mirror the new node into
+   the three pages that carry it (AGENTS.md section 7).
+5. On launch day, reopen the sources whose facts can change and correct the
+   articles if anything moved. Then set `sources_checked` in each article to
+   that day.
+   - ICANN: the Transfer Policy page and the "Implementation Projects In Queue"
+     list at `icann.org/policy/implementation`. On 2026-11-25 the revised
+     Transfer Policy was adopted but still queued, with no effective date.
+   - Google: "Control how your content is used for generative AI at Google"
+     and "AI features and your website".
+   - Crawler documentation from OpenAI, Anthropic and Perplexity.
+6. Publish the articles with the actual launch date, then run the launch tests.
+   This is the final publication command:
+
+   ```bash
+   python3 scripts/articles.py publish --all --date "$(TZ=America/New_York date +%F)" \
+     && python3 tests/test_site.py --launch
+   ```
+
+   All five articles share that date. Commit and push the branch. CI must be
+   green on the pull request. Merge the same day. If the merge slips to another
+   day, rerun the command with `--redate` added after the date, so the articles
+   carry the day they actually go live.
+7. If any page other than an article was edited after 2026-11-25, set its
+   `<lastmod>` in `sitemap.xml` to the day it was edited. On the founder page,
+   also set `dateModified` in the `ProfilePage` data.
+8. Record the commit that is live now. This is the rollback point:
+
+   ```bash
+   git rev-parse origin/main
+   ```
+
+   When the candidate was prepared it was
+   `efed1ded196d8ecc157f6d02f41f170b69033f45`.
+
+**Safari check (owner, about ten minutes)**
+
+Use the staging copy. It behaves like the candidate except that the contact
+form is switched off.
+
+On the MacBook, in Safari:
+
+1. Home page: the fonts look right, the navy hero fills the width, and the
+   presence map settles from scattered to connected within a second or two.
+2. Click a signal on the map, click it again to clear it, switch Fragmented and
+   Recognized, and press Pause. Each one responds at once.
+3. Press Tab from the top of the page. A green focus outline is visible on each
+   stop, including the map's signals, and Escape closes the Services menu.
+4. Under the hero, choose each "What is holding you back?" option. A starting
+   point appears beside it without the page jumping.
+5. Scroll to the five layers. The line draws once and the page does not stick.
+6. Open a service page, then the Digital Presence Check. Answer a few
+   questions and use Clear answers.
+7. Open one article. The contents list stays beside the text, a click on it
+   moves to the section, and the table scrolls inside its own box.
+8. Narrow the window to phone width. Nothing scrolls sideways.
+
+On the iPhone, in Safari:
+
+1. Home page: the headline, both buttons and the top of the map fit without
+   sideways scrolling, in portrait and in landscape.
+2. Open the menu, open Services inside it, and close it again.
+3. Tap a signal on the map and tap Pause. Nothing is cut off at the edges.
+4. Tap a "What is holding you back?" option. The answer appears just below it.
+5. Digital Presence Check: the Yes, No and Not sure buttons are easy to tap,
+   and the result updates as you answer.
+6. One article: text is comfortable to read, the contents box sits above the
+   text, and the wide table scrolls sideways by itself.
+7. Contact page: the form fields do not zoom the page when tapped. On staging,
+   Send shows a notice and sends nothing.
+8. Turn on Reduce Motion (Settings, Accessibility, Motion) and reload the home
+   page. The map appears already connected and nothing moves.
+
+Anything that looks wrong: note the page, the device and what you saw. It gets
+fixed on the branch before the merge.
+
+**The merge**
+
+9. The owner marks the pull request ready and merges it, or tells an agent in
+   writing to merge it. Use a merge commit, not a squash, so the rollback in
+   section 10 is a single revert. GitHub Pages redeploys within a few minutes.
+
+**After the merge**
+
+10. Run `python3 scripts/verify_live.py`. It checks every page, the `www`
+   redirect, DNS and that the Google Workspace MX records are untouched.
+11. In a browser, on the live domain, in Safari as well as Chrome:
+    - navigation, the Services menu and the mobile menu
+    - the presence map, its Pause control and the diagnostic
+    - the Digital Presence Check
+    - one article, including its contents list
+    - `https://luckydomains.io/services.html` and the other legacy stubs
+      redirect to the directory URLs
+    - a missing path such as `/nope` shows the 404 page
+12. Submit the contact form once from a browser, with a message that says it is
+    a launch test, and confirm the email arrives at `info@luckydomains.io`.
+    Do not test with curl; Web3Forms rejects it (section 4).
+13. View source on the home page and one article. Confirm the canonical URL is
+    on `luckydomains.io`, there is no `noindex` on indexable pages, and no
+    staging URL appears. Paste the home page and one article into Google's Rich
+    Results Test and the Schema Markup Validator.
+14. Open `https://luckydomains.io/sitemap.xml` and confirm the five article
+    URLs are listed. In Search Console, resubmit the sitemap and request
+    indexing for the home page and `/insights/`.
+15. Only now merge the KenAshe.ai pull request that updates its description of
+    Lucky Domains and links to the new pages. Its links point at pages that
+    must already be live (kenashe/kenashe#153). It contains descriptions and
+    two links only.
+    The one-clause change to the Digest prompt is separate
+    (kenashe/kenashe#154). Merge that only after a shadow run of its branch has
+    been read: Actions, Content Pipeline, Run workflow, choose the branch
+    `digest-lucky-domains-description`, mode `shadow`. If a shadow run cannot be
+    done safely, leave it open. Nothing else depends on it.
+16. Capture final screenshots of the live site for the record.
+
+Any failure at steps 10 to 13 that a visitor would notice triggers section 10.
+
+---
+
+## 10. Rollback
+
+GitHub Pages serves whatever `main` contains, so a rollback is a commit.
+
+**Preferred: revert the merge.** This keeps history and needs no force push.
+
+```bash
+git fetch origin && git checkout main && git pull
+git log --oneline -5                      # find the merge commit
+git revert -m 1 <merge-commit-sha>        # creates a new commit that undoes it
+python3 tests/test_site.py
+git push origin main
+python3 scripts/verify_live.py            # after Pages redeploys
+```
+
+**If the merge was a squash or a fast forward,** revert the range instead:
+
+```bash
+git revert --no-commit efed1ded196d8ecc157f6d02f41f170b69033f45..HEAD
+git commit -m "Roll back the November 2026 redesign"
+git push origin main
+```
+
+**Do not** force push `main`, delete the `CNAME` file, change Pages settings or
+touch DNS as part of a rollback. None of them is needed, and each can take the
+site or the email offline.
+
+After a rollback the old pages are live again within a few minutes. The new
+URLs (`/insights/`, the new service pages, `/tools/digital-presence-check/`)
+return 404 again, which is why step 15 comes late: KenAshe.ai must not link to
+them until the launch has held.
+
+Tell the owner what failed, what was rolled back, and the commit now live.

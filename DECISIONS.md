@@ -265,3 +265,149 @@ the directory layout works unchanged on either.
 
 **Revisit if.** Search Console shows the legacy URLs still indexed after a
 couple of months, in which case a proxy-level 301 is the next step.
+
+---
+
+## D12. Reposition as a digital presence studio, and rebuild the site around five services
+**Date:** November 2026 · **Status:** done, launched 2026-11-25 with the owner's approval
+
+**Decision.** Lucky Domains is presented as a digital presence studio for the
+AI era: it "helps businesses build a digital presence that people, search
+engines, and AI systems can find, understand, and trust." The site is organized
+around five services (Website Design & Development, SEO & Search Visibility, AI
+Visibility & Brand Authority, Entity SEO & Digital Identity, Domain Acquisition
+& Brokerage), a Tools area and an Insights area, and the framework Domain,
+Website, Search, Entity, AI.
+
+**How we got here.** This is recorded in full so nobody has to reconstruct it.
+
+1. **The original site (June to November 2026).** Three service lines framed as
+   one job: the name, the site, the rankings. Navy hero, white sections, green
+   accent. The owner liked this design.
+2. **Design exploration, phase 1 (November 2026).** Three concepts in a separate
+   review repository (`kenashe/luckydomains-design-concepts`): Venture Lab, The
+   Register, Namespace. Venture Lab was refined and carried to a production
+   candidate branch and a draft pull request (#4). It positioned the company as
+   a digital venture studio built around the founder's AI experiments.
+3. **Correction.** The owner rejected the venture studio positioning. The
+   business is websites, search, identity, AI visibility, and domains, for
+   clients. Pull request #4 was closed without merging and its branch deleted.
+4. **Phase 2.** Three light concepts with the corrected message. The owner did
+   not like the visual designs.
+5. **Version 3.** Three concepts built on the original production stylesheet,
+   with a fuller set of pages. The owner chose Original Interactive, asked for
+   one refinement (one presence map, a shorter homepage, lighter interior
+   pages, no portfolio, a standalone Digital Presence Check), and approved it.
+6. **This candidate.** The approved refinement ported into this repository as
+   plain HTML, CSS and JavaScript, with final content decisions applied.
+
+**What stayed.** The logo, the navy hero, the green accent, the typography, the
+original component styles (`css/styles.css` keeps the earlier rules and adds to
+them), the domain brokerage offer, the contact integration, every existing URL,
+the legacy `.html` stubs, and the June 2026 press release: its headline, text,
+dates and `NewsArticle` data are exactly as published. That page also carries the
+shared Organization and Person records, which are kept identical to the home page
+on every page that carries them, so the Organization record there was updated
+along with the others. The release itself was not rewritten.
+
+**What was rejected.** Venture studio positioning. Presenting the founder's
+experiments (ZeroHuman, the AI Agent Economy experiment, ENS naming) as the
+commercial offer. A dark, technical "lab" aesthetic. A second presence map,
+auto advancing widgets and a questionnaire on the homepage.
+
+**Revisit if.** The service mix changes. Positioning changes are owner
+decisions and belong here before they reach the HTML.
+
+---
+
+## D13. Self host the two font families
+**Date:** November 2026 · **Status:** done, launched 2026-11-25
+
+**Decision.** Plus Jakarta Sans and Inter are served from `assets/fonts/` as two
+variable WOFF2 files (Latin subset), preloaded in the page head. The Google
+Fonts stylesheet and preconnect lines are removed.
+
+**Why.** `DATA_SOURCES.md` already named this as the option if third party
+requests became a concern. Self hosting removes the only third party request a
+normal page view made, stops visitor IP addresses reaching Google on every
+visit, removes a render blocking cross origin stylesheet, and lets the fonts be
+preloaded, which removed the layout shift measured during design review. The
+site now makes no third party request except the contact form submission.
+
+**Cost.** About 75 KB of font files in the repository, cached by the browser
+after the first page. Both families are licensed under the SIL Open Font
+License (see `assets/fonts/LICENSE.txt`).
+
+**Revisit if.** A new weight, style or script is needed. Replace the files and
+the two `@font-face` rules in `css/styles.css`.
+
+---
+
+## D14. Insights articles: complete HTML pages, kept in sync by an optional script
+**Date:** November 2026 · **Status:** done, launched 2026-11-25
+
+**Decision.** Each article is a complete HTML page at
+`insights/<slug>/index.html`. Its settings (title, summary, status, dates,
+related links, sources) live in a small JSON block inside the page, and its
+text lives between two comment markers. `scripts/articles.py` re-renders the
+repetitive parts (head tags, structured data, byline, contents list, sources,
+related links, shared header and footer), the cards on `/insights/`, and the
+article entries in `sitemap.xml`.
+
+**Why this does not break D2.** There is still no build step: the pages are
+committed as plain HTML and the site deploys with a git push. The script is a
+convenience in the same sense as `scripts/deploy.py`. It uses only the standard
+library, and an article can still be edited by hand. The alternative, copying a
+whole page by hand for each article, is how layouts drift.
+
+**Editorial rules built into it.** A draft never carries a publication date,
+is marked `noindex`, stays out of the sitemap, and shows "Editorial draft" in
+its byline. Dates are set only by `articles.py publish --date`, with a date the
+owner chose. Nothing publishes automatically. `tests/test_site.py --launch`
+fails while any draft remains.
+
+**Rejected.** A CMS, a static site generator, Markdown with a build step, and
+unattended publication. Each adds a dependency or removes the owner's review.
+
+**Revisit if.** The library grows past a few dozen articles, or more than one
+person writes for it.
+
+---
+
+## D15. No portfolio, no client case studies, no testimonials
+**Date:** November 2026 · **Status:** done
+
+**Decision.** The site does not showcase client work. There is no Work
+navigation item, portfolio page, case study, client logo row, testimonial, or
+performance claim.
+
+**Why.** The owner does not intend to publish client work. Earlier placeholder
+testimonials were fabricated and had to be removed (see `PRODUCT.md`). Invented
+or anonymized "client" examples are the same problem in a different form.
+
+**What replaces it.** Nothing with that shape. Credibility comes from the depth
+of the service pages, the Insights articles, transparent processes, the founder,
+honest limits, and a small number of first party examples, each labeled as the
+company's or founder's own work, an internal system, or research.
+
+**Revisit if.** The owner supplies real, approved client material and asks for
+it to be published.
+
+---
+
+## D16. A free, browser only Digital Presence Check
+**Date:** November 2026 · **Status:** done, launched 2026-11-25
+
+**Decision.** `/tools/digital-presence-check/` asks ten questions in five areas
+with Yes, No and Not sure, and names areas worth investigating with a link to
+the relevant service. It gives no numerical score. It has no form element, asks
+for no email address, stores nothing, and makes no network request.
+
+**Why.** A useful free tool earns more trust than a lead capture form, and a
+score would imply a technical assessment that ten self reported answers cannot
+support. The page states: "This is a preliminary self-check, not a technical
+audit."
+
+**Revisit if.** A second tool is added (then `/tools/` gets an index page), or
+the owner wants results to be shareable. Sharing must not require storing
+answers on a server.

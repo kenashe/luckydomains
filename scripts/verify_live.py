@@ -12,6 +12,7 @@ Checks, in order:
   4. www resolves to kenashe.github.io
   5. Google Workspace MX records are still present   <- protects the owner's email
   6. Each page's rel=canonical matches its sitemap entry
+  7. Published Insights articles are indexable, and legacy .html stubs still redirect
 
 Exit code 0 if everything passes, 1 otherwise, so it is safe to use in CI or a
 pre flight check.
@@ -29,15 +30,25 @@ import urllib.request
 
 SITE = "https://luckydomains.io"
 APEX = "luckydomains.io"
-PAGES = ["/", "/services/", "/services/entity-seo/", "/about/", "/contact/",
-         "/news/", "/news/website-relaunch/", "/404.html"]
+PAGES = ["/", "/services/", "/services/website-design/", "/services/seo/",
+         "/services/ai-visibility/", "/services/entity-seo/",
+         "/services/domain-acquisition/", "/how-we-buy-domains/",
+         "/tools/digital-presence-check/", "/about/", "/founder/ken-ashe/",
+         "/insights/", "/contact/", "/news/", "/news/website-relaunch/", "/404.html"]
+# Published Insights articles are read from the live sitemap and checked as well.
+LEGACY_STUBS = {"/services.html": "/services/", "/about.html": "/about/", "/contact.html": "/contact/",
+                "/how-we-buy-domains.html": "/how-we-buy-domains/",
+                "/news/website-relaunch.html": "/news/website-relaunch/"}
 GITHUB_IPS = {"185.199.108.153", "185.199.109.153",
               "185.199.110.153", "185.199.111.153"}
 PAGES_HOST = "kenashe.github.io"
 CONTENT_MARKERS = {
-    "/": "Secure the perfect domain",
-    "/services/": "Own the name your brand deserves",
-    "/about/": "Ken Ashe",
+    "/": "Build a digital presence people, search engines, and AI recognize.",
+    "/services/": "Five services. One digital presence.",
+    "/tools/digital-presence-check/": "This is a preliminary self-check, not a technical audit.",
+    "/insights/": "Insights",
+    "/about/": "Domains were the beginning. Not the boundary.",
+    "/founder/ken-ashe/": "Ken Ashe",
     "/contact/": "info@luckydomains.io",
     "/news/website-relaunch/": "Lucky Domains",
 }
@@ -170,8 +181,16 @@ if status != 200:
 else:
     locs = set(re.findall(r"<loc>([^<]+)</loc>", sitemap))
     ok("sitemap lists %d URLs" % len(locs))
-    for path in [p for p in PAGES if p != "/404.html"]:
+    articles = sorted(l[len(SITE):] for l in locs if l.startswith(SITE + "/insights/") and l != SITE + "/insights/")
+    ok("sitemap lists %d Insights article(s)" % len(articles))
+    for path in [p for p in PAGES if p != "/404.html"] + articles:
         status, _h, body = fetch(SITE + path)
+        if path in articles:
+            if status != 200:
+                bad("%s -> %s" % (path, status))
+                continue
+            if 'name="robots"' in body or '"datePublished"' not in body:
+                bad("%s is listed in the sitemap but is not published and indexable" % path)
         m = re.search(r'<link rel="canonical" href="([^"]+)"', body or "")
         if not m:
             bad("%s has no canonical tag" % path)
@@ -181,6 +200,16 @@ else:
             bad("%s canonical %s is not in the sitemap" % (path, canon))
         else:
             ok("%s canonical matches sitemap" % path)
+
+# 7. Legacy .html stubs still point at the directory URLs (DECISIONS D11)
+print("\n7. Legacy redirect stubs")
+for stub, dest in sorted(LEGACY_STUBS.items()):
+    status, _h, body = fetch(SITE + stub)
+    target = SITE + dest
+    if status == 200 and ('url=%s"' % target in body or "url=%s\"" % dest in body) and 'rel="canonical" href="%s"' % target in body:
+        ok("%s -> %s" % (stub, dest))
+    else:
+        bad("%s does not redirect to %s (status %s)" % (stub, dest, status))
 
 # Summary
 print("\n" + "=" * 62)

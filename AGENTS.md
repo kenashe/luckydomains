@@ -10,9 +10,12 @@ is in this repo. You do not need access to any prior conversation.
 
 ## 1. What this project is, in one paragraph
 
-`luckydomains.io` is a four page marketing website for Lucky Domains, a business
-that sells domain acquisition/brokerage and SEO services. It is hand written
-static HTML, CSS and vanilla JavaScript with **no build step and no framework**.
+`luckydomains.io` is the marketing website for Lucky Domains, a digital presence
+studio for the AI era. It sells five services: website design and development,
+SEO, AI visibility and brand authority, entity SEO and digital identity, and
+domain acquisition and brokerage. It also carries a free tool (the Digital
+Presence Check) and an Insights article library. It is static HTML, CSS and
+vanilla JavaScript with **no build step and no framework**.
 It is hosted free on GitHub Pages, served from the `main` branch of
 `kenashe/luckydomains`, on the apex custom domain `luckydomains.io`.
 
@@ -65,6 +68,9 @@ Every internal link must be **root absolute** and must exactly match that page's
 | Founder        | `href="/founder/ken-ashe/"`    | `/founder/ken-ashe`, `/founder/ken-ashe/index.html` |
 | Buying process | `href="/how-we-buy-domains/"`  | `/how-we-buy-domains`, `/how-we-buy-domains.html` |
 | Entity SEO     | `href="/services/entity-seo/"` | `/services/entity-seo`, `/services/entity-seo.html` |
+| Other services | `href="/services/website-design/"`, `/services/seo/`, `/services/ai-visibility/`, `/services/domain-acquisition/` | the slash-less forms |
+| Insights       | `href="/insights/"`, `href="/insights/<slug>/"` | `/insights`, `/insights/<slug>` |
+| Presence check | `href="/tools/digital-presence-check/"` | `/tools/` (there is no Tools index page) |
 
 Every page lives at `<slug>/index.html` and the trailing-slash URL is canonical.
 The old `<slug>.html` files are kept only as noindex redirect stubs (DECISIONS
@@ -85,6 +91,33 @@ consolidate it. Duplicates are handled with canonical tags, not with blocking.
 python3 tests/test_site.py
 ```
 No dependencies, no install step. CI runs the same command on every push.
+Before a production launch also run `python3 tests/test_site.py --launch`,
+which fails while any Insights article is still a draft.
+
+### 2.7 Owner decisions that are not up for redesign
+These were decided by the owner in November 2026 (DECISIONS D12 to D16). Do not
+reopen them without the owner.
+
+- **Positioning.** A digital presence studio for the AI era. Not a venture
+  studio, an AI agent company, a crypto company or a lab. Do not make
+  ZeroHuman, autonomous agents, Ethereum or the founder's experiments the
+  primary message. They appear only as labeled first party examples and in the
+  agent identity research article.
+- **No portfolio.** No Work navigation, case studies, client logos,
+  testimonials or performance results. Never invent a client example.
+- **No guarantees.** Never promise rankings, AI citations or recommendations,
+  mentions in any AI system, or a Knowledge Panel. Never claim special markup
+  or a proprietary technique produces AI visibility.
+- **No monthly SEO package.** SEO is sold as audits, technical reviews, scoped
+  projects and strategy, with ongoing work by agreement.
+- **No new services.** No AI consulting, AI automation consulting, paid ads or
+  social media management.
+- **The homepage is finished.** Hero with the presence map, the diagnostic, the
+  five layers, five services, the company story, AI powered execution with
+  human accountability, the founder, the contact band. Do not add a section, a
+  second map, an auto advancing widget or a questionnaire.
+- **Articles need the owner.** Nothing in Insights is published, dated or
+  attributed without the owner's approval. See `docs/INSIGHTS.md`.
 
 ---
 
@@ -108,6 +141,22 @@ form (rule 2.4).
 2. `python3 tests/test_site.py`
 3. Commit and push to `main`.
 4. GitHub Pages redeploys automatically, usually within a minute.
+
+Larger changes go on a named branch with a draft pull request and a noindex
+staging review, and reach `main` only after the owner approves
+(`docs/RUNBOOK.md` section 8).
+
+### The shared header and footer
+Every page carries the same header, footer and shared head lines between
+comment markers (`<!-- header:start -->`, `<!-- footer:start -->`,
+`<!-- head-common:start -->`). The test suite fails if any page differs from
+the home page, apart from which navigation link is marked current. To change
+the navigation, change it on every page in the same commit. Article pages take
+theirs from `insights/index.html` when you run `python3 scripts/articles.py sync`.
+
+### Adding or editing an Insights article
+Do not copy a page by hand. Use `scripts/articles.py`; the full procedure,
+including research, fact checking and owner approval, is in `docs/INSIGHTS.md`.
 
 ### Deployment
 **The normal path is `git push` to `main`.** Pages serves the branch directly.
@@ -186,10 +235,14 @@ Do not treat the current site copy as final or verified.
 - **Testimonials were removed on 2026-09-11.** The three homepage quotes
   ("Rachel M.", "David K.", "Alicia T.") were fabricated placeholders from the
   original build. Do not reinstate them or add any quote, initials, logo row,
-  star rating, or "trusted by" line that is not owner-authorized and real.
-  Real snapshots, if added later, must be owner-supplied.
-- **Pricing tiers have no figures.** The Services page shows tier structure with
-  "Project", "Monthly" and "Custom" instead of prices, pending the owner's input.
+  star rating, or "trusted by" line. Since November 2026 the site carries no
+  client proof at all (rule 2.7).
+- **Pricing has no figures.** The Services page lists engagements and how each
+  is charged (success fee or scoped), with no prices. Do not add figures
+  without the owner.
+- **Insights articles are drafts until the owner publishes them.** A draft is
+  noindex and stays out of the sitemap. `python3 scripts/articles.py status`
+  shows the state of each one.
 - **Email authentication is incomplete.** SPF is correct, but DKIM and DMARC are
   missing. See `DATA_SOURCES.md`.
 
@@ -204,16 +257,31 @@ Do not treat the current site copy as final or verified.
   One exception, approved by the owner 2026-09-10: the Connect section on
   `/founder/ken-ashe/` links to Ken Ashe's personal profiles (kenashe.ai,
   LinkedIn, X, GitHub). Those are founder entity links for SEO, not company
-  social accounts. Keep them there and nowhere else.
+  social accounts. Keep LinkedIn, X and GitHub there and nowhere else.
+  KenAshe.ai may also be linked where it is the source: the founder's
+  background, a labeled first party example, the agent identity research
+  article, and the build records card on `/insights/`. It is not in the
+  sitewide footer. The location shown is Berkeley Heights, New Jersey.
 - **Shared Person schema node:** the Ken Ashe `Person` JSON-LD node (`@id`
   `https://kenashe.ai/#ken-ashe`) appears in `index.html`,
   `news/website-relaunch/index.html` and `founder/ken-ashe/index.html`. It must stay
   byte-identical to `src/data/schema.ts` in the kenashe.ai repo. Edit it there
   first, then mirror to all three files here in the same pass (DECISIONS D9).
-- **Brand colours:** green `#16C784`, darker green `#0FA968` for text contrast,
-  deep navy `#0C2340`, mint `#ECFBF4`.
-- **Fonts:** Plus Jakarta Sans for headings, Inter for body, loaded from Google
-  Fonts.
+- **Shared Organization schema node:** the Lucky Domains `Organization` node
+  (`@id` `https://luckydomains.io/#organization`) appears in full on the same
+  three pages, and in shorter form on About and Contact. Its description,
+  `knowsAbout` list and address must be the same wherever they appear. Change
+  them on every page in the same commit; the test suite compares them. Never
+  add a second `Organization` or `Person` identity for the company or the
+  founder. Insights articles refer to both records by `@id`.
+- **Brand colours:** green `#16C784`, text safe green `#0A7A4B` for links and
+  button fills (the older `#0FA968` fails WCAG AA on white), deep navy
+  `#0C2340`, mint `#ECFBF4`.
+- **Fonts:** Plus Jakarta Sans for headings, Inter for body, self hosted in
+  `assets/fonts/` (DECISIONS D13). Do not add a Google Fonts link.
+- **Motion:** every animation must stop under `prefers-reduced-motion`, pause
+  on a hidden tab, offer a Pause control if it repeats, work by keyboard and
+  touch, and leave complete content when JavaScript is off.
 - **Accessibility:** keep the skip link, the `aria-label`s, the focus styles and
   the `prefers-reduced-motion` block in `css/styles.css`.
 - **Images:** always set `width` and `height` to protect layout stability, and
@@ -229,3 +297,7 @@ Do not treat the current site copy as final or verified.
 - Server side code. There is no server. The only dynamic behaviour is the
   contact form, which posts to a third party API from the browser.
 - Tracking or analytics without asking the owner first.
+- Any third party request on a normal page view. The contact form submission is
+  the only one the site makes.
+- Storage of visitor data. The Digital Presence Check must not store or send
+  answers, ask for an email address, or produce a score.

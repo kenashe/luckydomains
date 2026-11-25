@@ -26,8 +26,9 @@ moves through it.
                     │   Browser renders page   │
                     └────────┬─────────┬───────┘
                              │         │
-              Google Fonts <─┘         └─> Web3Forms API
-              (CSS + WOFF2)                (contact form POST)
+                                       └─> Web3Forms API
+              (no third party request      (contact form POST,
+               on a normal page view)       only on submit)
                                                    │
                                                    v
                                            info@luckydomains.io
@@ -106,8 +107,8 @@ Plus the `www` hostname, which **does** 301 to the apex automatically.
 
 Since Pages cannot issue redirects, duplicates are consolidated with:
 
-1. **A self referencing `rel=canonical`** on every page, pointing at the `.html`
-   form on the apex host.
+1. **A self referencing `rel=canonical`** on every page, pointing at the
+   trailing slash directory form on the apex host (DECISIONS D11).
 2. **Root absolute internal links** that exactly match those canonicals, so no
    internal link ever votes for a duplicate. This is enforced by the test suite.
 3. **A `sitemap.xml`** listing only the canonical forms.
@@ -122,40 +123,82 @@ Since Pages cannot issue redirects, duplicates are consolidated with:
 ### Pages
 | File | URL | Notes |
 |---|---|---|
-| `index.html` | `/` | Hero, services overview, why us, process, testimonials, FAQ, CTA |
-| `services/index.html` | `/services/` | Domain acquisition, SEO services, engagement tiers |
-| `about/index.html` | `/about/` | Story, values, founder |
-| `contact/index.html` | `/contact/` | Contact form, quick answers |
+| `index.html` | `/` | Hero with the presence map, diagnostic, five layers, five services, story, how we work, founder, contact band |
+| `services/index.html` | `/services/` | The five services, engagements, what Lucky Domains is not |
+| `services/website-design/index.html` | `/services/website-design/` | Service page |
+| `services/seo/index.html` | `/services/seo/` | Service page |
+| `services/ai-visibility/index.html` | `/services/ai-visibility/` | Service page |
+| `services/entity-seo/index.html` | `/services/entity-seo/` | Service page (URL unchanged from the earlier site) |
+| `services/domain-acquisition/index.html` | `/services/domain-acquisition/` | Service page |
+| `how-we-buy-domains/index.html` | `/how-we-buy-domains/` | The acquisition process |
+| `tools/digital-presence-check/index.html` | `/tools/digital-presence-check/` | Free self-check, browser only |
+| `about/index.html` | `/about/` | Company story, values, how we work |
+| `founder/ken-ashe/index.html` | `/founder/ken-ashe/` | Founder profile, `ProfilePage` and the shared `Person` node |
+| `insights/index.html` | `/insights/` | Article library. Its cards are maintained by `scripts/articles.py` |
+| `insights/<slug>/index.html` | `/insights/<slug>/` | One article each, `Article` schema |
+| `news/index.html` | `/news/` | News index |
+| `news/website-relaunch/index.html` | `/news/website-relaunch/` | June 2026 press release, `NewsArticle` schema, body left as published |
+| `contact/index.html` | `/contact/` | Contact form |
 | `404.html` | any missing path | Served by Pages, `noindex` |
-| `news/website-relaunch/index.html` | `/news/website-relaunch/` | Press release, `NewsArticle` schema |
+| `services.html`, `about.html`, `contact.html`, `how-we-buy-domains.html`, `news/website-relaunch.html` | legacy | noindex redirect stubs (DECISIONS D11) |
+
+The complete old to new URL map is in `docs/URL_MAP.md`.
+
+### Shared page chrome
+Every page carries the same header, footer and shared head lines between
+comment markers: `<!-- head-common:start -->`, `<!-- header:start -->` and
+`<!-- footer:start -->`. The test suite checks that they match the home page on
+every page. There is no include mechanism, by design (DECISIONS D2); the markers
+exist so the blocks can be compared and, for articles, copied by
+`scripts/articles.py`.
 
 ### CSS
-A single stylesheet, `css/styles.css`. Design tokens are CSS custom properties
-declared once in `:root` (brand colours, spacing, radii, shadows, easing).
-Layout is CSS Grid and Flexbox. Responsive breakpoints at 980px, 760px and
-460px. Includes a `prefers-reduced-motion` block that disables all animation.
+A single stylesheet, `css/styles.css`. The first part is the stylesheet as it
+was before November 2026. The second part, under a dated banner comment, adds
+the self hosted fonts, the Services menu, the presence map, the diagnostic, the
+five layer progression, the short light page heroes, the service page lists, the
+Digital Presence Check, the Insights library and the article layout, and a few
+accessibility corrections (text safe green, content visible without
+JavaScript). Design tokens are CSS custom properties in `:root`. Layout is CSS
+Grid and Flexbox. Breakpoints at 980px, 760px and 460px. Every animation is
+disabled under `prefers-reduced-motion`.
 
 No CSS framework, no preprocessor, no utility library.
 
 ### JavaScript
-A single file, `js/main.js`, roughly 100 lines of vanilla JS in an IIFE. It
-provides:
+A single file, `js/main.js`, vanilla JS in three self contained sections:
 
-- sticky header shadow on scroll
-- mobile navigation toggle
-- FAQ accordion with correct `aria-expanded` handling
-- reveal on scroll via `IntersectionObserver`, with a graceful fallback
-- current year in the footer
-- contact form submission (section 6)
+1. **Shared behaviour:** sticky header shadow, mobile navigation, the Services
+   menu, Escape to close, FAQ accordion, reveal on scroll, and the
+   "What is holding you back?" diagnostic.
+2. **Interactions:** the presence map (SVG built in the browser from a small
+   JSON block in the page, with a text fallback), the five layer progression,
+   and the Digital Presence Check, which totals answers in the page.
+3. **Footer year, the contact form (section 6), and the article contents list.**
 
 There is no framework and no bundle. The file is served as written.
 **The site is fully readable and navigable with JavaScript disabled**; JS only
 adds progressive enhancement, except for the contact form.
 
+The script makes exactly one kind of network request, the contact form
+submission, and uses no cookies and no browser storage. The test suite checks
+both.
+
 ### Structured data
-JSON-LD is embedded per page: `ProfessionalService` and `WebSite` on the home
-page, `Service` and `BreadcrumbList` on services, `AboutPage` with a `Person`
-for the founder, `ContactPage` on contact, and `NewsArticle` on the news post.
+JSON-LD is embedded per page: `Organization`, `WebSite`, `ProfilePage` and the
+shared `Person` on the home page; `Service`, `WebPage` and `BreadcrumbList` on
+each service page; `CollectionPage` on Services and Insights; `AboutPage`;
+`ContactPage`; `NewsArticle` on the news post; and `Article` with
+`BreadcrumbList` on each Insights article. A draft article carries no
+`datePublished`.
+
+### Insights articles
+Each article is a complete page. Its settings are a JSON block inside the page
+(`<script type="application/json" id="article-meta">`), and its text sits
+between `<!-- article:start -->` and `<!-- article:end -->`.
+`scripts/articles.py sync` re-renders the rest of the page from
+`scripts/templates/article.html`, and refreshes the cards on `/insights/` and
+the article entries in `sitemap.xml`. See `docs/INSIGHTS.md` and DECISIONS D14.
 
 ---
 
@@ -201,11 +244,11 @@ Details that matter:
 |---|---|---|
 | GitHub Pages | Hosting, TLS, CDN | Site offline. Any static host can serve this repo unchanged. |
 | GoDaddy DNS | Domain resolution | Site and email unreachable. |
-| Google Fonts | Inter, Plus Jakarta Sans | Fonts fall back to the system stack declared in the CSS. Site stays usable. |
 | Web3Forms | Contact form delivery | Form shows its fallback message; `mailto:` still works. |
 | Google Workspace | `info@luckydomains.io` | Email only, no effect on the website. |
 
-Every dependency degrades gracefully except hosting and DNS. Full details,
+Fonts are self hosted in `assets/fonts/` and are not an external dependency
+(DECISIONS D13). Every dependency degrades gracefully except hosting and DNS. Full details,
 including rate limits, are in `DATA_SOURCES.md`.
 
 ---
@@ -218,6 +261,7 @@ Scripts live in `scripts/` and are plain Python 3.
 |---|---|---|
 | `deploy.py` | Publish the site over the GitHub REST API, for agents that have a token but no git credentials. Includes a guard that refuses to delete files present in the repo but absent locally. | standard library only |
 | `make_assets.py` | Regenerate favicons, app icons and the Open Graph image from `assets/source/`. | Pillow |
+| `articles.py` | Keep Insights articles, the `/insights/` cards and the sitemap entries in sync, and set publication dates on the owner's instruction. Optional: the pages it writes are committed HTML. | standard library only |
 | `verify_live.py` | Post deployment checks: HTTP status of every page, the `www` redirect, canonical correctness, DNS records, and that email DNS is intact. | standard library only |
 
 `tests/test_site.py` is the test suite, standard library only, run by CI in
@@ -240,6 +284,8 @@ there:
 - **No authentication, accounts or user state.**
 - **No build step, bundler, transpiler, package manager or lockfile.**
 - **No analytics or tracking**, pending an explicit decision by the owner.
-- **No CMS.** Content is edited by changing the HTML.
+- **No CMS.** Content is edited by changing the HTML. Insights articles have an
+  optional helper script, not a content system (DECISIONS D14).
+- **No portfolio or client case studies** (DECISIONS D15).
 
 The rationale for each is recorded in `DECISIONS.md`.

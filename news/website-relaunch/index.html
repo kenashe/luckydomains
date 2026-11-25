@@ -26,18 +26,17 @@
 <meta name="twitter:image" content="https://luckydomains.io/assets/lucky-domains-website-relaunch.png">
 
 <!-- Icons / manifest -->
+<!-- head-common:start -->
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
+<link rel="preload" href="/assets/fonts/jakarta-normal-400-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-normal-400-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.className='js'</script>
+<!-- head-common:end -->
 
 <!-- Structured data: entity-triangulation graph (NewsArticle + Organization + Service + Ken Ashe Person) -->
 <script type="application/ld+json">
@@ -81,7 +80,13 @@
       "url": "https://luckydomains.io/",
       "logo": "https://luckydomains.io/assets/logo-wordmark.png",
       "email": "info@luckydomains.io",
-      "description": "Domain acquisition, brokerage, and SEO services company helping businesses secure stronger digital assets and build search visibility over time.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Berkeley Heights",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      },
+      "description": "Lucky Domains is a digital presence studio for the AI era, offering website design and development, SEO, AI visibility, digital identity, and domain acquisition and brokerage.",
       "foundingDate": "2025-08-01",
       "naics": "541613",
       "founder": {
@@ -106,7 +111,7 @@
         "https://www.linkedin.com/company/luckydomains",
         "https://www.crunchbase.com/organization/lucky-domains"
       ],
-      "knowsAbout": ["Premium domain acquisition", "Domain brokerage", "Domain negotiation", "SEO strategy", "Technical SEO", "Local SEO", "Content strategy"]
+      "knowsAbout": ["Website design and development", "Technical SEO", "SEO strategy", "Local SEO", "Content strategy", "Entity SEO", "Structured data", "AI visibility", "Brand authority", "Premium domain acquisition", "Domain brokerage", "Domain negotiation"]
     },
     {
       "@type": "WebSite",
@@ -250,26 +255,27 @@
   .release-hero img { display: block; width: 100%; height: auto; }
 </style>
 </head>
-<body>
+<body class="rf pg-release">
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- header:start -->
 <header class="site-header" id="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Lucky Domains home">
-      <img class="brand-logo" src="/assets/logo-wordmark.png" alt="Lucky Domains" width="170" height="38">
-    </a>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/services/">Services</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/contact/" class="btn btn-accent btn-sm nav-cta">Free consultation</a>
-    </nav>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<div class="container header-inner"> <a class="brand" href="/" aria-label="Lucky Domains home"><img class="brand-logo" src="/assets/logo-wordmark.png" alt="Lucky Domains" width="170" height="38"></a>
+<nav class="nav" id="nav" aria-label="Primary">
+<div class="has-menu"><a href="/services/">Services</a><button class="menu-btn" type="button" aria-expanded="false" aria-controls="m-svc"><span class="sr">Show service pages</span></button>
+<ul class="menu" id="m-svc">
+<li><a href="/services/website-design/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg><span>Website Design &amp; Development</span></a></li>
+<li><a href="/services/seo/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>SEO &amp; Search Visibility</span></a></li>
+<li><a href="/services/ai-visibility/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span>AI Visibility &amp; Brand Authority</span></a></li>
+<li><a href="/services/entity-seo/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 3.6a3.2 3.2 0 0 1 0 6.2M18 14c2.5.6 4 2.3 4 6"/></svg><span>Entity SEO &amp; Digital Identity</span></a></li>
+<li><a href="/services/domain-acquisition/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg><span>Domain Acquisition &amp; Brokerage</span></a></li>
+<li class="menu-x"><a href="/services/">All services</a><a href="/how-we-buy-domains/">How we buy domains</a><a href="/tools/digital-presence-check/">Digital Presence Check</a></li>
+</ul>
+</div>
+<a href="/about/">About</a><a href="/insights/">Insights</a><a href="/founder/ken-ashe/">Founder</a><a href="/contact/">Contact</a><a href="/contact/" class="btn btn-accent btn-sm nav-cta">Start a project</a></nav>
+<button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button> </div>
 </header>
+<!-- header:end -->
 
 <main id="main">
 
@@ -340,48 +346,47 @@
 
 </main>
 
+<!-- footer:start -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo"><img src="/assets/logo-icon.png" alt="" width="42" height="42" loading="lazy" decoding="async"><span>Lucky Domains</span></a>
-        <p>Helping businesses secure the right domain and earn the rankings they deserve.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="/services/#domains">Domain acquisition</a></li>
-          <li><a href="/services/#domains">Domain brokerage</a></li>
-          <li><a href="/how-we-buy-domains/">How we buy domains</a></li>
-          <li><a href="/services/#seo">SEO services</a></li>
-          <li><a href="/services/#seo">Local SEO</a></li>
-          <li><a href="/services/entity-seo/">Entity SEO</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/news/">News</a></li>
-          <li><a href="/contact/">Free consultation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Get in touch</h4>
-        <ul>
-          <li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li>
-          <li><a href="/contact/">Book a call</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span>
-      <span>luckydomains.io</span>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><a href="/" class="footer-logo"><img src="/assets/logo-icon.png" alt="" width="42" height="42" loading="lazy" decoding="async"><span>Lucky Domains</span></a>
+<p>Lucky Domains helps businesses build a digital presence that people, search engines, and AI systems can find, understand, and trust.</p>
+</div>
+<div class="footer-col">
+<h2 class="fh">Services</h2>
+<ul>
+<li><a href="/services/website-design/">Website Design &amp; Development</a></li>
+<li><a href="/services/seo/">SEO &amp; Search Visibility</a></li>
+<li><a href="/services/ai-visibility/">AI Visibility &amp; Brand Authority</a></li>
+<li><a href="/services/entity-seo/">Entity SEO &amp; Digital Identity</a></li>
+<li><a href="/services/domain-acquisition/">Domain Acquisition &amp; Brokerage</a></li>
+<li><a href="/how-we-buy-domains/">How we buy domains</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h2 class="fh">Company</h2>
+<ul>
+<li><a href="/about/">About</a></li>
+<li><a href="/founder/ken-ashe/">Founder</a></li>
+<li><a href="/insights/">Insights</a></li>
+<li><a href="/news/">News &amp; media</a></li>
+<li><a href="/tools/digital-presence-check/">Digital Presence Check</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h2 class="fh">Get in touch</h2>
+<ul>
+<li><a href="mailto:info@luckydomains.io">info@luckydomains.io</a></li>
+<li>Berkeley Heights, New Jersey</li>
+<li><a href="/contact/">Start a project</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom"><span>&copy; <span id="year">2026</span> Lucky Domains. All rights reserved.</span><span>Founded and operated by Ken Ashe, CPA, PMP.</span></div>
+</div>
 </footer>
+<!-- footer:end -->
 
 <script src="/js/main.js"></script>
 </body>
