@@ -470,6 +470,21 @@ for page in PAGES:
         continue
     check('name="robots"' not in read(page), "an indexable page carries a robots meta tag", page)
 check("<h3>SEO Audits &amp; Optimization</h3>" in read("services/index.html"), "the SEO engagement is not named SEO Audits & Optimization")
+# Copy decisions from the owner's final review (November 25, 2026).
+home, founder, contact = read("index.html"), read("founder/ken-ashe/index.html"), read("contact/index.html")
+check("Autonomous SEO Agent" not in home and "Autonomous SEO Agent" not in founder,
+      "the Autonomous SEO Agent example belongs on the SEO page only")
+check("Autonomous SEO Agent" in read("services/seo/index.html"), "the SEO page lost its labeled first party example")
+check("<blockquote" not in founder, "the founder page carries a quotation that has not been confirmed")
+check("Typically within one business day." in contact, "the contact page should say: Typically within one business day.")
+check("answers every inquiry within" not in contact, "the contact page promises a response time")
+check("Great design. Strong foundations." in read("services/website-design/index.html"),
+      "the website design page lost its design-first heading")
+for page in PAGES:
+    if page == release:
+        continue
+    check(not re.search(r"\banonymous(ly)?\b", read(page), re.I),
+          "use confidential, not anonymous: anonymity is not promised in all circumstances", page)
 
 # ---------------------------------------------------------------------------
 print("\n" + "=" * 62)

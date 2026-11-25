@@ -4,6 +4,11 @@ How an article for `/insights/` is researched, written, checked, approved by the
 owner, and published. Written so that a person or a coding agent can follow it
 without any prior conversation.
 
+Insights is an evergreen educational library. There is no publishing schedule,
+no recurring article generation, and no unattended publishing pipeline, and
+none should be added. The tooling below exists so that an article can be added
+well when there is a good reason to add one.
+
 The short version: an article is one HTML file. You write the text, a small
 script keeps the rest of the page and the library in step, and nothing is
 published until Ken Ashe approves it and chooses the date.

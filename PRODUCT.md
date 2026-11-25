@@ -15,9 +15,14 @@ description, used word for word across the site, is:
 
 Five services, in the commercial order the site presents them:
 
-1. **Website Design & Development.** Review an existing site, or build or
-   rebuild one on the client's own domain, with the technical foundation in
-   place. Named engagement: Website Build.
+1. **Website Design & Development.** A first-class commercial service, not a
+   supporting capability for SEO: modern visual design, typography and layout,
+   a consistent visual identity, responsive pages, intuitive navigation, clear
+   calls to action, interactive elements and purposeful animation, on strong
+   search, accessibility and performance foundations. Review an existing site,
+   or design and build one on the client's own domain. Named engagement:
+   Website Build. Lucky Domains does not sell standalone graphic design or
+   brand design.
 2. **SEO & Search Visibility.** One-time SEO audits, technical SEO reviews,
    scoped implementation projects, and search and content strategy. Ongoing
    optimization and monitoring by agreement. The engagement is named SEO Audits
@@ -29,8 +34,14 @@ Five services, in the commercial order the site presents them:
 4. **Entity SEO & Digital Identity.** Establish a clear, consistent, verifiable
    identity for a person, organization, or brand. Named engagement, shared with
    AI Visibility: Entity and AI Visibility Audit.
-5. **Domain Acquisition & Brokerage.** Valuation, anonymous owner outreach,
-   negotiation, escrow backed transfer, and representation for sellers.
+5. **Domain Acquisition & Brokerage.** Valuation, confidential owner outreach,
+   negotiation, escrow backed transfer, and representation for sellers. The
+   buyer's identity is kept confidential during initial outreach and
+   negotiation wherever possible; anonymity in all circumstances is never
+   promised. Buyer side: the brokerage fee is success based and agreed in
+   writing before outreach, and with no purchase there is no success fee.
+   Seller side: brokerage is success based and agreed in writing before any
+   buyer is contacted. Do not state any other fee or term.
 
 Website design and SEO remain major commercial services. AI changes how the
 work is done and where a business needs to be recognized. It does not replace
@@ -128,7 +139,8 @@ not add empty sections or placeholder pages.
 - Library at `/insights/` and one page per article at `/insights/<slug>/`.
 - Articles are written for business owners, cite primary sources, and are
   approved by the owner before publication. Nothing is published
-  automatically. See `docs/INSIGHTS.md`.
+  automatically. Insights is an evergreen library, not a publication with a
+  schedule. See `docs/INSIGHTS.md`.
 
 ### Also in scope
 - Home, About, the founder profile (`/founder/ken-ashe/`), Contact.
@@ -245,6 +257,19 @@ closing call to action. The site is predominantly light.
   markup or a proprietary technique produces AI visibility.
 - **No invented proof.** No client examples, statistics, testimonials, search
   results, or AI citations that were not supplied and approved by the owner.
+- **Positive, confident language.** Say what Lucky Domains does. Keep real
+  limits and disclosures, state each one once, and do not criticize other
+  providers. Preferred phrasings include "Flexible engagements, scoped around
+  your needs", "We set realistic expectations and measure progress
+  transparently", and "Sustainable, ethical search practices".
+- **Plain words first.** Homepage summaries, the diagnostic and service
+  introductions are written for business owners. Technical terms belong on the
+  detailed service pages, with a plain explanation beside them.
+- **No absolutes about search or AI systems.** They "may draw on" signals. The
+  site never says every system reads or weighs the same things.
+- **Response time.** "Typically within one business day", never a guarantee.
+- **The Autonomous SEO Agent** appears only as the labeled first party example
+  on the SEO page.
 - Short sentences. Active voice. Second person for the visitor, first person
   plural for the firm.
 - No superlatives that cannot be substantiated.

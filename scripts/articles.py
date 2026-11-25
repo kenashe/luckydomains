@@ -51,7 +51,7 @@ WORDS_PER_MINUTE = 230
 # Pages an article can point readers to. Keys are used in the "services" setting.
 SERVICES = {
     "websites": ("Website Design & Development", "/services/website-design/",
-                 "A site built to be understood, on your own domain."),
+                 "Thoughtful design on strong technical and search foundations."),
     "seo": ("SEO & Search Visibility", "/services/seo/",
             "Technical health, useful content, and earned authority."),
     "ai": ("AI Visibility & Brand Authority", "/services/ai-visibility/",
