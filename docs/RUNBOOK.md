@@ -383,11 +383,13 @@ fixed on the branch before the merge.
     indexing for the home page and `/insights/`.
 15. Only now merge the KenAshe.ai pull request that updates its description of
     Lucky Domains and links to the new pages. Its links point at pages that
-    must already be live.
-    That pull request also changes one clause of the Digest prompt (the
-    description of Lucky Domains). The next scheduled Digest run after the merge
-    uses it. To see its effect first, start one manual run of the pipeline
-    workflow, which defaults to shadow mode, and read the draft.
+    must already be live (kenashe/kenashe#153). It contains descriptions and
+    two links only.
+    The one-clause change to the Digest prompt is separate
+    (kenashe/kenashe#154). Merge that only after a shadow run of its branch has
+    been read: Actions, Content Pipeline, Run workflow, choose the branch
+    `digest-lucky-domains-description`, mode `shadow`. If a shadow run cannot be
+    done safely, leave it open. Nothing else depends on it.
 16. Capture final screenshots of the live site for the record.
 
 Any failure at steps 10 to 13 that a visitor would notice triggers section 10.
